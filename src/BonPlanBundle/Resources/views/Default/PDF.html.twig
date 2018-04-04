@@ -1,0 +1,33 @@
+
+
+<head></head>
+<br>
+<br>
+<center>
+    <span  style="font-size: 15px; font-weight: bold; font-family: arial, times, serif;color:Tomato;">bienvenu  {{ user.nom }}</span>
+</center>
+<center><table>
+        <tr><td></td>
+            <td>
+            </td>
+        </tr>
+        <tr><td></td>
+            <td></td></tr>
+        <tr>
+            <td>   <span style="font-size: 15px; font-weight: bold; font-family: arial, times, serif;">l'evenement le plus celebre : {{ Evenement.nomEvenement }}</span></td>
+        </tr>
+        <tr><td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>   <span style="font-size: 15px; font-weight: bold; font-family: arial, times, serif">le {{ Evenement.dateEvenement|date("m/d/Y")  }}</span></td>
+        </tr>
+        <tr><td></td>
+            <td></td></tr>
+        <tr>
+            <td>   <span style="font-size: 15px; font-weight: bold; font-family: arial, times, serif"> {{ Evenement.descriptionEvenement }}</span></td>
+        </tr>
+        <tr><td></td>
+            <td></td></tr>
+
+    </table></center>

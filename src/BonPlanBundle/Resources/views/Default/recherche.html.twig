@@ -1,0 +1,51 @@
+<script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+<h1>Recherche DQL des voitures par série</h1>
+{{ form_start(form)}}
+    {{ form_end(form) }}
+
+<h2>Liste des voitures</h2>
+<div id="div"></div>
+
+<script>
+
+    $(function(){
+        $('#recherche_evenement_form_nomEvenement').keyup(
+            function () {
+                //Récupération de la série
+                var nom=$('#recherche_evenement_form_nomEvenement').val();
+                //Construction de la requête à solliciter
+                var Data = 'nomEvenement=' + nom;
+
+                $.ajax({
+                        //Construction de l'objet XHR avec la méthode POST
+                        type: "POST",
+                        url: "{{ path('recherche_evenement') }}",
+                        data: Data,
+                        //Test sur le succèes de réponse
+                        success: function (data) {
+                            console.log(data);
+                            //Affichage des données récupérés dans un div
+                            $("#div").html(
+                                "<table id='res' border='1'>"+
+                                "<td>Nom</td>"+
+                                "<td>date</td>"+
+                                "<td>description</td></table>");
+
+                            //Parcours
+                            $.each(data, function (k,el) {
+                                $("#affichage").hide();
+                                $("#res").append(
+                                    "<tr>"+
+                                    "<td>"+el.nomEvenement+"</td>"+
+                                    "<td>"+el.dateEvenement+"</td>"+
+                                    "<td>"+ el.descriptionEvenement+ "</td>"+
+                                    "</tr>"
+                                );
+                            })
+                        }
+                    }
+                );
+            }
+        );
+    });
+</script>

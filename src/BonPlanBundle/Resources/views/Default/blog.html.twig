@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<!--
+**********************************************************************************************************
+    Copyright (c)
+********************************************************************************************************** -->
+<!--
+
+
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+
+<!-- Mirrored from kamleshyadav.com/html/hand-made/hand-made/blog-three-column.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jan 2018 20:37:44 GMT -->
+<head>
+
+    <title>Handicraft  - Responsive HTML Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320">
+    <!-- favicon links -->
+    <link rel="icon" type="image/icon" href="favicon.png" />
+    <!-- main css -->
+    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/custom_animation.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" />
+    <link rel="stylesheet" href="{{ asset('js/plugin/owl/owl.carousel.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/colors/default.css') }}" id="colors" />
+</head>
+
+<body>
+
+<!--main wrapper start-->
+<div id="wrapper">
+    <!--top_header start-->
+    <div class="hm_top_info">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="hm_top_login">
+                        <ul>
+                            <li><a href="javascript:" class="popup-with-form"><i class="fa fa-user" aria-hidden="true"></i> login</a></li>
+                            <li><a href="javascript:" class="popup-signup-form"><i class="fa fa-pencil" aria-hidden="true"></i> register</a></li>
+                            <li><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i> checkout</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 pull-right">
+                    <div class="top_usd">
+                        <div class="hm_top_wishlist">
+                            <p><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Wishlist</a></p>
+                        </div>
+                        <div class="hm_top_usd">
+                            <p><a href="javascript:"><i class="fa fa-angle-down" aria-hidden="true"></i> usd</a></p>
+                            <ul class="usd_dropmenu">
+                                <li><a href="#">EUR - Euro</a></li>
+                                <li><a href="#">USD - US Dollar</a></li>
+                                <li><a href="#">GBP - British Pound</a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Header start-->
+    <div class="hm_header_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-6">
+                    <div class="hm_logo">
+                        <a href="{{ path('bon_plan_homepage') }}"><img src="{{ asset('images/logo.png') }}" alt="" class="img-responsive"></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="hm_top_search">
+                        <input type="search" name="search" placeholder="Search....">
+                        <span class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hm_header_overlay"></div>
+    </div>
+    <!--menu start-->
+    <div class="hm_menu_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="hm_menu_wrap">
+                        <nav>
+                            <div class="menu_btn"><span></span><span></span><span></span></div>
+                            <div class="hm_menu">
+                                <ul>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_homepage') }}">Accueil</a>
+
+                                    </li>
+                                    <li><a href="{{ path('bon_plan_about') }}">Etablissement</a></li>
+                                    </li>
+                                    <li class="dropdown active"><a href="{{ path('bon_plan_blog') }}">Evenement</a>
+
+                                    <li class="dropdown"><a href="{{ path('bon_plan_gallery') }}">offre</a>
+
+                                    </li>
+                                    <li class="active dropdown"><a href="{{ path('bon_plan_gallery') }}">Actualité</a>
+
+                                    </li>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_shop') }}">Contact</a>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--banner start-->
+    <div class="hm_bread_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <h1>Evenement</h1>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('bon_plan_homepage') }}">Home</a></li>
+                        <li class="breadcrumb-item active"><a id = "fancybox" href="{{ path('ajouter_evenement') }}">ajouter evenement </a></li>
+
+                    </ol>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--blog section start-->
+    <div class="hm_news_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="hm_news_inner hm_blogs">
+                    {% for Evenement in Evenements %}
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="hm_news_box">
+                            <div class="hm_news_img">
+                                <img src="{{ asset('uploads/images/' ~ Evenement.photoEvenement) }}" alt="" class="img-responsive">
+                                <div class="news_img_overlay"></div>
+                                <div class="overlay_buttons">
+                                    <a class="popup-iframe" href="https://www.youtube.com/watch?v=KAQjLTjW-dM"><i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
+                                </div>
+                            </div>
+
+                            <div class="hm_news_data">
+
+                                <h3><a href="{{ path('bon_plan_blog1') }}">{{ Evenement.nomEvenement }}</a></h3>
+                                <ul>
+                                    <li><a href="#"><i title="date Evenement" class="fa fa-calendar" aria-hidden="true"></i> {{ Evenement.dateEvenement|date("m/d/Y") }}</a></li>
+                                </ul>
+                              <ul>  <li><a href="#"><i title="etablissement" class="fa fa-beer" aria-hidden="true"></i> {{ Evenement.idEtablissement.getNomEtablissement}}</a></li>
+                                </ul>
+                               <ul> <li>{{ Evenement.descriptionEvenement }}</li>
+                               </ul>
+                                <a href="{{ path('bon_plan_blog2',{'id':Evenement.idEvenement}) }}" class="news_btn">read more</a>
+                            </div>
+                            <a href="{{ path('delete_evenement',{'id':Evenement.idEvenement}) }}"><img height="20" width="20" src="{{ asset('png/512/android-trash.png') }}"><i > supprimer</i></a>
+                            <a class="fancybox"  href="{{ path('update_evenement',{'id':Evenement.idEvenement}) }}" id = "fancybox"><img height="20"width="20" src="{{ asset('png/512/edit.png') }}"><i> mise a jour </i></a>
+
+
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                    </div>
+
+                    </div>
+                </div>
+
+            <!--pagination start-->
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <ul class="hm_pagination">
+                        <li><a href="#" class="active">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#" class="next">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--our partners section start-->
+    <div class="hm_partners_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <h1 class="hm_heading">Our clients</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="hm_partners_slider">
+                        <div class="owl-carousel owl-theme test_slider">
+                            <div class="item"><img src="{{ asset('images/partner1.png') }}" alt=""></div>
+                            <div class="item"><img src="{{ asset('images/partner2.png') }}" alt=""></div>
+                            <div class="item"><img src="{{ asset('images/partner3.png') }}" alt=""></div>
+                            <div class="item"><img src="{{ asset('images/partner4.png') }}" alt=""></div>
+                            <div class="item"><img src="{{ asset('images/partner5.png') }}" alt=""></div>
+                            <div class="item"><img src="{{ asset('images/partner1.png') }}" alt=""></div>
+                            <div class="item"><img src="{{ asset('images/partner2.png') }}" alt=""></div>
+                            <div class="item"><img src="{{ asset('images/partner3.png') }}" alt=""></div>
+                            <div class="item"><img src="{{ asset('images/partner4.png') }}" alt=""></div>
+                            <div class="item"><img src="{{ asset('images/partner5.png') }}" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer start-->
+    <div class="hm_footer_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box">
+                        <img src="{{ asset('images/logo.png') }}" alt="" class="img-responsive">
+                        <p class="footer_about_para">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box">
+                        <h3 class="footer_heading">Help</h3>
+                        <ul>
+                            <li><a href="#">Find Your Beer</a></li>
+                            <li><a href="#">Customer Service</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Recent Orders</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box">
+                        <h3 class="footer_heading">links</h3>
+                        <ul>
+                            <li><a href="{{ path('bon_plan_homepage') }}">home</a></li>
+                            <li><a href="{{ path('bon_plan_shop') }}">shop</a></li>
+                            <li><a href="404.html">404 page</a></li>
+                            <li><a href="javascript:">login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box hm_footer_contact">
+                        <h3 class="footer_heading">Our Information</h3>
+                        <ul>
+                            <li><span class="footer_icon"><i class="fa fa-map-marker" aria-hidden="true"></i> </span>
+                                <p class="foo_con_para">787 Lakeview St. Marion, NC 28752</p>
+                            </li>
+                            <li><span class="footer_icon"><i class="fa fa-phone" aria-hidden="true"></i> </span>
+                                <p class="foo_con_para">+1800123654789 +1800123456788</p>
+                            </li>
+                            <li><a href="#"><span class="footer_icon"><i class="fa fa-envelope" aria-hidden="true"></i> </span><p class="foo_con_para">support@templatebundle.net</p></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--bottom footer start-->
+    <div class="hm_bottom_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <p>Copyrights &copy; 2018 All Rights Reserved by templatebundle.net</p>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <ul class="footer_so_icons">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--popup login form-->
+    <div class="hm_login_form_overlay">
+        <div class="hm_login_form">
+            <div class="hm_login_header">
+                <h1>login form</h1>
+                <span class="login_close"><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+            <div class="login_fields">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="pass" placeholder="Password">
+                    </div>
+                    <div class="form_btn">
+                        <a href="#" class="hm_btn"> login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--popup signup form-->
+    <div class="hm_signup_form_overlay">
+        <div class="hm_signup_form">
+            <div class="hm_login_header">
+                <h1>signup form</h1>
+                <span class="login_close"><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+            <div class="login_fields">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="uname" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="re-password" placeholder="Re-type Password">
+                    </div>
+                    <div class="form_btn">
+                        <a href="#" class="hm_btn"> register now</a>
+                        <div class="register_info">already have an account? <a href="javascript:">login</a></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--main wrapper-->
+</div>
+<!--script-->
+<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/wow.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.magnific-popup.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/plugin/owl/owl.carousel.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/switcher.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
+<script type="text/javascript">
+
+    $(function () {
+        $("#fancybox").fancybox({
+            'width'             : 950,
+            'height'            : 400,
+            'type'              :'iframe',
+            afterClose: function () {
+                parent.location.reload(true);
+
+    }}
+        )})
+
+    $(document).ready(function() {
+        $(".fancybox").fancybox();
+    })
+    $(document).ready(function() {
+        $(".fancy").fancybox();
+    })
+
+
+
+    ;
+</script>
+
+</body>
+
+
+<!-- Mirrored from kamleshyadav.com/html/hand-made/hand-made/blog-three-column.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jan 2018 20:37:44 GMT -->
+</html>

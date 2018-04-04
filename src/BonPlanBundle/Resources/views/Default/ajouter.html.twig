@@ -1,0 +1,57 @@
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="" />
+<meta name="keywords" content="">
+<meta name="author" content="" />
+<meta name="MobileOptimized" content="320">
+<!-- favicon links -->
+<link rel="icon" type="image/icon" href="favicon.png" />
+<!-- main css -->
+<link rel="stylesheet" href="/css/fonts.css" />
+<link rel="stylesheet" href="/css/custom_animation.css" />
+<link rel="stylesheet" href="/css/bootstrap.css" />
+<link rel="stylesheet" href="/css/font-awesome.css" />
+<link rel="stylesheet" href="/js/plugin/owl/owl.carousel.css" />
+
+<link rel="stylesheet" href="/css/colors/default.css" id="colors" />
+<body background="{{ asset('fet.jpg') }}">
+<center><h1>ajouter evenement</h1></center>
+
+{{ form_start(form) }}
+<center><table>
+        <tr><td>Nom</td>
+            <td>{{ form_widget(form.nomEvenement) }}</td>
+        </tr>
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+        <tr><td>date</td>
+            <td>{{ form_widget(form.dateEvenement) }}</td>
+        </tr>
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+        <tr><td>description</td>
+            <td>{{ form_widget(form.descriptionEvenement) }}</td>
+        </tr>
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+        <tr><td>nom etablissement </td>
+
+        <td>{{ form_widget(form.idEtablissement) }}</td>
+        </tr>
+        <tr><td>image</td>
+            <td>{{ form_row(form.photoEvenement)}}</td>
+        </tr>
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+    </table>
+</center>
+<center>{{ form_widget(form.ajouter ,{'label':'ajouter'}) }}
+</center>
+{{ form_end(form) }}
+</body>

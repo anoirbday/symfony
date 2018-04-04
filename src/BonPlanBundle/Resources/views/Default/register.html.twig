@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<!--
+**********************************************************************************************************
+    Copyright (c)
+********************************************************************************************************** -->
+<!--
+
+
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+
+<!-- Mirrored from kamleshyadav.com/html/hand-made/hand-made/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jan 2018 20:38:54 GMT -->
+<head>
+    <title>Handicraft  - Responsive HTML Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320">
+    <!-- favicon links -->
+    <link rel="icon" type="image/icon" href="favicon.png" />
+    <!-- main css -->
+    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/custom_animation.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('js/plugin/owl/owl.carousel.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/colors/default.css') }}" id="colors" />
+
+</head>
+
+<body>
+
+<!--main wrapper start-->
+<div id="wrapper">
+    <!--top_header start-->
+    <div class="hm_top_info">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="hm_top_login">
+                        <ul>
+                            <li><a href="javascript:" class="popup-with-form"><i class="fa fa-user" aria-hidden="true"></i> login</a></li>
+                            <li><a href="javascript:" class="popup-signup-form"><i class="fa fa-pencil" aria-hidden="true"></i> register</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--Header start-->
+    <div class="hm_header_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-6">
+                    <div class="hm_logo">
+                        <a href="{{ path('bon_plan_homepage') }}"><img src="{{ asset('images/logo.png') }}" alt="" class="img-responsive"></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6">
+                    <div class="hm_top_search">
+                        <input type="search" name="search" placeholder="Search....">
+                        <span class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hm_header_overlay"></div>
+    </div>
+    <!--menu start-->
+    <div class="hm_menu_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="hm_menu_wrap">
+                        <nav>
+                            <div class="menu_btn"><span></span><span></span><span></span></div>
+                            <div class="hm_menu">
+                                <ul>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_homepage') }}">home</a>
+
+                                    </li>
+                                    <li><a href="{{ path('bon_plan_about') }}">about</a></li>
+                                    <li><a href="{{ path('bon_plan_service') }}">services</a></li>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_gallery') }}">gallery</a>
+
+                                    </li>
+                                    <li><a href="{{ path('bon_plan_blog') }}">blog</a>
+
+                                    </li>
+                                    <li><a href="{{ path('bon_plan_shop') }}">shop</a>
+
+                                    </li>
+                                    <li class="active dropdown"><a href="{{ path('bon_plan_contact') }}">contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--banner start-->
+    <div class="hm_bread_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <h1>S'inscrire</h1>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('bon_plan_homepage') }}">Home</a></li>
+                        <li class="breadcrumb-item active">Inscription</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--contact form wrapper-->
+    <div class="contact_form_wrapper">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6 padding_center padding_center">
+                    <div class="hm_form">
+                        <div class="col-lg-10 col-md-12">
+                            <h1>Entrer vos informations</h1>
+                            <form class="form-inline">
+                                {#<div class="form-group">#}
+                                    {#<div class="form-control">#}
+
+
+                            {% block body %}
+                                {%  block fos_user_content %}
+                                {% endblock %}
+                            {% endblock %}
+                                    {#<input type="text" class="form-control" id="name" placeholder="Name">#}
+                                {#</div>#}
+                                {#</div>#}
+                                {#<div class="form-group">#}
+                                    {#<input type="email" class="form-control" id="email" placeholder="Email">#}
+                                {#</div>#}
+                                {#<div class="form-group">#}
+                                    {#<input type="text" class="form-control" id="number" placeholder="Phone">#}
+                                {#</div>#}
+                                {#<div class="form-group">#}
+                                    {#<input type="text" class="form-control" id="subject" placeholder="Subject">#}
+                                {#</div>#}
+                                {#<div class="form-group textarea">#}
+                                    {#<textarea class="form-control" rows="3" id="message" placeholder="Message"></textarea>#}
+                                {#</div>#}
+                                {#<div class="con_btn">#}
+                                    {#<a href="javascript:" class="hm_btn submit_frm"> submit</a>#}
+                                {#</div>#}
+
+
+
+
+                                {#<p id="err_msg"></p>#}
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--footer start-->
+    <div class="hm_footer_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box">
+                        <img src="{{ asset('images/logo.png') }}" alt="" class="img-responsive">
+                        <p class="footer_about_para">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box">
+                        <h3 class="footer_heading">Help</h3>
+                        <ul>
+                            <li><a href="#">Find Your Beer</a></li>
+                            <li><a href="#">Customer Service</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Recent Orders</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box">
+                        <h3 class="footer_heading">links</h3>
+                        <ul>
+                            <li><a href="{{ path('bon_plan_homepage') }}">home</a></li>
+                            <li><a href="{{ path('bon_plan_shop') }}">shop</a></li>
+                            <li><a href="404.html">404 page</a></li>
+                            <li><a href="javascript:">login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box hm_footer_contact">
+                        <h3 class="footer_heading">Our Information</h3>
+                        <ul>
+                            <li><span class="footer_icon"><i class="fa fa-map-marker" aria-hidden="true"></i> </span>
+                                <p class="foo_con_para">787 Lakeview St. Marion, NC 28752</p>
+                            </li>
+                            <li><span class="footer_icon"><i class="fa fa-phone" aria-hidden="true"></i> </span>
+                                <p class="foo_con_para">+1800123654789 +1800123456788</p>
+                            </li>
+                            <li><a href="mailto:jhini.mehta@gmail.com"><span class="footer_icon"><i class="fa fa-envelope" aria-hidden="true"></i> </span><p class="foo_con_para">support@handmade.net</p></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--bottom footer start-->
+    <div class="hm_bottom_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <p>Copyrights &copy; 2018 All Rights Reserved by Himanshusofttech</p>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <ul class="footer_so_icons">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--popup login form-->
+    <div class="hm_login_form_overlay">
+        <div class="hm_login_form">
+            <div class="hm_login_header">
+                <h1>login form</h1>
+                <span class="login_close"><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+            <div class="login_fields">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="u-name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="pass" placeholder="Password">
+                    </div>
+                    <div class="form_btn">
+                        <a href="#" class="hm_btn"> login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--popup signup form-->
+    <div class="hm_signup_form_overlay">
+        <div class="hm_signup_form">
+            <div class="hm_login_header">
+                <h1>signup form</h1>
+                <span class="login_close"><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+            <div class="login_fields">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="uname" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="u-email" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="re-password" placeholder="Re-type Password">
+                    </div>
+                    <div class="form_btn">
+                        <a href="#" class="hm_btn"> register now</a>
+                        <div class="register_info">already have an account? <a href="javascript:">login</a></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--main wrapper-->
+</div>
+
+<!--script-->
+<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/wow.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/plugin/owl/owl.carousel.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
+<!--map-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNdePPJKYq0ptBV_AFi_4RnmUtMa1ZLFg&amp;libraries=places">
+</script>
+<script type="text/javascript" src="{{ asset('js/jquery.googlemap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/switcher.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
+<script>
+    $(document).ready(function() {
+        var myCenter = new google.maps.LatLng(51.508530, -0.076132);
+
+        function initialize() {
+            var mapProp = {
+                center: myCenter,
+                zoom: 8,
+                scrollwheel: false,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("contact_map"), mapProp);
+            var icon = {
+                url: 'images/icon/map_pin.png'
+            };
+            var marker = new google.maps.Marker({
+                position: myCenter,
+                map: map,
+                title: 'Template Bundle',
+                icon: icon
+            });
+            marker.setMap(map);
+            var infowindow = new google.maps.InfoWindow({
+                content: "<span> Template Bundle </span>"
+            });
+            google.maps.event.addListener(marker, 'click', function() {
+                infowindow.open(map, marker);
+            });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    });
+</script>
+
+</body>
+
+
+<!-- Mirrored from kamleshyadav.com/html/hand-made/hand-made/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jan 2018 20:39:23 GMT -->
+</html>

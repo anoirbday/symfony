@@ -1,0 +1,48 @@
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<meta name="description" content="" />
+<meta name="keywords" content="">
+<meta name="author" content="" />
+<meta name="MobileOptimized" content="320">
+<!-- favicon links -->
+<link rel="icon" type="image/icon" href="favicon.png" />
+<!-- main css -->
+<link rel="stylesheet" href="{{ asset('css/fonts.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+<link rel="stylesheet" href="{{ asset('js/plugin/owl/owl.carousel.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/colors/default.css') }}" id="colors" />
+<center><h1>modifier evenement {{ (Evenement.nomEvenement) }} </h1></center>  
+{{ form_start(form) }}
+<center><table>
+        <tr><td>Nom</td>
+            <td>{{ form_widget(form.nomEvenement) }}</td>
+        </tr>
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+        <tr><td>date</td>
+            <td>{{ form_widget(form.dateEvenement) }}</td>
+        </tr>
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+        <tr><td>description</td>
+            <td>{{ form_widget(form.descriptionEvenement) }}</td>
+        </tr>
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+
+        <tr><td>image</td>
+            <td>   <img src="{{ asset('uploads/images/' ~ Evenement.photoEvenement) }}" alt="" class="img-responsive" height="150"width="150"> </td>
+     <td>{{ form_row(form.photoEvenement)}} </td>   </tr>
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+    </table>
+</center>
+<center>{{ form_widget(form.save ,{'label':'Modifier'}) }}
+</center>
+{{ form_end(form) }}

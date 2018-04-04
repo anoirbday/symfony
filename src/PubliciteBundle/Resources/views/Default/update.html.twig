@@ -1,0 +1,33 @@
+
+<center><h1>Modifier Publicite {{ Publicites.titre }} </h1></center>  
+{{ form_start(form) }}
+<center><table>
+        <tr><td>Titre :</td>
+            <td>{{ form_widget(form.titre) }}</td>
+        </tr>
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+
+
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+        <tr><td>Description :</td>
+            <td>{{ form_widget(form.descriptionPublicite) }}</td>
+        </tr>
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+
+        <tr><td>image :</td>
+            <td>   <img src="{{ asset('uploads/images/' ~ Publicites.photoPublicite) }}" alt="" class="img-responsive" height="230"width="360"> </td>
+            <td>{{ form_row(form.photoPublicite)}} </td>   </tr>
+        <tr><td><BR></td>
+            <td></td>
+        </tr>
+    </table>
+</center>
+<center>{{ form_widget(form.save ,{'label':'Modifier'}) }}
+</center>
+{{ form_end(form) }}

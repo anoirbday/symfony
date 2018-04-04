@@ -1,0 +1,24 @@
+<div class="count">
+    {{ pagination.getTotalItemCount }}
+</div>
+<table>
+    <tr>
+        {# sorting of properties based on query components #}
+        <th>{{ knp_pagination_sortable(pagination, 'Id', 'a.idPublicite') }}</th>
+        <th{% if pagination.isSorted('a.photoPublicite') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'photo', 'a.photoPublicite') }}</th>
+        <th>{{ knp_pagination_sortable(pagination, 'Release', ['a.dateDebut']) }}</th>
+    </tr>
+
+    {# table body #}
+    {% for Publicite in pagination %}
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <td>{{ Publicite.idPublicite }}</td>
+            <td>{{ Publicite.photoPublicite }}</td>
+            <td>{{ Publicite.datedebut | date('Y-m-d') }}</td>
+        </tr>
+    {% endfor %}
+</table>
+{# display navigation #}
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>

@@ -1,0 +1,88 @@
+bon_plan_homepage:
+    path:     /index
+    defaults: { _controller: BonPlanBundle:Default:index }
+bon_plan_about:
+    path:     /about
+    defaults: { _controller: BonPlanBundle:Default:about }
+bon_plan_service:
+    path:     /service
+    defaults: { _controller: BonPlanBundle:Default:service }
+bon_plan_gallery:
+    path:     /gallery
+    defaults: { _controller: BonPlanBundle:Default:gallery }
+bon_plan_blog:
+    path:     /blog
+    defaults: { _controller: BonPlanBundle:Evenement:list }
+bon_plan_blog1:
+    path:     /blog1
+    defaults: { _controller: BonPlanBundle:Default:blog1 }
+bon_plan_shop:
+    path:     /shop
+    defaults: { _controller: BonPlanBundle:Default:shop }
+bon_plan_shop1:
+    path:     /shop1
+    defaults: { _controller: BonPlanBundle:Default:shop1 }
+bon_plan_contact:
+    path:     /contact
+    defaults: { _controller: BonPlanBundle:Default:contact }
+bon_plan_register:
+    path:     /register
+    defaults: { _controller: BonPlanBundle:Default:register }
+bon_plan_login:
+    path:     /login
+    defaults: { _controller: BonPlanBundle:Default:login }
+bon_plan_accueilProp:
+    path:     /proprietaire/accueilprop
+    defaults: { _controller: BonPlanBundle:Default:accueilProp }
+bon_plan_accueilAdmin:
+    path:     /admin/accueiladmin
+    defaults: { _controller: BonPlanBundle:Default:accueilAdmin }
+bon_plan_accueilClient:
+    path:     /client/accueilclient
+    defaults: { _controller: BonPlanBundle:Default:accueilClient }
+bon_plan_profile:
+    path:     /profile
+    defaults: { _controller: BonPlanBundle:Default:profile }
+ajouter_evenement:
+    path:     /ajout
+    defaults: { _controller: BonPlanBundle:Evenement:ajout }
+delete_evenement:
+    path:     /delete/{id}
+    defaults: { _controller: BonPlanBundle:Evenement:Delete }
+bon_plan_blog2:
+    path:     /blog2/{id}
+    defaults: { _controller: BonPlanBundle:Interesser:interesser}
+update_evenement:
+    path:     /update/{id}
+    defaults: {_controller: BonPlanBundle:Evenement:Update}
+recherche_evenement:
+    path:     /recherche_evenement
+    defaults: { _controller: BonPlanBundle:Evenement:rechercheSerieDQL }
+pdf_export:
+    path:   /pdf/{id}
+    defaults: { _controller: BonPlanBundle:Evenement:index}
+
+List_Client:
+    path:   /client
+    defaults: { _controller: BonPlanBundle:Evenement:listclient}
+List_Admin:
+    path:   /admin/List_Admin
+    defaults: { _controller: BonPlanBundle:Evenement:listadmin}
+delete_interesser:
+    path:   /deleteint/{id}
+    defaults: { _controller: BonPlanBundle:Interesser:DeleteInteresser}
+ajout_interesser:
+    path:  /ajout/{id}
+    defaults: { _controller: BonPlanBundle:Interesser:interesser}
+is_interesser:
+    path:  /isinteresser/{id}
+    defaults: { _controller: BonPlanBundle:Interesser:interesser}
+my_app_mail_homepage:
+    path: /mail
+    defaults: { _controller: BonPlanBundle:Mail:index}
+my_app_mail_accuse:
+    path: /success
+    defaults: { _controller: BonPlanBundle:Mail:success }
+bon_plan_publicite:
+    path:     /publicite
+    defaults: { _controller: BonPlanBundle:Default:publicite }

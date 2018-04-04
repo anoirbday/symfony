@@ -1,0 +1,33 @@
+publicite_homepage:
+    path:     /
+    defaults: { _controller: PubliciteBundle:Default:index }
+ajouterpublicite:
+    path:     /ajouterpublicite
+    defaults: { _controller: PubliciteBundle:Default:ajout }
+affiche_publicite:
+    path:     /list
+    defaults: { _controller: PubliciteBundle:Default:list }
+payer_publicite:
+    path:     /payer
+    defaults: { _controller: PubliciteBundle:Default:payer }
+order_checkout:
+    path:     /checkout
+    defaults: { _controller: PubliciteBundle:Default:checkout }
+remove_Pub:
+    path:     /delet/{id}
+    defaults: { _controller: PubliciteBundle:Default:delet }
+update_Pub:
+    path:     /update1/{id}
+    defaults: { _controller: PubliciteBundle:Default:Update }
+valider_Pub:
+    path:     /admin/valid
+    defaults: { _controller: PubliciteBundle:Default:valid }
+update1_Pub:
+    path:     /admin/update/{id}
+    defaults: { _controller: PubliciteBundle:Default:Update1 }
+facebook:
+    path:     /facebook
+    defaults: { _controller: PubliciteBundle:Default:facebook }
+pagination:
+    path:     /list1
+    defaults: { _controller: PubliciteBundle:Default:list1 }

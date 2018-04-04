@@ -1,0 +1,260 @@
+.creative{
+    color: #990033 !important;
+}
+.hm_top_usd p a i.fa {
+    color: #990033;
+}
+.hm_top_usd p a:hover {
+    color: #990033;
+}
+.error_page h3 {
+    color: #990033;
+}
+.hm_menu > ul > li > ul.sub-menu > li > a {
+    border-bottom: 1px dotted #990033;
+}
+.hm_news_data h3 a:hover {
+    color: #990033;
+}
+.error_page form input:focus {
+    border-color: #990033;
+}
+.cart_icon a:hover, .cart_icon a:focus {
+    color: #990033;
+}
+.cart_icon a {
+    border: 1px solid #990033;
+}
+a.news_btn:hover {
+    color: #990033;
+}
+.hm_top_login ul li a i.fa {
+    color: #990033;
+}
+.hm_top_wishlist p a i.fa {
+    color: #990033;
+}
+.hm_top_login ul li a:hover {
+    color: #990033;
+}
+.hm_top_wishlist p a:hover {
+    color: #990033;
+}
+.hm_menu_wrapper {
+    background-color: rgba(138, 142, 146, 0.95);
+}
+.hm_menu > ul > li > a:hover {
+    color: #990033;
+}
+.hm_menu > ul > li > ul.sub-menu li > a:hover {
+    color: #990033;
+}
+.hm_menu > ul > li > ul.sub-menu li:last-child a {
+    border-bottom: 2px solid #990033;
+}
+
+span.search_icon {
+    background-color: #990033;
+}
+span.search_icon:hover {
+    border-color: #990033;
+}
+span.search_icon:hover i {
+    color: #990033;
+}
+ul.usd_dropmenu {
+    background-color: #990033;
+}
+.hm_btn:before, .cart_icon a:before {
+    background-color: #990033;
+}
+.hm_btn:hover, .hm_btn:focus {
+    color: #990033;
+}
+.hm_btn {
+    border: 1px solid #990033;
+}
+.hm_color {
+    color: #990033;
+}
+.new_pro_box:hover h3 a {
+    color: #990033;
+    text-decoration: none;
+}
+.pro_price {
+    color: #990033;
+}
+.hm_choose_list .panel-default > .panel-heading {
+    background-color: #990033;
+}
+.hm_artist_box {
+    background-color: #990033;
+}
+.hm_testi_box h2 {
+    color: #990033;
+}
+.hm_news_data ul li a i {
+    color: #990033;
+}
+a.news_btn {
+    color: #990033;
+}
+.overlay_buttons .fa {
+    background-color: #990033;
+}
+.hm_partners_wrapper {
+    background-color: #990033;
+}
+.hm_footer_box h3.footer_heading {
+    color: #990033;
+}
+.hm_bottom_footer {
+    background-color: #990033;
+}
+.footer_icon i {
+    color: #990033;
+}
+.home_style2 .hm_header_wrapper {
+    border-bottom: 2px solid #990033;
+}
+.hm_menu > ul > li.active a {
+    color: #990033;
+}
+.hm_bread_wrapper h1 {
+    color: #990033;
+}
+.hm_bread_wrapper h1:before {
+    background-color: #990033;
+}
+.hm_bread_wrapper h1:after {
+    background-color: #990033;
+}
+.hm_bread_wrapper .breadcrumb > li a {
+    color: #990033;
+}
+.service_icon {
+    border: 1px solid #990033;
+}
+.service_icon i.flaticon {
+    color: #990033;
+}
+.hm_service_box:hover .service_icon:after {
+    opacity: 1;
+    box-shadow: 3px 3px 0 rgba(252, 202, 76, 0.89);
+}
+.service_icon:after {
+    top: -8px;
+    left: -8px;
+    padding: 8px;
+    z-index: -1;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    content: '';
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    box-shadow: 0 0 0 rgba(252, 202, 76, 0.89);
+    -webkit-transition: opacity 0.2s, box-shadow 0.2s;
+    -moz-transition: opacity 0.2s, box-shadow 0.2s;
+    transition: opacity 0.2s, box-shadow 0.2s;
+}
+.filter_list ul li a {
+    border: 1px solid #990033;
+}
+.filter_list ul li a:before {
+    background-color: #990033;
+}
+.filter_list ul li a.active {
+    color: #990033;
+}
+.filter_list ul li a:hover {
+    color: #990033;
+}
+.overlay_buttons .fa {
+    background-color: #990033;
+}
+ul.hm_pagination li a.active {
+    background-color: #990033;
+    border-color: #990033;
+}
+ul.hm_pagination li a:before {
+    background-color: #990033;
+}
+.hm_post_share .tags a {
+    border: 1px solid #990033;
+}
+.hm_post_share .tags a:before {
+    background-color: #990033;
+}
+.hm_news_data ul li a i {
+    color: #990033;
+}
+.comments-area .comment-info .comment-time {
+    color: #990033;
+}
+.comments-area .comment .comment-reply:hover {
+    color: #990033;
+}
+.hm_btn:hover, .hm_btn:focus {
+    color: #990033;
+}
+.sidebar-title h2:after {
+    background-color: #990033;
+}
+.sidebar .popular-posts .post-info {
+    color: #990033;
+}
+span.cat_no {
+    color: #990033;
+}
+.sidebar-widget.widget_categories a:hover {
+    color: #990033;
+}
+.sidebar-widget.sidebar_tags li a {
+    border: 1px solid #990033;
+}
+.sidebar-widget.sidebar_tags li a:before {
+    background-color: #990033;
+}
+.hm_pro_data {
+    background-color: #990033;
+}
+.pro_price {
+    color: #990033;
+}
+a.pro_buy {
+    color: #990033;
+}
+
+.item-categories a {
+    color: #990033;
+}
+.hm_pro_tab .nav-tabs > li.active > a, .hm_pro_tab .nav-tabs > li.active > a:hover, .hm_pro_tab .nav-tabs > li.active > a:focus {
+    color: #990033;
+}
+.side_filter .ui-state-default, .side_filter .ui-widget-content .ui-state-default, .side_filter .ui-widget-header .ui-state-default, .side_filter .ui-button, .side_filter .ui-button.ui-state-disabled:hover, .side_filter .ui-button.ui-state-disabled:active {
+    border: 1px solid #990033;
+    background: #990033;
+}
+.side_filter .ui-widget-header {
+    background: rgba(252, 202, 76, 0.51);
+}
+.range_value #amount {
+    color: #990033;
+}
+.contact_box {
+    border: 2px solid #990033;
+}
+.contact_box:before {
+    background: #990033;
+}
+.contact_box i.fa {
+    color: #990033;
+}
+.hm_form {
+    background-color: #990033;
+}
