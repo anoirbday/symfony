@@ -55,9 +55,6 @@ bon_plan_blog2:
 update_evenement:
     path:     /update/{id}
     defaults: {_controller: BonPlanBundle:Evenement:Update}
-recherche_evenement:
-    path:     /recherche_evenement
-    defaults: { _controller: BonPlanBundle:Evenement:rechercheSerieDQL }
 pdf_export:
     path:   /pdf/{id}
     defaults: { _controller: BonPlanBundle:Evenement:index}
@@ -86,3 +83,12 @@ my_app_mail_accuse:
 bon_plan_publicite:
     path:     /publicite
     defaults: { _controller: BonPlanBundle:Default:publicite }
+button_interesser:
+    path:   /button{id}
+    defaults: { _controller:  BonPlanBundle:Interesser:button }
+nb:
+    path:   /nb/{id}
+    defaults: { _controller:  BonPlanBundle:Interesser:nb }
+blog2prop:
+    path:  /prop2/{id}
+    defaults: { _controller:  BonPlanBundle:Evenement:blog2 }

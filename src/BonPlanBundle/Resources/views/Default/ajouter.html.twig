@@ -16,34 +16,35 @@
 <link rel="stylesheet" href="/js/plugin/owl/owl.carousel.css" />
 
 <link rel="stylesheet" href="/css/colors/default.css" id="colors" />
-<body background="{{ asset('fet.jpg') }}">
-<center><h1>ajouter evenement</h1></center>
-
+<body background="{{ asset('pink_roses_arrangement-wallpaper-1366x768.jpg') }}">
+<center><h1><strong><p> <font color="#dc143c"> ajouter evenement </font></p></strong></h1></center>
 {{ form_start(form) }}
 <center><table>
-        <tr><td>Nom</td>
-            <td>{{ form_widget(form.nomEvenement) }}</td>
+        <tr><td> <font color="#9932cc"><h3>Nom</h3></font></td>
+            <td aria-placeholder="nom evenement">{{ form_widget(form.nomEvenement) }}</td>
         </tr>
         <tr><td><BR></td>
             <td></td>
         </tr>
-        <tr><td>date</td>
+        <tr><td><font color="#9932cc"><h3>date</h3></font></td>
             <td>{{ form_widget(form.dateEvenement) }}</td>
         </tr>
         <tr><td><BR></td>
             <td></td>
         </tr>
-        <tr><td>description</td>
-            <td>{{ form_widget(form.descriptionEvenement) }}</td>
+        <tr><td><font color="#9932cc"><h3>description</h3></font></td>
+            <td aria-placeholder="description">{{ form_widget(form.descriptionEvenement) }}</td>
         </tr>
         <tr><td><BR></td>
             <td></td>
         </tr>
-        <tr><td>nom etablissement </td>
+       <br>
+        <tr><td><font color="#9932cc"><h3>nom etablissement</h3></font> </td>
 
         <td>{{ form_widget(form.idEtablissement) }}</td>
         </tr>
-        <tr><td>image</td>
+
+        <tr><td><font color="#9932cc"><h3>image</h3></font></td>
             <td>{{ form_row(form.photoEvenement)}}</td>
         </tr>
         <tr><td><BR></td>
@@ -51,7 +52,7 @@
         </tr>
     </table>
 </center>
-<center>{{ form_widget(form.ajouter ,{'label':'ajouter'}) }}
+<center><font color="#dc143c"><h4>{{ form_widget(form.ajouter ,{'label':'confirmer'}) }}</h4></font>
 </center>
 {{ form_end(form) }}
 </body>
