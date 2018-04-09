@@ -2733,14 +2733,13 @@ a.pro_buy:hover:before {
 .contact_form_wrapper {
     width: 100%;
     float: left;
-    background-color: #fc5a6d;
+    background-color: #ffa83b;
 }
 .hm_form {
-    width: 700px;
+    width: 100%;
     float: left;
     padding: 50px 0px;
     padding-left: 45px;
-    margin-left: 300px;
 }
 .hm_form h1 {
     font-size: 24px;

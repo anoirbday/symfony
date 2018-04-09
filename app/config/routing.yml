@@ -1,3 +1,18 @@
+bon_plan_etablissement:
+    resource: "@EtablissementBundle/Controller/EtablissementController.php"
+    type:     annotation
+
+bon_plan_critere_evaluation:
+    resource: "@EtablissementBundle/Controller/CritereEvaluationController.php"
+    type:     annotation
+
+etablissement:
+    resource: "@EtablissementBundle/Resources/config/routing.yml"
+    prefix:   /
+
+bon_plan_categorie:
+    resource: "@EtablissementBundle/Controller/CategorieController.php"
+    type:     annotation
 bon_plan:
     resource: "@BonPlanBundle/Resources/config/routing.yml"
     prefix:   /BonPlan

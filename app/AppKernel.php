@@ -23,6 +23,8 @@ class AppKernel extends Kernel
             new \Ivory\GoogleMapBundle\IvoryGoogleMapBundle(),
             new \Ivory\SerializerBundle\IvorySerializerBundle(),
             new PubliciteBundle\PubliciteBundle(),
+            new EtablissementBundle\EtablissementBundle(),
+            new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
 
 
         ];

@@ -1,0 +1,28 @@
+{% extends 'default/layoutback.html.twig' %}
+
+{% block body %}
+    <h1>Ajouter une nouvelle catégorie</h1>
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    {{ form_start(form1) }}
+    {{ form_widget(form1) }}
+        {{ form_end(form1) }}
+
+
+    <input type="submit" value="Ajouter" />
+
+    {{ form_end(form) }}
+
+
+
+
+
+
+
+    <ul>
+        <li>
+            <a href="{{ path('categorie_index') }}">Liste des catégories</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Critereevaluations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idcritere</th>
+                <th>Nomcritere</th>
+                <th>Idcategorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for critereEvaluation in critereEvaluations %}
+            <tr>
+                <td><a href="{{ path('critereevaluation_show', { 'idCritere': critereEvaluation.idCritere }) }}">{{ critereEvaluation.idCritere }}</a></td>
+                <td>{{ critereEvaluation.nomCritereEvaluation }}</td>
+                <td>{{ critereEvaluation.getIdCategorie().nomCategorie }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('critereevaluation_show', { 'idCritere': critereEvaluation.idCritere }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('critereevaluation_edit', { 'idCritere': critereEvaluation.idCritere }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('critereevaluation_new') }}">Create a new critereEvaluation</a>
+        </li>
+    </ul>
+{% endblock %}

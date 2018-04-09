@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Etablissement</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idetablissement</th>
+                <td>{{ etablissement.idEtablissement }}</td>
+            </tr>
+            <tr>
+                <th>Nometablissement</th>
+                <td>{{ etablissement.nomEtablissement }}</td>
+            </tr>
+            <tr>
+                <th>Adresseetablissement</th>
+                <td>{{ etablissement.adresseEtablissement }}</td>
+            </tr>
+            <tr>
+                <th>Telephoneetablissement</th>
+                <td>{{ etablissement.telephoneEtablissement }}</td>
+            </tr>
+            <tr>
+                <th>Horairetravail</th>
+                <td>{{ etablissement.horaireTravail }}</td>
+            </tr>
+            <tr>
+                <th>Descriptionetablissement</th>
+                <td>{{ etablissement.descriptionEtablissement }}</td>
+            </tr>
+            <tr>
+                <th>Photoetablissement</th>
+                <td>{{ etablissement.photoEtablissement }}</td>
+            </tr>
+            <tr>
+                <th>Photopatente</th>
+                <td>{{ etablissement.photoPatente }}</td>
+            </tr>
+            <tr>
+                <th>Codepostal</th>
+                <td>{{ etablissement.codePostal }}</td>
+            </tr>
+            <tr>
+                <th>Budget</th>
+                <td>{{ etablissement.budget }}</td>
+            </tr>
+            <tr>
+                <th>Siteweb</th>
+                <td>{{ etablissement.siteWeb }}</td>
+            </tr>
+            <tr>
+                <th>Enabled</th>
+                <td>{% if etablissement.enabled %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Longitude</th>
+                <td>{{ etablissement.longitude }}</td>
+            </tr>
+            <tr>
+                <th>Latitude</th>
+                <td>{{ etablissement.latitude }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('etablissement_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('etablissement_edit', { 'idEtablissement': etablissement.idEtablissement }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

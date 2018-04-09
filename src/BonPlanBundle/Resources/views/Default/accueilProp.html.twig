@@ -93,7 +93,13 @@
                                     <li class="active dropdown"><a href="{{ path('bon_plan_homepage') }}">Accueil</a>
 
                                     </li>
-                                    <li><a href="#">Etablissement</a></li>
+                                    <li><a href="">Etablissement</a>
+                                        <ul class="sub-menu">
+                                        <li><a href="{{ path('bon_plan_etablissement2') }}">Mes Etablissements</a></li>
+                                        <li><a href="{{ path('bon_plan_etablissement1') }}">Ajouter Etablissement</a></li>
+
+                                    </ul>
+                                    </li>
                                     <li><a href="{{ path('bon_plan_blog') }}">Evénement</a></li>
                                     <li class="dropdown"><a href="{{ path('affiche_publicite') }}">Publicité</a>
 
@@ -219,7 +225,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="hm_about_img">
-                        <img src="{{ asset('images/about2.jpg') }}" alt="" class="img-responsive">
+                        <img src="{{ asset('images/about.jpg') }}" alt="" class="img-responsive">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">

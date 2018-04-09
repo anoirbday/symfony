@@ -66,7 +66,7 @@
                 <li>
                     <a href="{{  path('valider_Pub')  }}">
                         <i class="ti-view-list-alt"></i>
-                        <p>Liste des Publicites</p>
+                        <p>Demandes Publicites</p>
                     </a>
                 </li>
                 <li>
@@ -76,34 +76,34 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ path('bon_plan_categorie') }}">
                         <i class="ti-pencil-alt2"></i>
-                        <p>Liste des articles</p>
+                        <p>Demandes Categorie</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ path('bon_plan_etablissement6') }}">
                         <i class="ti-map"></i>
-                        <p>Liste reclamation</p>
+                        <p>Liste Etablissement</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="">
                         <i class="ti-bell"></i>
                         <p>Notifications</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ path('bon_plan_categorie4') }}">
                         <i class="backcornertop"></i>
-                        <p>lister categ</p>
+                        <p>lister Categorie</p>
                     </a>
                 </li>
 
                 <li class="active-pro">
-                    <a href="#">
+                    <a href="{{ path('bon_plan_categorie8') }}">
                         <i class="ti-export"></i>
-                        <p>ajouter categ</p>
+                        <p>Ajouter categorie</p>
                     </a>
                 </li>
             </ul>
@@ -135,15 +135,12 @@ font-size: 16px;" class="username">
                         <li>
 
 
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">statistique
-                                <i class="ti-panel"></i>
-                                <ul class="dropdown-menu">
 
-                                    <li><a href="#">statistique en batton</a></li>
-                                    <li><a href="#">statistique en pie</a></li>
-                                    <li><a href="#">statistique en ligne</a></li>
 
-                                </ul>
+
+
+
+
 
 
 
@@ -164,9 +161,9 @@ font-size: 16px;" class="username">
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="ti-settings"></i>
-                                <p>Settings</p>
+                            <a href="{{ path('bon_plan_etablissement11') }}">
+                                <i class="ti-panel"></i>
+                                <p>Statistiques</p>
                             </a>
                         </li>
                     </ul>
@@ -315,7 +312,9 @@ font-size: 16px;" class="username">
                                 <p class="category">Last Campaign Performance</p>
                             </div>
                             <div class="content">
-                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth">
+
+                                </div>
 
                                 <div class="footer">
                                     <div class="chart-legend">
@@ -419,14 +418,14 @@ font-size: 16px;" class="username">
 <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{ asset('assets/js/demo.js') }}"></script>
 
-<!-- <script type="text/javascript">
+ <script type="text/javascript">
     $(document).ready(function(){
 
         demo.initChartist();
 
         $.notify({
             icon: 'ti-gift',
-            message: "Welcome to <b>Paper Dashboard</b> - a beautiful Bootstrap freebie for your next project."
+            message: "Welcome to <b>BonPlan</b> - a beautiful Bootstrap freebie for your next project."
 
         },{
             type: 'success',
@@ -434,6 +433,6 @@ font-size: 16px;" class="username">
         });
 
     });
-</script> -->
+</script>
 {% endblock %}
 </html>

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Critereevaluation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idcritere</th>
+                <td>{{ critereEvaluation.idCritere }}</td>
+            </tr>
+            <tr>
+                <th>Nomcritereevaluation</th>
+                <td>{{ critereEvaluation.nomCritereEvaluation }}</td>
+            </tr>
+            <tr>
+                <th>Nomcateg</th>
+                <td>{{ critereEvaluation.getIdCategorie().nomCategorie }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('critereevaluation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('critereevaluation_edit', { 'idCritere': critereEvaluation.idCritere }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

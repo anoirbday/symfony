@@ -1,0 +1,72 @@
+etablissement_homepage:
+    path:     /
+    defaults: { _controller: EtablissementBundle:Default:index }
+bon_plan_accueilProp:
+    path:     /proprietaire/accueilprop
+    defaults: { _controller: BonPlanBundle:Default:accueilProp }
+bon_plan_categorie:
+    path:     /BonPlan/DemandesCategorie
+    defaults: { _controller: EtablissementBundle:Categorie:index }
+bon_plan_categorie2:
+    path:     /BonPlan/delete/{id}
+    defaults: { _controller: EtablissementBundle:Categorie:DeleteCategorie }
+bon_plan_categorie3:
+    path:     /BonPlan/show
+    defaults: { _controller: EtablissementBundle:Categorie:show }
+bon_plan_categorie4:
+    path:     /BonPlan/listedescatégories
+    defaults: { _controller: EtablissementBundle:Categorie:listeDesCategories }
+bon_plan_critereevaluation:
+    path:     /BonPlan/listedesCritères
+    defaults: { _controller: EtablissementBundle:CritereEvaluation:index }
+bon_plan_categorie5:
+    path:     /BonPlan/delete/{id}
+    defaults: { _controller: EtablissementBundle:Categorie:DeleteCategorieCritere }
+bon_plan_categorie6:
+    path:     /BonPlan/modifierCritere/{id}
+    defaults: { _controller: EtablissementBundle:CritereEvaluation:editCategCrit }
+bon_plan_categorie7:
+    path:     /BonPlan/modifiercategorie/{id}
+    defaults: { _controller: EtablissementBundle:Categorie:edit }
+bon_plan_categorie8:
+    path:     /BonPlan/ajoutercategorie
+    defaults: { _controller: EtablissementBundle:Categorie:new }
+bon_plan_categorie9:
+    path:     /BonPlan/ajouterdemandecategorie
+    defaults: { _controller: EtablissementBundle:Etablissement:demandesCateg }
+bon_plan_etablissement1:
+    path:     /BonPlan/ajouteretablissement
+    defaults: { _controller: EtablissementBundle:Etablissement:new }
+bon_plan_etablissement2:
+    path:     /mesetablissement
+    defaults: { _controller: EtablissementBundle:Etablissement:MonEtab }
+bon_plan_etablissement3:
+    path:     /BonPlan/supprimermonetablissement
+    defaults: { _controller: EtablissementBundle:Etablissement:delete }
+bon_plan_etablissement4:
+    path:     /BonPlan/monEtab
+    defaults: { _controller: EtablissementBundle:Etablissement:Etab }
+bon_plan_etablissement5:
+    path:     /BonPlan/listedesetablissements
+    defaults: { _controller: EtablissementBundle:Etablissement:index }
+bon_plan_etablissementJson:
+    path:     /BonPlan/JSON/{nomEtablissement}
+    defaults: { _controller: EtablissementBundle:Etablissement:rechercheAjax }
+bon_plan_etablissement6:
+    path:     /BonPlan/listedesDemandesEtablissements
+    defaults: { _controller: EtablissementBundle:Etablissement:ListeDesDemandes }
+bon_plan_etablissement7:
+    path:     /BonPlan/traiterEtablissement
+    defaults: { _controller: EtablissementBundle:Etablissement:TraiterDemande }
+bon_plan_etablissement8:
+    path:     /BonPlan/rejeterdemande
+    defaults: { _controller: EtablissementBundle:Etablissement:RejeterDemande }
+bon_plan_etablissement9:
+    path:     /BonPlan/validerdemande
+    defaults: { _controller: EtablissementBundle:Etablissement:ValiderDemande }
+bon_plan_etablissement10:
+    path:     /BonPlan/redirectionAjout
+    defaults: { _controller: EtablissementBundle:Etablissement:Redirection }
+bon_plan_etablissement11:
+    path:     /BonPlan/Statistique
+    defaults: { _controller: EtablissementBundle:Etablissement:stat }

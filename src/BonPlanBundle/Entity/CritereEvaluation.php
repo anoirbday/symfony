@@ -1,7 +1,6 @@
 <?php
 
 namespace BonPlanBundle\Entity;
-
 use Doctrine\ORM\Mapping as ORM;
 use BonPlanBundle;
 /**
@@ -53,5 +52,62 @@ class CritereEvaluation
 //        $this->idExp = new \Doctrine\Common\Collections\ArrayCollection();
 //    }
 
-}
 
+    /**
+     * Get idCritere
+     *
+     * @return integer
+     */
+    public function getIdCritere()
+    {
+        return $this->idCritere;
+    }
+
+    /**
+     * Set nomCritereEvaluation
+     *
+     * @param string $nomCritereEvaluation
+     *
+     * @return CritereEvaluation
+     */
+    public function setNomCritereEvaluation($nomCritereEvaluation)
+    {
+        $this->nomCritereEvaluation = $nomCritereEvaluation;
+
+        return $this;
+    }
+
+    /**
+     * Get nomCritereEvaluation
+     *
+     * @return string
+     */
+    public function getNomCritereEvaluation()
+    {
+        return $this->nomCritereEvaluation;
+    }
+
+    /**
+     * Set idCategorie
+     *
+     * @param \BonPlanBundle\Entity\Categorie $idCategorie
+     *
+     * @return CritereEvaluation
+     */
+    public function setIdCategorie(\BonPlanBundle\Entity\Categorie $idCategorie = null)
+    {
+        $this->idCategorie = $idCategorie;
+
+        return $this;
+    }
+
+    /**
+     * Get idCategorie
+     *
+     * @return \BonPlanBundle\Entity\Categorie
+     */
+    public function getIdCategorie()
+    {
+        return $this->idCategorie;
+    }
+}

@@ -77,4 +77,8 @@ class DefaultController extends Controller
     {
         return $this->render('PubliciteBundle:Default:publicite.html.twig');
     }
+    public function accEtabAction()
+    {
+        return $this->render('EtablissementBundle:etablissement:mesEtabs.html.twig');
+    }
 }

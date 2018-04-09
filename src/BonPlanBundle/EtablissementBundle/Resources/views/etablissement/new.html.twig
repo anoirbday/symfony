@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<!--
+**********************************************************************************************************
+    Copyright (c)
+********************************************************************************************************** -->
+<!--
+
+
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+
+<!-- Mirrored from kamleshyadav.com/html/hand-made/hand-made/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jan 2018 20:38:54 GMT -->
+<head>
+    <title>BonPlan  - DevBrain</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320">
+    <!-- favicon links -->
+    <link rel="icon" type="image/icon" href="favicon.png" />
+    <!-- main css -->
+    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/custom_animation.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('js/plugin/owl/owl.carousel.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/colors/default.css') }}" id="colors" />
+
+</head>
+
+<body>
+
+<!--main wrapper start-->
+<div id="wrapper">
+    <!--top_header start-->
+    <div class="hm_top_info">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="hm_top_login">
+                        <p><b>Bonjour {{ app.user.username }} , Bienvenue dans BonPlan </b></p>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 pull-right">
+                    <div class="top_usd">
+                        <div class="hm_top_wishlist">
+                            <p><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-cart-plus" aria-hidden="true"></i> Se déconnecter</a></p>
+                        </div>
+
+                        <div class="hm_top_usd">
+                            <p><a href="{{ path('bon_plan_profile') }}"><i class="fa fa-angle-down" aria-hidden="true"></i> Mon profil</a></p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Header start-->
+    <div class="hm_header_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-6">
+                    <div class="hm_logo">
+                        <a href="{{ path('bon_plan_homepage') }}"><img src="{{ asset('images/logo.png') }}" alt="" class="img-responsive"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hm_header_overlay"></div>
+    </div>
+    <!--menu start-->
+    <div class="hm_menu_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="hm_menu_wrap">
+                        <nav>
+                            <div class="menu_btn"><span></span><span></span><span></span></div>
+                            <div class="hm_menu">
+                                <ul>
+                                    <li ><a href="{{ path('bon_plan_homepage') }}">Accueil</a>
+
+                                    </li>
+                                    <li class="active dropdown"><a href="#">Etablissement</a></li>
+                                    <li><a href="#">Evénement</a></li>
+                                    <li class="dropdown"><a href="#">Publicité</a>
+
+                                    </li>
+                                    <li class="dropdown"><a href="#">Offre</a>
+
+                                    </li>
+                                    <li class="dropdown"><a href="#">Statistique</a>
+
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--banner start-->
+    <div class="hm_bread_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <h1>Ajouter votre etablissement</h1>
+                    <label id="lblresult"></label>
+
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ path('bon_plan_homepage') }}">Accueil</a></li>
+                        <li class="breadcrumb-item active">Etablissement</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--contact form wrapper-->
+    <div class="contact_form_wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 padding_left padding_right">
+                    <div class="contact_map">
+
+                            <div id="contact_map" >
+                            </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-6 col-md-6 padding_right padding_left">
+                    <div class="hm_form">
+                        <div class="col-lg-10 col-md-12">
+
+
+                                {% block ajouter_etab_prop %}
+                                    <h1>Formulaire d'ajout</h1>
+
+                                    {{ form_start(form)  }}
+                                    {{ form_widget(form.adresseEtablissement, { 'id' : 'adresse'}) }}
+                                    <label></label>
+                                    {{ form_widget(form.latitude, { 'id' : 'latitude'}) }}
+                                    <label></label>
+
+                                    {{ form_widget(form.longitude, { 'id' : 'longitude'}) }}
+                                    <label></label>
+
+                                    {{ form_widget(form.idCategorie, { 'attr' : { 'class' : 'form-control '}}) }}
+
+                                    {{ form_widget(form) }}
+
+
+                                    {#{{ form_errors(form) }}#}
+                                    <input type="submit" class="hm_btn submit_frm" value="Enregistrer" id="submit"/>
+
+                                    {{ form_end(form) }}
+
+                                {% endblock ajouter_etab_prop %}
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--popup login form-->
+    <div class="modal fade" id="id-popup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title text-center" id="myModalLabel">Autre Catégorie</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            {{ form_start(formCat) }}
+                          <label>Nom de la catégorie{{ form_widget(formCat.nomCategorie, { 'attr' : { 'class' : 'form-control '}}) }}</label>
+                            {{ form_widget(formCat) }}
+                            <input type="submit" class="hm_btn" value="Enregistrer" />
+                            {{ form_end(formCat) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="hm_login_form_overlay">
+        <div class="hm_login_form">
+
+            <div class="hm_login_header">
+
+                <h1>Autre Catégorie</h1>
+                <span class="login_close"><i class="fa fa-times" aria-hidden="true"></i></span>
+            </div>
+
+
+        </div>
+    </div>
+    <!--About section start-->
+    <div class="contact_wrapper">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-4 col-sm-4">
+                    <div class="contact_box">
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                        <h2>AutreCatégorie</h2>
+                        <p><a href="javascript:" data-toggle="modal" data-target="#id-popup">Ajouter votre catégorie</a></p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--footer start-->
+    <div class="hm_footer_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box">
+                        <img src="{{ asset('images/logo.png') }}" alt="" class="img-responsive">
+                        <p class="footer_about_para">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box">
+                        <h3 class="footer_heading">Help</h3>
+                        <ul>
+                            <li><a href="#">Find Your Beer</a></li>
+                            <li><a href="#">Customer Service</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Recent Orders</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box">
+                        <h3 class="footer_heading">links</h3>
+                        <ul>
+                            <li><a href="{{ path('bon_plan_homepage') }}">home</a></li>
+                            <li><a href="{{ path('bon_plan_shop') }}">shop</a></li>
+                            <li><a href="404.html">404 page</a></li>
+                            <li><a href="javascript:">login</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="hm_footer_box hm_footer_contact">
+                        <h3 class="footer_heading">Our Information</h3>
+                        <ul>
+                            <li><span class="footer_icon"><i class="fa fa-map-marker" aria-hidden="true"></i> </span>
+                                <p class="foo_con_para">787 Lakeview St. Marion, NC 28752</p>
+                            </li>
+                            <li><span class="footer_icon"><i class="fa fa-phone" aria-hidden="true"></i> </span>
+                                <p class="foo_con_para">+1800123654789 +1800123456788</p>
+                            </li>
+                            <li><a href="mailto:jhini.mehta@gmail.com"><span class="footer_icon"><i class="fa fa-envelope" aria-hidden="true"></i> </span><p class="foo_con_para">support@handmade.net</p></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--bottom footer start-->
+    <div class="hm_bottom_footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <p>Copyrights &copy; 2018 All Rights Reserved by Himanshusofttech</p>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <ul class="footer_so_icons">
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--main wrapper-->
+</div>
+
+<!--script-->
+<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/wow.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/plugin/owl/owl.carousel.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
+<script>
+    {#{$(document).ready(function(){#}
+        {#$('#insert_form').on('submit',function (event){#}
+            {#event.preventDefault();#}
+            {#if($('#name').val()==""){#}
+                {#alert("Vous devez saisir une catégorie");#}
+            {#}#}
+            {#else {#}
+                {#$.ajax({#}
+                    {#method:"POST",#}
+                    {#url:"{{ path('bon_plan_categorie') }}",#}
+                    {#data:$('#insert_form').serialize(),#}
+                    {#success:function (data) {#}
+                        {#$('#insert_form')[0].reset();#}
+                        {#$('.hm_login_form_overlay').modal('hide');#}
+                    {#}#}
+                {#})#}
+            {#}#}
+        {#} )#}
+
+    {#});#}
+    {#}#}
+
+ </script>
+<!--map-->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNdePPJKYq0ptBV_AFi_4RnmUtMa1ZLFg&amp;libraries=places">
+</script>
+<script type="text/javascript" src="{{ asset('js/jquery.googlemap.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/switcher.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
+<script>
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+
+        function initialize() {
+
+            var autocomplete = new google.maps.places.Autocomplete(document.getElementById('adresse'));
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+              var places= autocomplete.getPlace();
+                var location = "Address: " + places.formatted_address + "<br/>";
+                location += "Latitude: " + places.geometry.location.lat() + "<br/>";
+                location += "Longitude: " + places.geometry.location.lng()  + "<br/>";
+               document.getElementById('lblresult').innerHTML = location
+
+            });
+
+
+
+
+
+        }
+
+
+</script>
+
+
+{#<!-- Custom JS code to bind to Autocomplete API -->#}
+{#<!-- find it here: https://github.com/lewagon/google-place-autocomplete/blob/gh-pages/autocomplete.js -->#}
+{#<!-- We'll detail this file in the article -->#}
+{#<script type="text/javascript" src="{{ asset('js/autocomplete-0.3.0.js') }}"></script>#}
+
+</body>
+
+
+<!-- Mirrored from kamleshyadav.com/html/hand-made/hand-made/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 31 Jan 2018 20:39:23 GMT -->
+</html>
+
+

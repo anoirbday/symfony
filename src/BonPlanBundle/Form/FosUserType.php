@@ -15,7 +15,7 @@ class FosUserType extends AbstractType
         $roles = array(
             'Client'         => 'ROLE_CLIENT',
             'Proprietaire'          => 'ROLE_PROPRIETAIRE',
-            'Admin'        => 'ROLE_ADMIN',
+            'Admin'        => 'ROLE_SUPER_ADMIN',
         );
         $builder->add('nom')
                 ->add('prenom')

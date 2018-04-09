@@ -1548,7 +1548,7 @@ textarea.form-control {
     position: absolute; }
   .card .ct-chart {
     margin: 30px 0 30px;
-    height: 245px; }
+    height: auto; }
   .card .table tbody td:first-child,
   .card .table thead th:first-child {
     padding-left: 15px; }
@@ -1986,7 +1986,8 @@ textarea.form-control {
   .ct-perfect-fourth:after {
     content: "";
     display: table;
-    clear: both; }
+    clear: both;
+  }
   .ct-perfect-fourth > svg {
     display: block;
     position: absolute;

@@ -8,7 +8,7 @@ use BonPlanBundle;
  * Favoris
  *
  * @ORM\Table(name="favoris", uniqueConstraints={@ORM\UniqueConstraint(name="id_etablissement_2", columns={"id_etablissement", "id"})}, indexes={@ORM\Index(name="id_etablissement", columns={"id_etablissement"}), @ORM\Index(name="id", columns={"id"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BonPlanBundle\EtablissementBundle\Repository\EtablissementRepository")
  */
 class Favoris
 {
@@ -22,9 +22,9 @@ class Favoris
     private $idFavoris;
 
     /**
-     * @var BonPlanBundle\Entity\FosUser
+     * @var BonPlanBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })

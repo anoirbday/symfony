@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Etablissements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idetablissement</th>
+                <th>Nometablissement</th>
+                <th>Adresseetablissement</th>
+                <th>Telephoneetablissement</th>
+                <th>Horairetravail</th>
+                <th>Descriptionetablissement</th>
+                <th>Photoetablissement</th>
+                <th>Photopatente</th>
+                <th>Codepostal</th>
+                <th>Budget</th>
+                <th>Siteweb</th>
+                <th>Enabled</th>
+                <th>Longitude</th>
+                <th>Latitude</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etablissement in etablissements %}
+            <tr>
+                <td><a href="{{ path('etablissement_show', { 'idEtablissement': etablissement.idEtablissement }) }}">{{ etablissement.idEtablissement }}</a></td>
+                <td>{{ etablissement.nomEtablissement }}</td>
+                <td>{{ etablissement.adresseEtablissement }}</td>
+                <td>{{ etablissement.telephoneEtablissement }}</td>
+                <td>{{ etablissement.horaireTravail }}</td>
+                <td>{{ etablissement.descriptionEtablissement }}</td>
+                <td>{{ etablissement.photoEtablissement }}</td>
+                <td>{{ etablissement.photoPatente }}</td>
+                <td>{{ etablissement.codePostal }}</td>
+                <td>{{ etablissement.budget }}</td>
+                <td>{{ etablissement.siteWeb }}</td>
+                <td>{% if etablissement.enabled %}Yes{% else %}No{% endif %}</td>
+                <td>{{ etablissement.longitude }}</td>
+                <td>{{ etablissement.latitude }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('etablissement_show', { 'idEtablissement': etablissement.idEtablissement }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('etablissement_edit', { 'idEtablissement': etablissement.idEtablissement }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('etablissement_new') }}">Create a new etablissement</a>
+        </li>
+    </ul>
+{% endblock %}

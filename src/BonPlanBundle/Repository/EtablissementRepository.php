@@ -33,5 +33,30 @@ WHERE ev.idEtablissement = et.idEtablissement AND   ev.idEvenement = :id ")
         ->setParameter('id', $id);
         return $query->getResult();
     }
+    public function FindByLetters($string)
+    {
+        $query = $this->getEntityManager()->createQuery("SELECT e FROM BonPlanBundle:Etablissement e WHERE e.nomEtablissement like :tit")
+            ->setParameter('tit','%'.$string.'%');
+        return $query->getResult();
+    }
+    public function CountNbFavoris($id)
+    {
+        $query = $this->getEntityManager()->createQuery("select count (f.idFavoris) as nb from BonPlanBundle:Favoris f  WHERE  f.idEtablissement=:n  ")
+            ->setParameter('n',$id);
+        return $query->getSingleScalarResult();
+    }
+    public function CalculRating($id)
+    {
+        $query = $this->getEntityManager()->createQuery("select AVG(ev.note) from BonPlanBundle:Evaluation ev, BonPlanBundle:Etablissement et, BonPlanBundle:Experience ex, BonPlanBundle:CritereEvaluation cv where et.idEtablissement = ex.idEtablissement and ev.idExp=ex.idExp and cv.idCritere=ev.idCritere and et.idEtablissement=:n GROUP BY ev.idCritere  ")
+            ->setParameter('n',$id);
+        return $query->getResult();
+    }
+    public function CountNbEtabParCategorie($id)
+    {
+        $query = $this->getEntityManager()->createQuery("select count (e.idEtablissement) as nb from BonPlanBundle:Etablissement e WHERE e.enabled=1 AND e.idCategorie=:n  ")
+            ->setParameter('n',$id);
+        return $query->getSingleScalarResult();;
+    }
+
 
 }

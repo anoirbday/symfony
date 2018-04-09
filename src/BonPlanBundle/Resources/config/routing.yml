@@ -86,3 +86,6 @@ my_app_mail_accuse:
 bon_plan_publicite:
     path:     /publicite
     defaults: { _controller: BonPlanBundle:Default:publicite }
+bon_plan_e:
+    path:     /etablissement
+    defaults: { _controller: BonPlanBundle:Default:accEtab }

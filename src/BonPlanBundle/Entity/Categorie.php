@@ -35,6 +35,75 @@ class Categorie
      */
     private $enabled;
 
+    /**
+     * Categorie constructor.
+     * @param int $idCategorie
+     * @param string $nomCategorie
+     * @param bool $enabled
+     */
+
+    /**
+     * Get idCategorie
+     *
+     * @return integer
+     */
+    public function getIdCategorie()
+    {
+        return $this->idCategorie;
+    }
+
+    public function __toString()
+    {
+        return $this->nomCategorie;
+    }
+
+
+    /**
+     * Set nomCategorie
+     *
+     * @param string $nomCategorie
+     *
+     * @return Categorie
+     */
+    public function setNomCategorie($nomCategorie)
+    {
+        $this->nomCategorie = $nomCategorie;
+
+        return $this;
+    }
+
+    /**
+     * Get nomCategorie
+     *
+     * @return string
+     */
+    public function getNomCategorie()
+    {
+        return $this->nomCategorie;
+    }
+
+    /**
+     * Set enabled
+     *
+     * @param boolean $enabled
+     *
+     * @return Categorie
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * Get enabled
+     *
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
 
 }
-
