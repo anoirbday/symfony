@@ -13,6 +13,7 @@ use BonPlanBundle\Entity\Publicite;
 use Symfony\Component\Form\AbstractType;
 
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -29,7 +30,7 @@ class PubliciteForm extends AbstractType
         $builder
             ->add('titre')
 
-            ->add('descriptionPublicite')
+            ->add('descriptionPublicite',TextareaType::class,array('attr'=>array('cols'=>'35','rows'=>'7')))
             ->add('photoPublicite', FileType::class, array('data_class' => null,'label'=>false ))
 
             ->add('save', SubmitType::class)

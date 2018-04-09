@@ -11,7 +11,7 @@ bon_plan_gallery:
     path:     /gallery
     defaults: { _controller: BonPlanBundle:Default:gallery }
 bon_plan_blog:
-    path:     /blog
+    path:     /proprietaire/blog
     defaults: { _controller: BonPlanBundle:Evenement:list }
 bon_plan_blog1:
     path:     /blog1

@@ -7,8 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class DefaultController extends Controller
 {
     public function indexAction()
-    {
-        return $this->render('BonPlanBundle:Default:index.html.twig');
+    {$em = $this->getDoctrine()->getManager();
+        $Publicite = $em->getRepository("BonPlanBundle:Publicite")->findPhoto();
+        return $this->render('BonPlanBundle:Default:index.html.twig',array("Publ" => $Publicite));
     }
     public function aboutAction()
     {
@@ -51,8 +52,9 @@ class DefaultController extends Controller
         return $this->render('BonPlanBundle:Default:login.html.twig');
     }
     public function accueilPropAction()
-    {
-        return $this->render('BonPlanBundle:Default:accueilProp.html.twig');
+    {   $em = $this->getDoctrine()->getManager();
+       $Publicite = $em->getRepository("BonPlanBundle:Publicite")->findPhoto();
+        return $this->render('BonPlanBundle:Default:accueilProp.html.twig',array("Pub" => $Publicite));
     }
     public function accueilAdminAction()
     {

@@ -43,39 +43,7 @@
 <body>
 
 <!--main wrapper start-->
-<div id="wrapper">
-    <!--top_header start-->
-    <div class="hm_top_info">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-8">
-                    <div class="hm_top_login">
-                        <ul>
-                            <li><a href="javascript:" class="popup-with-form"><i class="fa fa-user" aria-hidden="true"></i> login</a></li>
-                            <li><a href="javascript:" class="popup-signup-form"><i class="fa fa-pencil" aria-hidden="true"></i> register</a></li>
-                            <li><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i> checkout</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 pull-right">
-                    <div class="top_usd">
-                        <div class="hm_top_wishlist">
-                            <p><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Wishlist</a></p>
-                        </div>
-                        <div class="hm_top_usd">
-                            <p><a href="javascript:"><i class="fa fa-angle-down" aria-hidden="true"></i> usd</a></p>
-                            <ul class="usd_dropmenu">
-                                <li><a href="#">EUR - Euro</a></li>
-                                <li><a href="#">USD - US Dollar</a></li>
-                                <li><a href="#">GBP - British Pound</a></li>
-                            </ul>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+bon_plan_accueilProp
     <!--Header start-->
     <div class="hm_header_wrapper">
         <div class="container">
@@ -105,15 +73,16 @@
                             <div class="menu_btn"><span></span><span></span><span></span></div>
                             <div class="hm_menu">
                                 <ul>
-                                    <li class="dropdown"><a href="{{ path('bon_plan_homepage') }}">Accueil</a>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_accueilClient') }}">Accueil</a>
 
                                     </li>
                                     <li><a href="{{ path('bon_plan_about') }}">Etablissement</a></li>
                                     <li class="active dropdown"><a href="{{ path('List_Client') }}">Evenement</a></li>
+
                                     <li class="dropdown"><a href="{{ path('bon_plan_gallery') }}">offre</a>
 
                                     </li>
-                                    <li class="active dropdown"><a href="{{ path('bon_plan_contact') }}">Actualité</a>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_contact') }}">Actualité</a>
 
                                     </li>
                                     <li class="dropdown"><a href="{{ path('bon_plan_shop') }}">Contact</a>
