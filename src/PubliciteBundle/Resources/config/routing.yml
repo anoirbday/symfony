@@ -5,11 +5,9 @@ ajouterpublicite:
     path:     /ajouterpublicite
     defaults: { _controller: PubliciteBundle:Default:ajout }
 affiche_publicite:
-    path:     /list
+    path:     /proprietaire/list
     defaults: { _controller: PubliciteBundle:Default:list }
-payer_publicite:
-    path:     /payer
-    defaults: { _controller: PubliciteBundle:Default:payer }
+
 order_checkout:
     path:     /checkout
     defaults: { _controller: PubliciteBundle:Default:checkout }
@@ -31,3 +29,6 @@ facebook:
 pagination:
     path:     /list1
     defaults: { _controller: PubliciteBundle:Default:list1 }
+statistique:
+    path: /client/accueilclient
+    defaults: { _controller: PubliciteBundle:Default:SetVue }

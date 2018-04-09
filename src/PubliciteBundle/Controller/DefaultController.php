@@ -13,9 +13,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 
 class DefaultController extends Controller
@@ -36,7 +40,8 @@ class DefaultController extends Controller
         $form = $this->createFormBuilder($Publicite)
             ->add('titre')
             ->add('datedebut', DateType::class)
-            ->add('descriptionPublicite')
+            ->add('descriptionPublicite',TextareaType::class,array('attr'=>array('cols'=>'30','rows'=>'5')))
+
 
 
             ->add('idEtablissement',EntityType::class,array(
@@ -64,6 +69,7 @@ class DefaultController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $Publicite->setEnabled(0);
+            $Publicite->setNbrClick(0);
             $em->persist($Publicite);
             $em->flush();
 
@@ -72,6 +78,25 @@ class DefaultController extends Controller
 
         return $this->render('@Publicite/Default/ajout.html.twig',array('form' => $form->createView()));
     }
+
+    public function SetVueAction(Request $request){
+            $em = $this->getDoctrine()->getManager();
+            if($request->isXmlHttpRequest()){
+
+                $serializer = new Serializer(array(new ObjectNormalizer()));
+                $pub = $em->getRepository('BonPlanBundle:Publicite')->find($request->get('serie'));
+                $nbclick = $pub->getNbrClick();
+                $pub->setNbrClick($nbclick+1);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($pub);
+                $em->flush();
+                $data = $serializer->normalize($pub);
+                return new JsonResponse($data);
+            }
+
+    }
+
+
     public function listAction()
     {
         $em = $this->getDoctrine()->getManager();

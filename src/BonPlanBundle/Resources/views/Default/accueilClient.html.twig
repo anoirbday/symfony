@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/custom_animation.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('js/plugin/owl/owl.carousel.css') }}" />
     <!--revolution-->
     <link href="{{ asset('js/plugin/revolution/css/settings.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('js/plugin/revolution/css/layers.css') }}" rel="stylesheet" type="text/css">
@@ -111,26 +114,29 @@
             </div>
         </div>
     </div>
-    <div class="hm_banner_wrapper">
+    <div class="sidebar-widget1 insta_gallery" >
 
-        <div id="rev_slider_1068_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="levano4export"  style="background-color:transparent;">
-            <div id="rev_slider_1068_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.3.0.2">
-                <ul>{% for Publicite in Publicites %}
-                    <li data-index="rs-3010" data-transition="boxfade" data-slotamount="7" data-hideafterloop="0" data-hideslideonmobile="off" data-easein="default" data-easeout="default" data-masterspeed="1000" data-thumb="" data-rotate="0" data-fstransition="boxfade" data-fsmasterspeed="1000" data-fsslotamount="7" data-saveperformance="off" data-title="Intro" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
+        <div class="sidebar-title">
 
-                        <div class="tp-caption tp-shape tp-shapewrapper " id="slide-2800-layer-7" data-x="['left','left','left','left']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']" data-width="full" data-height="full" data-whitespace="nowrap" data-type="shape" data-basealign="slide" data-responsive_offset="off" data-responsive="off" data-frames='[{"from":"opacity:0;","speed":500,"to":"o:1;","delay":0,"ease":"Power4.easeOut"},{"speed":5000,"to":"opacity:0;","ease":"Power4.easeInOut"}]' data-textAlign="['left','left','left','left']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]" style="z-index: 5;background-color:rgba(0, 0, 0, 0.60);border-color:rgba(0, 0, 0, 0);"> </div>
-                        <img src="{{ asset('uploads/images/' ~ Publicite.photoPublicite) }}" data-lazyload="{{ asset('uploads/images/' ~ Publicite.photoPublicite) }}" data-bgposition="center center" data-kenburns="on" data-duration="20000" data-ease="Power1.easeOut" data-scalestart="110" data-scaleend="100" data-rotatestart="0" data-rotateend="0" data-offsetstart="0 0" data-offsetend="0 0" class="rev-slidebg" data-no-retina>>
-                        <div class="tp-caption Restaurant-Cursive   tp-resizeme" id="slide-3010-layer-2" data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']" data-y="['middle','middle','middle','middle']" data-voffset="['-60','-60','-70','-70']" data-width="none" data-height="none" data-whitespace="nowrap" data-fontsize="['18','18','15','15']" data-type="text" data-responsive_offset="on" data-frames='[{"from":"y:[-100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;","mask":"x:0px;y:0px;s:inherit;e:inherit;","speed":1500,"to":"o:1;","delay":700,"ease":"Power3.easeInOut"},{"delay":"wait","speed":1000,"to":"opacity:0;","ease":"nothing"}]' data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]" data-paddingright="[0,0,0,20]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,20]" style="z-index: 6; white-space: nowrap; line-height:26px;text-transform:none;font-family: 'Roboto', sans-serif;">BonPlan
-                            <br/>Nous pensons à vous, découvrez notre sélection d'établissements.
+        </div>
+        {% for aaa in Publicites %}
+        <ul>
+            <li>
+
+                <a href="#">
+                    <div class="insta_img">
+                        <img  src="{{ asset('uploads/images/' ~ aaa.photoPublicite) }}"  alt="" class="img-responsive2">
+                        <div class="gallery_img_overlay"></div>
+                        <div id="{{ aaa.idPublicite }}" class="overlay_buttons">
+                            <a class="popup-gallery" href="{{ asset('uploads/images/' ~ aaa.photoPublicite) }}"><i class="fa fa-search"></i></a>
                         </div>
-                        {% endfor %}
-                    </li>
+                    </div>
+                </a>
+            </li>{% endfor %}
 
-                </ul>
+        </ul>
 
-
-            </div>
-        </div></div>
+    </div>
     <!--banner start-->
     <div class="hm_banner_wrapper">
         <div id="rev_slider_1068_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="levano4export" data-source="gallery" style="background-color:transparent;">
@@ -680,6 +686,26 @@
 <!--Revolution slider js-->
 <script type="text/javascript" src="{{ asset('js/switcher.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
+{% for aaa in Publicites %}
+<script >
+    $('#{{ aaa.idPublicite }}').click(
+        function () {
+            console.log('{{ aaa.idPublicite }}');
+            var serie ={{ aaa.idPublicite }};
+            console.log(serie);
+            var DATA  = 'serie='+serie;
+            $.ajax({type:"POST",
+                    url: "{{ path('statistique')}}"  ,
+                    data: DATA,
+                success: function (data){
+                    console.log(data);
+                }
+                }
+            );
+        }
+    );
+</script>
+{% endfor %}
 {% endblock %}
 </body>
 </html>

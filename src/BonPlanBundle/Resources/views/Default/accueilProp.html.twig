@@ -113,6 +113,29 @@
             </div>
         </div>
     </div>
+    <div class="sidebar-widget1 insta_gallery" >
+
+        <div class="sidebar-title">
+
+        </div>
+        {% for aaa in Pub %}
+        <ul>
+            <li>
+
+                <a href="#">
+                    <div class="insta_img">
+                        <img  src="{{ asset('uploads/images/' ~ aaa.photoPublicite) }}"  alt="" class="img-responsive2">
+                        <div class="gallery_img_overlay"></div>
+                        <div id="{{ aaa.idPublicite }}" class="overlay_buttons">
+                            <a class="popup-gallery" href="{{ asset('uploads/images/' ~ aaa.photoPublicite) }}"><i class="fa fa-search"></i></a>
+                        </div>
+                    </div>
+                </a>
+            </li>{% endfor %}
+
+        </ul>
+
+    </div>
     <!--banner start-->
     <div class="hm_banner_wrapper">
         <div id="rev_slider_1068_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="levano4export" data-source="gallery" style="background-color:transparent;">

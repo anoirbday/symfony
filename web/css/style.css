@@ -3088,6 +3088,13 @@ button.hm_btn {
     position: relative;
     margin-bottom: 10px;
 }
+.sidebar-widget1.insta_gallery {
+    width: 100%;
+    float: left;
+    position: relative;
+    margin-bottom: 10px;
+    background-image: url("../images/header.png");
+}
 .sidebar-title {
     position: relative;
     margin-bottom: 30px;
@@ -3199,6 +3206,11 @@ span.cat_no {
     border-bottom: none;
 }
 .sidebar-widget.insta_gallery li {
+    float: left;
+    width: auto;
+    margin: 0px 8px 8px 0px;
+}
+.sidebar-widget1.insta_gallery li {
     float: left;
     width: auto;
     margin: 0px 8px 8px 0px;
