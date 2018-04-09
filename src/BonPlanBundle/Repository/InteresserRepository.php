@@ -75,8 +75,17 @@ VALUES (:even,:nom) ")
     }
     public function getNb($id) {
 
-        $query=$this->getEntityManager()->createQuery('Select Count (d) as nbr From BonPlanBundle:Interesser d WHERE d.idEvenement=:id ')->setParameter('id',$id);
+        $query=$this->getEntityManager()->createQuery
+        ('Select Count (d) as nbr From BonPlanBundle:Interesser d WHERE d.idEvenement=:id ')
+            ->setParameter('id',$id);
 
+    }
+    public function listinteresser($id){
+        $query=$this->getEntityManager()
+            ->createQuery("select us from BonPlanBundle:Interesser et, BonPlanBundle:User us
+WHERE et.id = us.id AND   et.idEvenement = :id ")
+            ->setParameter('id', $id->getIdEvenement());
+        return $query->getResult();
     }
 
 }

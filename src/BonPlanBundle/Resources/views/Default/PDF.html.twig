@@ -3,31 +3,32 @@
 <head></head>
 <br>
 <br>
+
 <center>
-    <span  style="font-size: 15px; font-weight: bold; font-family: arial, times, serif;color:Tomato;">bienvenu  {{ user.nom }}</span>
+    <img src="{{ asset('uploads/images/' ~ Evenement.photoEvenement) }}"  height="300" width="500">
+
+    <span  style="font-size: 15px; font-weight: bold; font-family: arial, times, serif;color:Tomato;">bienvenue  {{ user.nom }} dans {{ Evenement.nomEvenement }}</span>
 </center>
 <center><table>
         <tr><td></td>
             <td>
             </td>
         </tr>
-        <tr><td></td>
-            <td></td></tr>
-        <tr>
-            <td>   <span style="font-size: 15px; font-weight: bold; font-family: arial, times, serif;">l'evenement le plus celebre : {{ Evenement.nomEvenement }}</span></td>
-        </tr>
+        <div><center><span style="font-size: 15px; font-weight: bold; font-family: arial, times, serif"><center>le {{ Evenement.dateEvenement|date("m/d/Y")  }}</center></span>
+            </center></div>
+      <div>  {{ Evenement.descriptionEvenement }}</div>
         <tr><td></td>
             <td></td>
         </tr>
         <tr>
-            <td>   <span style="font-size: 15px; font-weight: bold; font-family: arial, times, serif">le {{ Evenement.dateEvenement|date("m/d/Y")  }}</span></td>
+            <td></td><td> <img src="data:image/png;base64,
+{{ barcode({code: 'string to encode', type: 'datamatrix', format: 'png', width: 10, height: 10, color: [127, 127, 127]}) }}
+" /> </td>
         </tr>
-        <tr><td></td>
-            <td></td></tr>
-        <tr>
-            <td>   <span style="font-size: 15px; font-weight: bold; font-family: arial, times, serif"> {{ Evenement.descriptionEvenement }}</span></td>
-        </tr>
-        <tr><td></td>
-            <td></td></tr>
 
-    </table></center>
+
+    </table>
+
+</center>
+
+

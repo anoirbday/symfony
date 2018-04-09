@@ -180,60 +180,60 @@ font-size: 16px;" class="username">
                 <div class="row">
                     <div class="hm_news_inner hm_blogs">
 
-                            <center>
-                                <br>
-                                <h1 style="color: black">
-                                    Liste des Evenement
-                                </h1>
-                                <hr width="20%" style="background-color: black">
-                                <br>
-                                <br>
-                                <table border="1" style="color: black">
+                        <center>
+                            <br>
+                            <h1 style="color: black">
+                                Liste des Evenement
+                            </h1>
+                            <hr width="20%" style="background-color: black">
+                            <br>
+                            <br>
+                            <table border="1" style="color: black">
+                                <tr>
+                                    <th style="background-color:lightslategray">
+                                        <center>Noms</center>
+                                    </th>
+                                    <th style="background-color:lightslategray">
+                                        <center>date Evenement</center>
+                                    </th>
+                                    <th style="background-color:lightslategray">
+                                        <center>description</center>
+                                    </th>
+                                    <th style="background-color:lightslategray">
+                                        <center>Etablissement</center>
+                                    </th>
+                                    <th style="background-color:lightslategray">
+                                        <center>Photo</center>
+                                    </th>
+
+                                </tr>
+                                {% for Evenement in Evenements %}
                                     <tr>
-                                        <th style="background-color:lightslategray">
-                                            <center>Noms</center>
-                                        </th>
-                                        <th style="background-color:lightslategray">
-                                            <center>date Evenement</center>
-                                        </th>
-                                        <th style="background-color:lightslategray">
-                                            <center>description</center>
-                                        </th>
-                                        <th style="background-color:lightslategray">
-                                            <center>Etablissement</center>
-                                        </th>
-                                        <th style="background-color:lightslategray">
-                                            <center>Photo</center>
-                                        </th>
+                                        <td>
+                                            <center>{{ Evenement.nomEvenement }}</center>
+                                        </td>
+                                        <td>
+                                            <center>{{ Evenement.dateEvenement|date}}</center>
+                                        </td>
+                                        <td width="330">
+                                            <center>{{ Evenement.descriptionEvenement }}</center>
+                                        </td>
+                                        <td>
+                                            <center>{{ Evenement.idEtablissement.nomEtablissement }}</center>
+                                        </td>
+                                        <td>
+                                            <center><img height="150" width="200" src={{ asset('uploads/images/' ~ Evenement.photoEvenement) }} ></center>
+                                        </td>
+                                        <td style="border: 0">
+                                            <center><a href="{{ path('delete_evenement',{'id':Evenement.idEvenement}) }}" >&nbsp&nbsp<i><img width="20"height="20" src="{{ asset('png/512/android-trash.png') }}"></i></a></center>
+
+                                        </td>
 
                                     </tr>
-                                    {% for Evenement in Evenements %}
-                                        <tr>
-                                            <td>
-                                                <center>{{ Evenement.nomEvenement }}</center>
-                                            </td>
-                                            <td>
-                                                <center>{{ Evenement.dateEvenement|date}}</center>
-                                            </td>
-                                            <td width="330">
-                                                <center>{{ Evenement.descriptionEvenement }}</center>
-                                            </td>
-                                            <td>
-                                                <center>{{ Evenement.idEtablissement.nomEtablissement }}</center>
-                                            </td>
-                                            <td>
-                                                <center><img height="150" width="200" src={{ asset('uploads/images/' ~ Evenement.photoEvenement) }} ></center>
-                                            </td>
-                                            <td style="border: 0">
-                                                <center><a href="{{ path('delete_evenement',{'id':Evenement.idEvenement}) }}" >&nbsp&nbsp<i><img width="20"height="20" src="{{ asset('png/512/android-trash.png') }}"></i></a></center>
+                                {% endfor %}
+                            </table>
 
-                                            </td>
-
-                                        </tr>
-                                    {% endfor %}
-                                </table>
-
-                            </center>
+                        </center>
 
 
                     </div>
@@ -252,36 +252,36 @@ font-size: 16px;" class="username">
 </div>
 
 
-        <footer class="footer">
-            {% block footer %}
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
+<footer class="footer">
+    {% block footer %}
+    <div class="container-fluid">
+        <nav class="pull-left">
+            <ul>
 
-                        <li>
-                            <a href="http://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-                </div>
-            </div>
-        </footer>
-
+                <li>
+                    <a href="http://www.creative-tim.com">
+                        Creative Tim
+                    </a>
+                </li>
+                <li>
+                    <a href="http://blog.creative-tim.com">
+                        Blog
+                    </a>
+                </li>
+                <li>
+                    <a href="http://www.creative-tim.com/license">
+                        Licenses
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright pull-right">
+            &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
+        </div>
     </div>
+</footer>
+
+</div>
 </div>
 
 

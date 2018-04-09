@@ -1,13 +1,11 @@
-<body xmlns="http://www.w3.org/1999/html">
-<center><h2> <strong>Mail</strong> </h2>
+<body background="{{ asset('vintage-mail-009.jpg') }}">
+<center>
 <hr>
-<h3><p> reservation </p></h3></center>
+    <h1><strong><p> <font color="#f0f8ff"> entrer votre mail pour reserver </font></p></strong></h1></center>
 {{ form_start (form) }}
 
-
-
-
-<br>       <center> Email {{ form_widget (form.email) }} </center>
+<br>       <center>{{ form_widget (form.email) }} </center>
+<br>
 <center>{{ form_widget(form.valider ,{'label':'reserver'}) }}</center>
 
 

@@ -43,7 +43,44 @@
 <body>
 
 <!--main wrapper start-->
-bon_plan_accueilProp
+
+<!--main wrapper start-->
+<div id="wrapper">
+    <!--top_header start-->
+    <div class="hm_top_info">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="hm_top_login">
+                        <p><b>Bonjour {{ app.user.username }} ! Bienvenue dans BonPlan </b></p>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 pull-right">
+                    <div class="top_usd">
+                        <div class="hm_top_wishlist">
+                            <p><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-cart-plus" aria-hidden="true"></i> Se déconnecter</a></p>
+                        </div>
+
+                        <div class="hm_top_usd">
+                            <p><a href="javascript:"><i class="fa fa-angle-down" aria-hidden="true"></i> Mon profil</a></p>
+                            <ul class="usd_dropmenu">
+                                <li><a href="{{ path('bon_plan_shop') }}">Mes favoris</a></li>
+                                <li><a href="#">Mes expériences</a></li>
+                                <li><a href="{{ path ('bon_plan_profile') }}" >Mon profil </a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
     <!--Header start-->
     <div class="hm_header_wrapper">
         <div class="container">
@@ -134,11 +171,12 @@ bon_plan_accueilProp
                                     <ul>  <li><a href="#"><i class="fa fa-beer" aria-hidden="true"></i> {{ Evenement.idEtablissement.getNomEtablissement}}</a></li>
                                     </ul>
                                     {{ Evenement.descriptionEvenement }}
-
                                     <a href="{{ path('bon_plan_blog2',{'id':Evenement.idEvenement}) }}" class="news_btn">read more</a>
-                                </div>
-                                <a href="{{ path('pdf_export',{'id':Evenement.idEvenement}) }}"  ><i class="fa fa-hotel" aria-hidden="true">obtenir ticket</i>
-                                </a><a class="fancybox" id = "fancybox" href={{ path('my_app_mail_homepage') }}><i class="fa fa-hotel" aria-hidden="true"> reservez par mail </i></a>
+                                    <div class="hm_post_share">
+                                        <div class="pull-left tags">
+                                               <a class="fancybox" id = "fancybox" href={{ path('my_app_mail_homepage') }}>reserver mail</a> <a  href="{{  path('pdf_export',{'id':Evenement.idEvenement}) }}">obtenir ticket</a></li></ul>
+
+                                        </div></div></div>
 
 
 

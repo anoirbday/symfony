@@ -50,6 +50,12 @@ WHERE ev.idEtablissement = et.idEtablissement AND et.id = :nom")
         return $query->getResult();
     }
 
-
-
+    public function findeven($nom)
+    {
+        $query=$this->getEntityManager()
+            ->createQuery("select ev from BonPlanBundle:Evenement ev, BonPlanBundle:Etablissement et
+WHERE ev.idEtablissement = et.idEtablissement AND et.idEtablissement = :nom")
+            ->setParameter('nom', $nom->getIdEtablissement());
+        return $query->getResult();
+    }
 }

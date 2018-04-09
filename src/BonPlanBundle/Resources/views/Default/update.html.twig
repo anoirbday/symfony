@@ -13,36 +13,37 @@
 <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
 <link rel="stylesheet" href="{{ asset('js/plugin/owl/owl.carousel.css') }}" />
 <link rel="stylesheet" href="{{ asset('css/colors/default.css') }}" id="colors" />
-<center><h1>modifier evenement {{ (Evenement.nomEvenement) }} </h1></center>  
+<center><h1><strong><p> <font color="#dc143c"> modifier evenement {{ (Evenement.nomEvenement) }} </font></p></strong></h1></center>
+<body background="{{ asset('update.png') }}">
 {{ form_start(form) }}
 <center><table>
-        <tr><td>Nom</td>
+        <tr><td><font color="#9932cc"><H4>Nom</H4></font></td>
             <td>{{ form_widget(form.nomEvenement) }}</td>
         </tr>
         <tr><td><BR></td>
             <td></td>
         </tr>
-        <tr><td>date</td>
+        <tr><td><font color="#9932cc"><h4>date</h4></font></td>
             <td>{{ form_widget(form.dateEvenement) }}</td>
         </tr>
         <tr><td><BR></td>
             <td></td>
         </tr>
-        <tr><td>description</td>
+        <tr><td><font color="#9932cc"><h4>description</h4></font></td>
             <td>{{ form_widget(form.descriptionEvenement) }}</td>
         </tr>
         <tr><td><BR></td>
             <td></td>
         </tr>
 
-        <tr><td>image</td>
-            <td>   <img src="{{ asset('uploads/images/' ~ Evenement.photoEvenement) }}" alt="" class="img-responsive" height="150"width="150"> </td>
+        <tr><td><font color="#9932cc"><h4>image</h4></font></td>
+            <td>  <font color="#9932cc"> <img src="{{ asset('uploads/images/' ~ Evenement.photoEvenement) }}" alt="" class="img-responsive" height="150"width="150"> </font></td>
      <td>{{ form_row(form.photoEvenement)}} </td>   </tr>
         <tr><td><BR></td>
             <td></td>
         </tr>
     </table>
 </center>
-<center>{{ form_widget(form.save ,{'label':'Modifier'}) }}
+<center><font color="#9932cc"><h4>{{ form_widget(form.save ,{'label':'Modifier'}) }}</h4></font>
 </center>
 {{ form_end(form) }}

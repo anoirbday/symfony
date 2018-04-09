@@ -49,9 +49,12 @@ public function interesserAction($id,Request $request){
 
     $em = $this->getDoctrine()->getManager();
     $Evenement = $em->getRepository("BonPlanBundle:Evenement")->find($id);
+    $listinteresser = $em->getRepository("BonPlanBundle:Interesser")->listinteresser($Evenement);
     $Evenements = $em->getRepository("BonPlanBundle:Evenement")->findAll();
     $etablissement=$em->getRepository("BonPlanBundle:Etablissement")->latitude($id);
     $etablissements=$em->getRepository("BonPlanBundle:Etablissement")->longitude($id);
+    $show = $em->getRepository("BonPlanBundle:Evenement")->findeven($Evenement->getIdEtablissement());
+
     $x=floatval($etablissement);
     $y=floatval($etablissements);
     $map = new Map();
@@ -95,51 +98,31 @@ public function interesserAction($id,Request $request){
     }
     $user = $this->container->get('security.token_storage')->getToken()->getUser();
 
-    $Ev = $em->getRepository("BonPlanBundle:Interesser")->isinteresser($user,$Evenement);
     $em = $this->getDoctrine()->getManager();
 
+    $em = $this->getDoctrine()->getManager();
 
+    $Evenement = $em->getRepository("BonPlanBundle:Evenement")->find($id);
+    $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+    $Ev = $em->getRepository("BonPlanBundle:Interesser")->isinteresser($user,$Evenement);
     $interesser = new Interesser();
-if ($Ev == null){
-    $user = $this->container->get('security.token_storage')->getToken()->getUser();
-    $forms = $this->createFormBuilder($interesser)
-        ->add('Abonner', SubmitType::class)
-        ->getForm();
 
-    $s="vous ete deja abonné";
+    if ($Ev == null){
 
-    $forms->handleRequest($request);
-
-    if ($forms->isValid()) {
-        $es = $this->getDoctrine()->getManager();
-        $interesser->setId($user);
-        $interesser->setIdEvenement($Evenement);
-        $es->persist($interesser);
-        $es->flush();
-    }
-    $user = $this->container->get('security.token_storage')->getToken()->getUser();
-
-    $nbr = $em->getRepository("BonPlanBundle:Interesser")->getNb($Evenement->getIdEvenement());
-
-    return $this->render('BonPlanBundle:Default:blog1.html.twig', array("Evenement" => $Evenement,"Evenements"=>$Evenements,'map'=>$map,"x"=>$x,'nbr'=>$nbr,'s'=>$s,'form'=>$form->createView(),'forms' => $forms->createView()));
-
+       $s="interesser vous!!";
     }
 
-else{
-
-    $forms = $this->createFormBuilder($interesser)
-    ->add('Abonner', SubmitType::class)
-    ->getForm();
-    $this->DeleteInteresserAction($id);
-    $s="abonnez vouz";
-    $user = $this->container->get('security.token_storage')->getToken()->getUser();
-
-    $nbr = $em->getRepository("BonPlanBundle:Interesser")->getNb($Evenement->getIdEvenement());
 
 
-}
 
-    return $this->render('BonPlanBundle:Default:blog1.html.twig', array("Evenement" => $Evenement,"Evenements"=>$Evenements,'map'=>$map,'nbr'=>$nbr,"x"=>$x,'s'=>$s,'form'=>$form->createView(),'forms' => $forms->createView()));
+    else if ($Ev != null ){
+
+$s="vous ete deja interesser";
+    }
+
+    return $this->render('BonPlanBundle:Default:blog1.html.twig', array("Evenement" => $Evenement,"s"=>$s,"Evenements"=>$Evenements,'map'=>$map,"Listinteresser"=>$listinteresser,"show"=>$show,"x"=>$x,'form'=>$form->createView()));
+
 
 
 
@@ -155,5 +138,43 @@ else{
 
 
     }
+    public function buttonAction($id){
+        $em = $this->getDoctrine()->getManager();
 
+        $Evenement = $em->getRepository("BonPlanBundle:Evenement")->find($id);
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $Ev = $em->getRepository("BonPlanBundle:Interesser")->isinteresser($user,$Evenement);
+        $interesser = new Interesser();
+
+        if ($Ev == null){
+
+                $es = $this->getDoctrine()->getManager();
+                $interesser->setId($user);
+                $interesser->setIdEvenement($Evenement);
+                $es->persist($interesser);
+                $es->flush();
+            }
+
+
+
+
+        else if ($Ev != null ){
+
+            $this->DeleteInteresserAction($id);
+
+        }
+        return $this->redirectToRoute('List_Client');
+
+
+}
+
+public function  nbAction($id){
+
+    $em = $this->getDoctrine()->getManager();
+    $Evenements = $em->getRepository("BonPlanBundle:Evenement")->find($id);
+
+    $nb = $em->getRepository("BonPlanBundle:Interesser")->getNb($Evenements->getIdEvenement());
+return $this->render('BonPlanBundle:Default:EvenementClient.html.twig',array("nb"=>$nb));
+        }
 }
