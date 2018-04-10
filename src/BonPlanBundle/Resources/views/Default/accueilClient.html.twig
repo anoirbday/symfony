@@ -686,16 +686,16 @@
 <!--Revolution slider js-->
 <script type="text/javascript" src="{{ asset('js/switcher.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
-{% for aaa in Publicites %}
+{% for PUB in Publicites %}
 <script >
-    $('#{{ aaa.idPublicite }}').click(
+    $('#{{ PUB.idPublicite }}').click(
         function () {
-            console.log('{{ aaa.idPublicite }}');
-            var serie ={{ aaa.idPublicite }};
+            console.log('{{ PUB.idPublicite }}');
+            var serie ={{ PUB.idPublicite }};
             console.log(serie);
             var DATA  = 'serie='+serie;
             $.ajax({type:"POST",
-                    url: "{{ path('statistique')}}"  ,
+                    url: "{{ path('statistique')}}",
                     data: DATA,
                 success: function (data){
                     console.log(data);

@@ -128,11 +128,11 @@ class DefaultController extends Controller
                 "description" => "Paiement Stripe"
             ));
             $this->addFlash("success","Bravo ça marche !");
-            return $this->redirectToRoute("ajouterpublicite");
+            return $this->redirectToRoute("affiche_publicite");
         } catch(\Stripe\Error\Card $e) {
 
             $this->addFlash("error","Snif ça marche pas :(");
-            return $this->redirectToRoute("ajouterpublicite");
+            return $this->redirectToRoute("paiment");
             // The card has been declined
         }
     }
@@ -229,7 +229,12 @@ public function facebookAction()
 
             'pagination' => $pagination));
     }
-
+    public function payerAction(){
+        return $this->render('@Publicite/Default/payment.html.twig');
+    }
+    public function afterAction(){
+        return $this->render('@Publicite/Default/after.html.twig');
+    }
 
 
 

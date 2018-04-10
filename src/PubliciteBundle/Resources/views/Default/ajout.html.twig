@@ -5,6 +5,7 @@
 
 
 {{ form_start(form) }}
+
 <center><table>
         <tr><td>Titre :</td>
             <td>{{ form_widget(form.titre) }}</td>
@@ -40,23 +41,18 @@
     </table>
 </center>
 <center>{{ form_widget(form.ajouter ,{'label':'Ajouter'}) }}
+
     {{ form_end(form) }}
     <tr><td><BR></td>
         <td></td>
     </tr>
 
-    <form action="{{ path('order_checkout') }}" method="POST">
-<script
-        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-        data-key="pk_test_3KBEbVPaLqfFOLMXZx82a2ig"
-        data-amount="950"
-        data-name="Stripe Payment"
-        data-description="Widget"
-        data-locale="auto"
-        data-currency="eur">
-</script>
-</form>
+
     </center>
 
 </body>
+<script>
 
+
+
+</script>

@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="{{ asset('js/plugin/owl/owl.carousel.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('css/colors/default.css') }}" id="colors" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
     {% for Publicite in Publicites %}
         <meta property="og:url"           content="{{ app.request.getUri }}" />
         <meta property="og:type"          content="BonPlan" />
@@ -376,8 +378,10 @@
             afterClose: function () {
                 parent.location.reload(true);
 
+
             }}
         )})
+
     ;
     $(function () {
         $("#fancybox1").fancybox({
@@ -393,6 +397,11 @@
         $(".fancybox1").fancybox();
     })
     ;
+    $('#form_ajouter').click(function(){
+        $.fancybox.close();
+        return false;
+    });
+
 
 </script>
 <div id="fb-root"></div>

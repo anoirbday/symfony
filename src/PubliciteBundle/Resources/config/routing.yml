@@ -32,3 +32,9 @@ pagination:
 statistique:
     path: /client/accueilclient
     defaults: { _controller: PubliciteBundle:Default:SetVue }
+paiment:
+    path: /payer
+    defaults: { _controller: PubliciteBundle:Default:payer }
+afteer:
+    path: /oki
+    defaults: { _controller: PubliciteBundle:Default:after }
