@@ -1,0 +1,45 @@
+exp_eval_homepage:
+    path:     /
+    defaults: { _controller: ExpEvalBundle:Default:index }
+bon_plan_listExp:
+    path:     /listExp
+    defaults: { _controller: ExpEvalBundle:Experience:index }
+bon_plan_ajoutExp:
+    path:     /ajoutExp
+    defaults: { _controller: ExpEvalBundle:Experience:Ajouter }
+bon_plan_affichExp:
+    path:     /affichExp/{idExp}
+    defaults: { _controller: ExpEvalBundle:Experience:show }
+bon_plan_affichExpProp:
+    path:     /affichExpProp/{idExp}
+    defaults: { _controller: ExpEvalBundle:Experience:showProp }
+bon_plan_modifExp:
+    path:     /modifExp/{idExp}
+    defaults: { _controller: ExpEvalBundle:Experience:Update }
+bon_plan_deleteExpAdmin:
+    path:     /suppExpAdmin
+    defaults: { _controller: ExpEvalBundle:Experience:deleteExpAdmin }
+bon_plan_filAdmin:
+    path:     /admin/filAdmin
+    defaults: { _controller: ExpEvalBundle:Experience:filAdmin }
+bon_plan_affichExpAdmin:
+    path:     /affichExpAdmin/{idExp}
+    defaults: { _controller: ExpEvalBundle:Experience:affichExpAdmin }
+bon_plan_modifExpAdmin:
+    path:     /modifExpAdmin/{idExp}
+    defaults: { _controller: ExpEvalBundle:Experience:modifExpAdmin }
+bon_plan_filClient:
+    path:     /filClient
+    defaults: { _controller: ExpEvalBundle:Experience:filClient }
+bon_plan_ajoutExpClient:
+    path:     /ajoutExpClient
+    defaults: { _controller: ExpEvalBundle:Experience:new }
+bon_plan_modifExpClient:
+    path:     /modifExpClient/{idExp}
+    defaults: { _controller: ExpEvalBundle:Experience:edit }
+bon_plan_deleteExpClient:
+    path:     /suppExpClient
+    defaults: { _controller: ExpEvalBundle:Experience:deleteExpClient }
+bon_plan_topEtab:
+    path:     /topEtab
+    defaults: { _controller: ExpEvalBundle:Default:topEtab }

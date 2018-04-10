@@ -1,15 +1,15 @@
 <?php
 
-namespace BonPlanBundle\Entity;
+namespace ExpEvalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use BonPlanBundle;
 /**
  * Experience
- * @ORM\Table(name="experience", indexes={@ORM\Index(name="id_etablissement", columns={"id_etablissement"}), @ORM\Index(name="id", columns={"id"})})
  * @ORM\Entity(repositoryClass="ExpEvalBundle\Repository\ExperienceRepository")
- **/
+ * @ORM\Table(name="experience", indexes={@ORM\Index(name="id_etablissement", columns={"id_etablissement"}), @ORM\Index(name="id", columns={"id"})})
+ * */
 class Experience
 {
     /**
@@ -51,7 +51,7 @@ class Experience
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
-    private $id;
+     private $id;
 
     /**
      * @var BonPlanBundle\Entity\Etablissement
@@ -62,12 +62,7 @@ class Experience
     private $idEtablissement;
 
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="note_exp", type="integer", nullable=false)
-     */
-    private $noteExp;
+
 
     /**
      * @var boolean
@@ -223,22 +218,4 @@ class Experience
     {
         return $this->enabled;
     }
-
-    /**
-     * @return int
-     */
-    public function getNoteExp()
-    {
-        return $this->noteExp;
-    }
-
-    /**
-     * @param int $noteExp
-     */
-    public function setNoteExp($noteExp)
-    {
-        $this->noteExp = $noteExp;
-    }
-
-
 }

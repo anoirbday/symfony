@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Experiences list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idexp</th>
+                <th>Descriptionexperience</th>
+                <th>Preuve</th>
+                <th>Dateexp</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for experience in experiences %}
+            <tr>
+                <td><a href="{{ path('experience_show', { 'idExp': experience.idExp }) }}">{{ experience.idExp }}</a></td>
+                <td>{{ experience.descriptionExperience }}</td>
+                <td>{{ experience.preuve }}</td>
+                <td>{% if experience.dateExp %}{{ experience.dateExp|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('experience_show', { 'idExp': experience.idExp }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('experience_edit', { 'idExp': experience.idExp }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('experience_new') }}">Create a new experience</a>
+        </li>
+    </ul>
+{% endblock %}

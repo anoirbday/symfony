@@ -387,6 +387,10 @@ class Etablissement
     {
         $this->idCategorie = $idCategorie;
     }
+    public function __toString()
+    {
+        return (string) $this->getNomEtablissement();
+    }
 
 
 }

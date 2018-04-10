@@ -104,7 +104,7 @@
                                     <li><a href="{{ path('bon_plan_etablissement5') }}">Etablissement</a></li>
                                     <li><a href="{{ path('List_Client') }}">Evénement</a></li>
                                     <li class="dropdown"><a href="#">Offre</a></li>
-                                    <li class="dropdown"><a href="#">Actualité</a></li>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_filClient') }}">Actualité</a></li>
                                     <li><a href="{{ path('bon_plan_contact') }}">Contact</a></li>
                                 </ul>
                             </div>
@@ -453,116 +453,29 @@
         </div>
     </div>
     <!--our blog section start-->
-    <div class="hm_news_wrapper">
+    <div class="hm_arrivals_wrapper">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <h1 class="hm_heading"><span class="hm_color">Meilleur </span>classement</h1>
+                    <h1 class="hm_heading"><span class="hm_color">Meilleurs</span> classements</h1><br>
                 </div>
             </div>
             <div class="row">
-                <div class="hm_news_inner">
-                    <div class="col-lg-4 col-md-4">
-                        <div class="hm_news_box">
-                            <div class="hm_news_img">
-                                <img src="{{ asset('images/new_pro1.jpg') }}" alt="" class="img-responsive">
-                                <div class="news_img_overlay"></div>
-                                <div class="overlay_buttons">
-                                    <a class="popup-iframe" href="https://www.youtube.com/watch?v=KAQjLTjW-dM"><i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <div class="hm_news_data">
-                                <h3><a href="{{ path('bon_plan_blog1') }}">Inteligent Transitions In Design</a></h3>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> admin</a></li>
-                                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> 12 june 2018</a></li>
-                                    <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>picture</a></li>
-                                </ul>
-                                <p>Pleasure and praising pain was born and will give you a complete account of the systems, and expound the actual teaching.</p>
-                                <a href="#" class="news_btn">read more</a>
-                            </div>
+
+                <div class="col-lg-12 ">
+                    <div class="hm_testi_box" style="alignment: center">
+                        <div class="hm_test_img" style="alignment: center">
+                            <img src="{{ asset('images/star.png') }}" alt="" class="img-responsive" />
                         </div>
-                    </div>
-                    <div class="col-lg-8 col-md-8">
-                        <div class="hm_news_big_post">
-                            <img src="{{ asset('images/blog_big.jpg') }}" alt="" class="img-responsive" />
-                            <div class="hm_blog_overlay_data">
-                                <div class="news_data">
-                                    <span class="hm_blog_date">13 june 2018</span>
-                                    <h2><a href="{{ path('bon_plan_blog1') }}">standard blog post</a></h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et do lore magna aliqua.Lonsectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
-                                    <div class="blog_admin">Posted by <span class="hm_color">william harry</span></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="hm_news_box">
-                            <div class="hm_news_img">
-                                <img src="{{ asset('images/new_pro2.jpg') }}" alt="" class="img-responsive">
-                                <div class="news_img_overlay"></div>
-                                <div class="overlay_buttons">
-                                    <a class="popup-news-gallery" href="{{ asset('images/gallery_big2.jpg') }}"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <div class="hm_news_data">
-                                <h3><a href="{{ path('bon_plan_blog1') }}">DIY Matisse</a></h3>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> admin</a></li>
-                                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> 12 june 2018</a></li>
-                                    <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>picture</a></li>
-                                </ul>
-                                <p>Pleasure and praising pain was born and will give you a complete account of the systems, and expound the actual teaching.</p>
-                                <a href="#" class="news_btn">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="hm_news_box">
-                            <div class="hm_news_img">
-                                <img src="{{ asset('images/new_pro3.jpg') }}" alt="" class="img-responsive">
-                                <div class="news_img_overlay"></div>
-                                <div class="overlay_buttons">
-                                    <a class="popup-news-gallery" href="{{ asset('images/gallery_big9.jpg') }}"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <div class="hm_news_data">
-                                <h3><a href="{{ path('bon_plan_blog1') }}">Creating Art Spaces For Kids</a></h3>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> admin</a></li>
-                                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> 12 june 2018</a></li>
-                                    <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>picture</a></li>
-                                </ul>
-                                <p>Pleasure and praising pain was born and will give you a complete account of the systems, and expound the actual teaching.</p>
-                                <a href="#" class="news_btn">read more</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4">
-                        <div class="hm_news_box">
-                            <div class="hm_news_img">
-                                <img src="{{ asset('images/new_pro4.jpg') }}" alt="" class="img-responsive">
-                                <div class="news_img_overlay"></div>
-                                <div class="overlay_buttons">
-                                    <a class="popup-news-gallery" href="{{ asset('images/gallery_big10.jpg') }}"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                            <div class="hm_news_data">
-                                <h3><a href="{{ path('bon_plan_blog1') }}">Illuminated Accessories</a></h3>
-                                <ul>
-                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> admin</a></li>
-                                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> 12 june 2018</a></li>
-                                    <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>picture</a></li>
-                                </ul>
-                                <p>Pleasure and praising pain was born and will give you a complete account of the systems, and expound the actual teaching.</p>
-                                <a href="#" class="news_btn">read more</a>
-                            </div>
-                        </div>
+                        <h2  style="alignment: center"><a href="{{ path('bon_plan_topEtab') }}">Consulter les meilleurs établissements</a></h2>
+                        <p style="alignment: center">Le classements des meilleurs établissements selon vos témoignages ! </p>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>
+
     <!--footer start-->
     <div class="hm_footer_wrapper">
         <div class="container">

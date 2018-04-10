@@ -55,10 +55,21 @@ class DefaultController extends Controller
     {
         return $this->render('BonPlanBundle:Default:login.html.twig');
     }
-    public function accueilPropAction()
+    public function accueilPropAction(Request $request)
     {   $em = $this->getDoctrine()->getManager();
        $Publicite = $em->getRepository("BonPlanBundle:Publicite")->findPhoto();
-        return $this->render('BonPlanBundle:Default:accueilProp.html.twig',array("Pub" => $Publicite));
+        $experiences = $em->getRepository('ExpEvalBundle:Experience')->findAllExpOrdDate();
+        /**
+         * @var $paginator\knp\Component\Pager\Paginator
+         */
+        $paginator  = $this->get('knp_paginator');
+        $result=$paginator->paginate(
+            $experiences,
+            $request->query->getInt('page',1),
+            $request->query->getInt('limit',6)
+        );
+
+        return $this->render('BonPlanBundle:Default:accueilProp.html.twig',array("Pub" => $Publicite,'experiences'=>$result));
     }
     public function accueilAdminAction()
     {

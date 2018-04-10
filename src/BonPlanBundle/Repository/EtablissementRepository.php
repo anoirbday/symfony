@@ -57,6 +57,14 @@ WHERE ev.idEtablissement = et.idEtablissement AND   ev.idEvenement = :id ")
             ->setParameter('n',$id);
         return $query->getSingleScalarResult();;
     }
+    public function findTopEtab ()
+    {
+        $em=$this->getEntityManager();
+        $query=$em->createQuery("SELECT et.nomEtablissement,et.descriptionEtablissement, et.adresseEtablissement, et.telephoneEtablissement,  AVG(ex.noteExp) as moy, COUNT (ex.idExp) as nbexp, et.photoEtablissement FROM BonPlanBundle:Etablissement et, ExpEvalBundle:Experience ex WHERE et.idEtablissement=ex.idEtablissement GROUP BY et.idEtablissement ORDER BY moy DESC 
+");
+
+        return $query->getResult();
+    }
 
 
 }

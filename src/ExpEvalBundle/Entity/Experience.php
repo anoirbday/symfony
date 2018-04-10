@@ -1,6 +1,6 @@
 <?php
 
-namespace BonPlanBundle\Entity;
+namespace ExpEvalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -51,7 +51,7 @@ class Experience
      *   @ORM\JoinColumn(name="id", referencedColumnName="id")
      * })
      */
-    private $id;
+     private $id;
 
     /**
      * @var BonPlanBundle\Entity\Etablissement

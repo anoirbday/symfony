@@ -29,6 +29,7 @@ facebook:
 pagination:
     path:     /list1
     defaults: { _controller: PubliciteBundle:Default:list1 }
+
     methods: [GET, POST]
 paiment:
     path: /payer

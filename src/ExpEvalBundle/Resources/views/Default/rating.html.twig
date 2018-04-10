@@ -1,0 +1,49 @@
+{% extends 'Layout.html.twig' %}
+{% block body %}
+
+    <div id="wrapper">
+
+    <div class="contact_form_wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="hm_form">
+                    <div class="col-lg-10 col-md-10">
+
+
+                        <h1>Ajouter evaluation</h1>
+                        <div class="form-inline">
+                            {% for critere in idCrit %}
+                                {% if critere.idCategorie.idCategorie == idCat %}
+                                    <div>{{ critere.nomCritereEvaluation }}</div>
+                                   {{ form_start(form) }}
+                                    {{ form_end(form) }}
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function loadini(id) {
+            console.log("fghjk");
+            $.ajax({
+                type: 'POST',
+                url: 'http://localhost/BonPlan/web/app_dev.php/expeval/form/' + id,
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json',
+                success: function (response){
+                    console.log("zertyui");
+                    $("#id").html(response);
+                }
+            });
+        }
+
+
+    </script>
+{% endblock %}

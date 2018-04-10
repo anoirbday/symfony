@@ -27,6 +27,9 @@ class AppKernel extends Kernel
             new CMEN\GoogleChartsBundle\CMENGoogleChartsBundle(),
             new Hackzilla\BarcodeBundle\HackzillaBarcodeBundle(),
             new Skies\QRcodeBundle\SkiesQRcodeBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new blackknight467\StarRatingBundle\StarRatingBundle(),
+            new ExpEvalBundle\ExpEvalBundle(),
 
 
 

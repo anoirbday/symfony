@@ -8,7 +8,8 @@
             "AppBundle\\": "src/AppBundle",
             "BonPlanBundle\\": "src/BonPlanBundle",
             "EtablissementBundle\\": "src/BonPlanBundle/EtablissementBundle",
-            "PubliciteBundle\\": "src/PubliciteBundle"
+            "PubliciteBundle\\": "src/PubliciteBundle",
+            "ExpEvalBundle\\": "src/ExpEvalBundle"
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
@@ -41,7 +42,9 @@
         "twig/twig": "^1.0||^2.0",
         "uran1980/fancybox-bundle": "*",
         "whiteoctober/tcpdf-bundle": "^1.0",
-        "yellowskies/qr-code-bundle": "^1.2"
+        "yellowskies/qr-code-bundle": "^1.2",
+        "knplabs/knp-paginator-bundle": "^2.7",
+        "blackknight467/star-rating-bundle": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

@@ -1136,6 +1136,25 @@ img {
   max-width: 260px;
   height: 170px;
 }
+.img-responsive3,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+  display: inline-block;
+  width: 360px;
+  height: 320px;
+}
+.img-responsive4,
+.thumbnail > img,
+.thumbnail a > img,
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    display: inline-block;
+    width: 650px;
+    height: 300px;
+}
+
 .img-rounded {
   border-radius: 6px;
 }

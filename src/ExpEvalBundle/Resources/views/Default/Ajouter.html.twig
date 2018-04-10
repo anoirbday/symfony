@@ -1,0 +1,44 @@
+{% extends 'Layout.html.twig' %}
+{% block body %}
+<div id="wrapper">
+
+<div class="contact_form_wrapper">
+        <div class="container-fluid">
+                <div class="row">
+<div class="hm_form">
+        <div class="col-lg-10 col-md-12">
+                <h1>ajouter experience</h1>
+                <div class="form-inline">
+                    {{ form_start(Form) }}
+
+
+                        <ul>
+                                <li class="form-group"> <span>Description</span></li>
+                                <li>
+{{ form_widget(Form.descriptionExperience) }}                        </li>
+                                <li class="form-group"> <span>Preuve</span></li>
+                                <li>
+                                    {{ form_widget(Form.preuve) }}                        </li>
+                                <li class="form-group"> <span>date</span></li>
+                                <li>
+                                    {{ form_widget(Form.dateExp) }}                        </li>
+
+
+
+
+                        </ul>
+                        <input type="submit" value="submit"><span></span>
+
+                    {{ form_end(Form) }}
+
+
+                </div>
+        </div>
+</div>
+                </div>
+        </div>
+</div>
+}
+{% endblock %}
+
+
