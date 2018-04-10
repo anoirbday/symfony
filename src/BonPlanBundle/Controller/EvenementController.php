@@ -14,6 +14,12 @@ use BonPlanBundle\Form\evenementForm;
 use BonPlanBundle\Form\rechercheEvenementForm;
 use BonPlanBundle\Repository\EtablissementRepository;
 use Doctrine\ORM\Query\Expr\Select;
+use Ivory\GoogleMap\Overlay\Animation;
+use Ivory\GoogleMap\Overlay\Icon;
+use Ivory\GoogleMap\Overlay\MarkerShape;
+use Ivory\GoogleMap\Overlay\MarkerShapeType;
+use Ivory\GoogleMap\Overlay\Symbol;
+use Ivory\GoogleMap\Overlay\SymbolPath;
 use Skies\QRcodeBundle\Generator\Generator;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -45,9 +51,17 @@ use Hackzilla\BarcodeBundle\Utility\Barcode;
 class EvenementController extends Controller
 {
 
-    public function listAction()
+    public function listAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+        if ($request->isXmlHttpRequest())
+        {
+            $serializer = new Serializer(array(new ObjectNormalizer()));
+            $evenements=$em->getRepository('BonPlanBundle:Evenement')
+                ->findSerieDQL($request->get('nomEvenement'));
+            $data=$serializer->normalize($evenements);
+            return new JsonResponse($data);
+        }
         $Evenements = $em->getRepository("BonPlanBundle:Evenement")->findprop($this->getUser());
 
         return $this->render('BonPlanBundle:Default:blog.html.twig', array("Evenements" => $Evenements));
@@ -111,7 +125,11 @@ class EvenementController extends Controller
                 'multiple'=>false,
             ))
                 ->add('photoEvenement', FileType::class, array( 'required' => false,'label'=>false))
-            ->add('ajouter', SubmitType::class)
+            ->add('ajouter', SubmitType::class ,array(
+                'attr' => array(
+                    'id' => 'khra'
+                )
+            ))
             ->getForm();
 
         $form->handleRequest($request);
@@ -151,8 +169,16 @@ public function blog2Action ($id,Request $request){
     $map->setHtmlId('map_canvas');
     $map->setAutoZoom(false);
     $map->setCenter(new Coordinate($Evenement->getIdEtablissement()->getLatitude(), $Evenement->getIdEtablissement()->getLongitude()));
-    $map->setMapOption('zoom', 2);
-    $map->getOverlayManager()->addMarker(new Marker(new Coordinate($Evenement->getIdEtablissement()->getLatitude(), $Evenement->getIdEtablissement()->getLongitude())));
+    $map->setMapOption('zoom', 8);
+    $marker = new Marker(
+        new Coordinate($Evenement->getIdEtablissement()->getLatitude(), $Evenement->getIdEtablissement()->getLongitude()),
+        Animation::BOUNCE,
+        new Icon(),
+        new Symbol(SymbolPath::CIRCLE),
+        new MarkerShape(MarkerShapeType::RECTANGLE, [1.1, 2.1, 1.4]),
+        ['clickable' => false]
+    );
+    $map->getOverlayManager()->addMarker($marker);
     $map->addLibrary('drawing');
     $map->setMapOption('mapTypeId', MapTypeId::ROADMAP);
     $map->setStaticOption('maptype', MapTypeId::ROADMAP);
@@ -282,6 +308,9 @@ public function UpdateAction(Request $request,$id)
 
 
     }
+
+
+
 
 
 }

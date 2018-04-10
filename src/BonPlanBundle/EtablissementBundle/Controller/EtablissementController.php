@@ -43,13 +43,16 @@ class EtablissementController extends Controller
 
     public function ListeDesDemandesAction()
     {
+        $securityContext = $this->container->get('security.authorization_checker'); //ensmble des info d sess cornt
+        $token = $this->get('security.token_storage')->getToken(); // ajouté pour tester le role
+        $user = $token->getUser();
+        if ($securityContext->isGranted('ROLE_SUPER_ADMIN')) {
+            $em = $this->getDoctrine()->getManager();
 
-        $em = $this->getDoctrine()->getManager();
-        $user = $this->container->get('security.token_storage')->getToken()->getUser();
-        $etablissements = $em->getRepository('BonPlanBundle:Etablissement')->findAll();
+            $etablissements = $em->getRepository('BonPlanBundle:Etablissement')->findAll();}
 
         return $this->render('EtablissementBundle:etablissement:DemandeEtab.html.twig', array(
-            'etablissements' => $etablissements,'user'=>$user
+            'etablissements' => $etablissements,
         ));
     }
 
@@ -124,7 +127,7 @@ class EtablissementController extends Controller
                 $etablissement->setEnabled(0);
                 $em->persist($etablissement);
                 $em->flush();
-                return $this->redirectToRoute('bon_plan_etablissement10', array('idEtablissement' => $etablissement->getIdetablissement()));
+                return $this->redirectToRoute('bon_plan_accueilProp');
             }
         }
 
@@ -144,6 +147,13 @@ class EtablissementController extends Controller
         return $this->render('EtablissementBundle:etablissement:AfterAjout.html.twig', array(
 
         ));
+    }
+    public function GMAction($type)
+
+    {
+
+        return $this->render('EtablissementBundle:etablissement:GM.html.twig',array('type'=>$type));
+
     }
     private function generateUniqueFileName()
     {

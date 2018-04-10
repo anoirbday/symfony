@@ -129,7 +129,7 @@
                 <div class="hm_news_inner hm_blogs" id="fgh">
                     {% for etablissement in etablissements %}
                         {% if etablissement.enabled %}
-                    <div class="col-lg-4 col-md-4 col-sm-6" style="height: 500px ;width: 350px">
+                    <div class="col-lg-4 col-md-4 col-sm-6" style="height: 700px ;width: 350px">
                         <div class="hm_news_box">
                             <div class="hm_news_img">
                                 <img src="{{ asset('uploads/images/' ~ etablissement.photoEtablissement ) }}" alt="" class="img-responsive1">
@@ -141,8 +141,9 @@
                             <div class="hm_news_data">
                                 <h3><a href="{{  path('etablissement_test', { 'idEtablissement': etablissement.idEtablissement }) }}">{{ etablissement.nomEtablissement }}</a></h3>
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ etablissement.adresseEtablissement }}</a></li>
-                                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> {{ etablissement.horaireTravail }}</a></li>
+                                    <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> {{ etablissement.adresseEtablissement }}</a></li><br><br>
+                                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Ouvre à:{{ etablissement.ouverture|date('H:i') }}  </a></li><br><br>
+                                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> Ferme à:{{ etablissement.fermeture|date('H:i') }}  </a></li><br><br>
                                     <li><a href="#"><i class="fa fa-tags" aria-hidden="true"></i>{{ etablissement.idCategorie }}</a></li>
                                 </ul>
                                 <p class="item_text">{{ etablissement.descriptionEtablissement }}</p>

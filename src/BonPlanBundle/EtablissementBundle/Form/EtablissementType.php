@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 
 class EtablissementType extends AbstractType
 {
@@ -23,8 +24,9 @@ class EtablissementType extends AbstractType
         $builder->add('nomEtablissement', TextType::class, array('required'=>true,'attr'   =>  array(
             'class'   => 'form-control','placeholder'=>'Nom de vote établissement' )))->add('idCategorie')->add('adresseEtablissement' ,TextType::class, array('required'=>true,'attr'   =>  array(
         'class'   => 'form-control','placeholder'=>'Veuillez saisir une adresse complète' )))->add('telephoneEtablissement', NumberType::class, array('required'=>false,'attr'   =>  array(
-        'class'   => 'form-control','placeholder'=>'Numéro doit être composé de 8 chiffres' )))->add('horaireTravail', TextType::class, array('required'=>true,'attr'   =>  array(
-        'class'   => 'form-control','placeholder'=>'Veuillez saisir vos horaires de travail' )))->add('descriptionEtablissement',TextareaType::class, array('attr'   =>  array(
+        'class'   => 'form-control','placeholder'=>'Numéro doit être composé de 8 chiffres' )))->add('ouverture', TimeType::class, array('required'=>true,'attr'   =>  array(
+            'class'   => 'form-control','placeholder'=>'Veuillez saisir vos horaires de travail' )))->add('fermeture', TimeType::class, array('required'=>true,'attr'   =>  array(
+            'class'   => 'form-control','placeholder'=>'Veuillez saisir vos horaires de travail' )))->add('descriptionEtablissement',TextareaType::class, array('attr'   =>  array(
             'class'   => 'form-control','placeholder'=>'Veuillez saisir une description détaillée' )))
             ->add('photoEtablissement', FileType::class, array('required'=>true,'label' => 'Photo de votre établissement','data_class'=>null,'attr'   =>  array(
                 'class'   => 'form-control')))->add('photoPatente', FileType::class, array('required'=>false,'data_class'=>null,'attr'   =>  array(
@@ -33,8 +35,8 @@ class EtablissementType extends AbstractType
                 'required' => true,
                 'multiple' => false,'attr'   =>  array(
                     'class'   => 'form-control','placeholder'=>'Veuillez saisir le budget de vote établissement' )))->add('siteWeb' ,TextType::class, array('required'=>true,'attr'   =>  array(
-        'class'   => 'form-control','placeholder'=>'www.exemple.tn' )))->add('longitude',NumberType::class, array('required'=>false,'attr'   =>  array(
-                'class'   => 'form-control','placeholder'=>'Votre Longitude' )))->add('latitude',NumberType::class, array('required'=>false,'attr'   =>  array(
+        'class'   => 'form-control','placeholder'=>'www.exemple.tn' )))->add('longitude',TextType::class, array('required'=>false,'attr'   =>  array(
+                'class'   => 'form-control','placeholder'=>'Votre Longitude' )))->add('latitude',TextType::class, array('required'=>false,'attr'   =>  array(
                 'class'   => 'form-control','placeholder'=>'Votre Latitude' )));
     }/**
      * {@inheritdoc}

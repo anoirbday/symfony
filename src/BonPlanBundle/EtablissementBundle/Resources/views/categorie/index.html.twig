@@ -177,7 +177,7 @@ font-size: 16px;" class="username">
         </nav>
 
         {% block body %}
-        <div class="content">
+            <div class="content">
 
                 <div class="row">
                     <div class="col-md-12">
@@ -188,7 +188,7 @@ font-size: 16px;" class="username">
                             </div>
                             <div class="content">
                                 <div id="chartHours" class="ct-chart">
-                                    <table cellspacing="100px">
+                                    <table cellspacing="100px" class="table-striped" border="#990033" style="width: 350px;height: auto" >
                                         <thead>
                                         <tr>
                                             <th>Nom catégorie</th>
@@ -198,24 +198,24 @@ font-size: 16px;" class="username">
                                         </thead>
                                         <tbody>
                                         {% for categorie in categories %}
-                                        {% if categorie.enabled %}{% else %}
-                                            <tr>
-                                                <td>{{ categorie.nomCategorie }}</td>
-                                                <td>{% if categorie.enabled %}Yes{% else %}Non   {% endif %}</td>
-                                                <td>
-                                                    <ul>
-                                                        <li >
-                                                            <a href="{{ path('categorie_edit', { 'idCategorie': categorie.idCategorie }) }}">Valider</a>
-                                                        </li>
-                                                        <li>
+                                            {% if categorie.enabled %}{% else %}
+                                                <tr>
+                                                    <td>{{ categorie.nomCategorie }}</td>
+                                                    <td>{% if categorie.enabled %}Yes{% else %}Non   {% endif %}</td>
+                                                    <td>
+                                                        <ul>
+                                                            <li >
+                                                                <a href="{{ path('categorie_edit', { 'idCategorie': categorie.idCategorie }) }}">Valider</a>
+                                                            </li>
+                                                            <li>
 
-                                                            <a href="{{ path('bon_plan_categorie2',{'id': categorie.idCategorie}) }}">Rejeter</a>
+                                                                <a href="{{ path('bon_plan_categorie2',{'id': categorie.idCategorie}) }}">Rejeter</a>
 
-                                                        </li>
-                                                    </ul>
-                                                </td>
-                                            </tr>
-                                        {% endif %}
+                                                            </li>
+                                                        </ul>
+                                                    </td>
+                                                </tr>
+                                            {% endif %}
                                         {% endfor %}
                                         </tbody>
                                     </table>
@@ -231,40 +231,40 @@ font-size: 16px;" class="username">
                     </div>
                 </div>
             </div>
-            {% endblock %}
-        </div>
-
-
-        <footer class="footer">
-            {% block footer %}
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-
-                        <li>
-                            <a href="http://www.creative-tim.com">
-                                Creative Tim
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.creative-tim.com/license">
-                                Licenses
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="copyright pull-right">
-                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
-                </div>
-            </div>
-        </footer>
-
+        {% endblock %}
     </div>
+
+
+    <footer class="footer">
+        {% block footer %}
+        <div class="container-fluid">
+            <nav class="pull-left">
+                <ul>
+
+                    <li>
+                        <a href="http://www.creative-tim.com">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.creative-tim.com">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://www.creative-tim.com/license">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright pull-right">
+                &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com">Creative Tim</a>
+            </div>
+        </div>
+    </footer>
+
+</div>
 </div>
 
 

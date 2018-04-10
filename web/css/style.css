@@ -3094,6 +3094,18 @@ button.hm_btn {
     margin-bottom: 10px;
     background-image: url("../images/header.png");
 }
+.sidebar-widget1 {
+    width: 100%;
+    float: left;
+    position: relative;
+    margin-bottom: 10px;
+}
+.sidebar-widget1.insta_gallery1 {
+    width: 100%;
+    float: left;
+    position: relative;
+    margin-bottom: 10px;
+}
 .sidebar-title {
     position: relative;
     margin-bottom: 30px;

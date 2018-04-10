@@ -70,3 +70,6 @@ bon_plan_etablissement10:
 bon_plan_etablissement11:
     path:     /BonPlan/Statistique
     defaults: { _controller: EtablissementBundle:Etablissement:stat }
+Google_Maps:
+    path:     /Map/{type}
+    defaults: { _controller: EtablissementBundle:Etablissement:GM }
