@@ -34,5 +34,12 @@ WHERE pu.idEtablissement = et.idEtablissement  AND pu.enabled=0");
 
         return $query->getResult();
     }
+    public function finddate()
+    {
+        $query=$this->getEntityManager()
+            ->createQuery("SELECT a FROM BonPlanBundle:Publicite a where (a.datedebut> CURRENT_DATE()-7)  and a.enabled=1");
+
+        return $query->getResult();
+    }
 
 }

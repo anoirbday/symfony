@@ -3,6 +3,10 @@
 namespace BonPlanBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 class DefaultController extends Controller
 {
@@ -60,9 +64,23 @@ class DefaultController extends Controller
     {
         return $this->render('BonPlanBundle:Default:backadmin.html.twig');
     }
-    public function accueilClientAction()
-    {$em = $this->getDoctrine()->getManager();
-        $Publicite = $em->getRepository("BonPlanBundle:Publicite")->findPhoto();
+    public function accueilClientAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        if($request->isXmlHttpRequest()){
+
+            $serializer = new Serializer(array(new ObjectNormalizer()));
+            $pub = $em->getRepository('BonPlanBundle:Publicite')->find($request->get('serie'));
+            $nbclick = $pub->getNbrClick();
+            $pub->setNbrClick($nbclick+1);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($pub);
+            $em->flush();
+            $data = $serializer->normalize($pub);
+            return new JsonResponse($data);
+        }
+        $em = $this->getDoctrine()->getManager();
+        $Publicite = $em->getRepository("BonPlanBundle:Publicite")->finddate();
         return $this->render('BonPlanBundle:Default:accueilClient.html.twig',array("Publicites" => $Publicite));
     }
     public function profileAction()

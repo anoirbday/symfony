@@ -18,6 +18,7 @@
     },
     "require": {
         "php": ">=5.5.9",
+        "cmen/google-charts-bundle": "^2.2",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
         "egeloen/google-map": "^2.0",
@@ -27,6 +28,7 @@
         "friendsofsymfony/user-bundle": "~2.0",
         "hackzilla/barcode-bundle": "^2.0",
         "incenteev/composer-parameter-handler": "^2.0",
+        "nomaya/social-bundle": "dev-master",
         "php-http/guzzle6-adapter": "^1.1",
         "php-http/message": "^1.6",
         "sensio/distribution-bundle": "^5.0.19",
@@ -39,9 +41,7 @@
         "twig/twig": "^1.0||^2.0",
         "uran1980/fancybox-bundle": "*",
         "whiteoctober/tcpdf-bundle": "^1.0",
-        "cmen/google-charts-bundle": "^2.2",
         "yellowskies/qr-code-bundle": "^1.2"
-
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

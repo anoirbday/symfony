@@ -53,6 +53,23 @@
 </body>
 <script>
 
+    $(function () {
+        $("#button").fancybox({
+            maxWidth    : 800,
+            maxHeight   : 600,
+            fitToView   : false,
+            width       : '50%',
+            height      : '50%',
+            autoSize    : false,
+            closeClick  : false,
+            type        : 'iframe',
+            openEffect  : 'none',
+            afterClose: function () {
+                parent.location.reload(true);
 
+
+            }}
+        )})
+    ;
 
 </script>

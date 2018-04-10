@@ -22,6 +22,7 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
 
+
 class DefaultController extends Controller
 {
     public function indexAction()
@@ -62,7 +63,7 @@ class DefaultController extends Controller
                 'multiple'=>false,
             ))
             ->add('photoPublicite', FileType::class, array( 'required' => false,'label'=>false))
-            ->add('ajouter', SubmitType::class)
+            ->add('ajouter', SubmitType::class,array('attr'=> array('id'=>'button')))
             ->getForm();
         $form->handleRequest($request);
 
@@ -72,29 +73,13 @@ class DefaultController extends Controller
             $Publicite->setNbrClick(0);
             $em->persist($Publicite);
             $em->flush();
-
+            return $this->redirectToRoute("paiment");
 
         }
 
         return $this->render('@Publicite/Default/ajout.html.twig',array('form' => $form->createView()));
     }
 
-    public function SetVueAction(Request $request){
-            $em = $this->getDoctrine()->getManager();
-            if($request->isXmlHttpRequest()){
-
-                $serializer = new Serializer(array(new ObjectNormalizer()));
-                $pub = $em->getRepository('BonPlanBundle:Publicite')->find($request->get('serie'));
-                $nbclick = $pub->getNbrClick();
-                $pub->setNbrClick($nbclick+1);
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($pub);
-                $em->flush();
-                $data = $serializer->normalize($pub);
-                return new JsonResponse($data);
-            }
-
-    }
 
 
     public function listAction()
@@ -128,7 +113,7 @@ class DefaultController extends Controller
                 "description" => "Paiement Stripe"
             ));
             $this->addFlash("success","Bravo ça marche !");
-            return $this->redirectToRoute("affiche_publicite");
+            return $this->redirectToRoute("ajouterpublicite");
         } catch(\Stripe\Error\Card $e) {
 
             $this->addFlash("error","Snif ça marche pas :(");
