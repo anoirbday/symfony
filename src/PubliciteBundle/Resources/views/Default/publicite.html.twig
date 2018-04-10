@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="{{ asset('js/plugin/owl/owl.carousel.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('css/colors/default.css') }}" id="colors" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
     {% for Publicite in Publicites %}
         <meta property="og:url"           content="{{ app.request.getUri }}" />
         <meta property="og:type"          content="BonPlan" />
@@ -180,7 +182,8 @@
 
                                         <li><a id="fancybox1" class="fancybox1" href="{{ path('update_Pub',{'id':Publicite.idPublicite}) }}" ><i aria-hidden="true"><img width="20" height="20" title="Modifier votre Publicite" style="color: #990033" src="{{ asset('png/512/edit.png') }}"></i></a></li>
                                         &nbsp &nbsp;
-                                       <li> <iframe src="https://www.facebook.com/plugins/share_button.php?href=http://127.0.0.1:8000/BonPlan/proprietaire/accueilprop/list&layout=button_count&size=small&mobile_iframe=true&appId=2052658948344519&width=83&height=20" width="73" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe></li>
+                                        <li> <iframe src="https://www.facebook.com/plugins/share_button.php?href=http://127.0.0.1:8000/BonPlan/proprietaire/accueilprop/list&layout=button_count&size=small&mobile_iframe=true&appId=2052658948344519&width=83&height=20" width="73" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe></li>
+
 
                                     </ul>
                                 </div>
@@ -379,9 +382,11 @@
             afterClose: function () {
                 parent.location.reload(true);
 
+
             }}
         )})
     ;
+
 
     $(document).ready(function () {
         $(".fancybox1").fancybox({
@@ -394,6 +399,11 @@
             }});
     })
     ;
+    $('#form_ajouter').click(function(){
+        $.fancybox.close();
+        return false;
+    });
+
 
 </script>
 <div id="fb-root"></div>

@@ -115,28 +115,32 @@
         </div>
     </div>
     <div class="sidebar-widget1 insta_gallery" >
+    <div class="hm_related_product">
 
-        <div class="sidebar-title">
+        <div class="owl-carousel owl-theme related_pro_slider">
+            {% for aaa in Publicites %}
+<ul>
+    <li>
+            <a href="#">
+            <div  id="{{ aaa.idPublicite }}"  class="insta_img">
+                <img src="{{ asset('uploads/images/' ~ aaa.photoPublicite) }}" alt="" class="img-responsive2">
+                <div class="gallery_img_overlay"></div>
+                <div onclick="setVue({{ aaa.idPublicite }})" class="overlay_buttons">
+                    <a class="popup-gallery" href="{{ asset('uploads/images/' ~ aaa.photoPublicite) }}"><i class="fa fa-search"></i></a>
+                </div></div></a>
+
+    </li>
+</ul>
+            {% endfor %}
+
 
         </div>
-        {% for aaa in Publicites %}
-        <ul>
-            <li>
 
-                <a href="#">
-                    <div class="insta_img">
-                        <img  src="{{ asset('uploads/images/' ~ aaa.photoPublicite) }}"  alt="" class="img-responsive2">
-                        <div class="gallery_img_overlay"></div>
-                        <div id="{{ aaa.idPublicite }}" class="overlay_buttons">
-                            <a class="popup-gallery" href="{{ asset('uploads/images/' ~ aaa.photoPublicite) }}"><i class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                </a>
-            </li>{% endfor %}
 
-        </ul>
+    </div></div>
 
-    </div>
+
+
     <!--banner start-->
     <div class="hm_banner_wrapper">
         <div id="rev_slider_1068_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="levano4export" data-source="gallery" style="background-color:transparent;">
@@ -220,7 +224,7 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="hm_about_img">
-                        <img src="{{ asset('images/about2.jpg') }}" alt="" class="img-responsive">
+                        <img src="{{ asset('images/about.jpg') }}" alt="" class="img-responsive">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
@@ -677,6 +681,7 @@
 <script type="text/javascript" src="{{ asset('js/jquery.magnific-popup.js') }}"></script>
 <!--Revolution slider js-->
 <script src="{{ asset('js/plugin/revolution/js/jquery.themepunch.tools.min.js') }}" type="text/javascript"></script>
+
 <script src="{{ asset('js/plugin/revolution/js/jquery.themepunch.revolution.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/plugin/revolution/js/revolution.extension.navigation.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/plugin/revolution/js/revolution.extension.slideanims.min.js') }}" type="text/javascript"></script>
@@ -686,26 +691,25 @@
 <!--Revolution slider js-->
 <script type="text/javascript" src="{{ asset('js/switcher.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
-{% for aaa in Publicites %}
 <script >
-    $('#{{ aaa.idPublicite }}').click(
-        function () {
-            console.log('{{ aaa.idPublicite }}');
-            var serie ={{ aaa.idPublicite }};
+        function setVue(v) {
+            console.log(v);
+            var serie = v;
             console.log(serie);
             var DATA  = 'serie='+serie;
             $.ajax({type:"POST",
-                    url: "{{ path('statistique')}}"  ,
+                    url: "{{ path('bon_plan_accueilClient')}}",
                     data: DATA,
                 success: function (data){
                     console.log(data);
+                },
+                error: function () {
+                    console.log("erreur");
                 }
                 }
             );
         }
-    );
 </script>
-{% endfor %}
 {% endblock %}
 </body>
 </html>
