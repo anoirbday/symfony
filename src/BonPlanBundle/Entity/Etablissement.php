@@ -45,10 +45,54 @@ class Etablissement
     /**
      * @var string
      *
-     * @ORM\Column(name="horaire_travail", type="string", length=100, nullable=false)
+     * @ORM\Column(name="horaire_travail", type="string", length=100, nullable=true)
      */
     private $horaireTravail;
 
+    /**
+     * @return \DateTime
+     */
+    public function getOuverture()
+    {
+        return $this->ouverture;
+    }
+
+    /**
+     * @param \DateTime $ouverture
+     */
+    public function setOuverture($ouverture)
+    {
+        $this->ouverture = $ouverture;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getFermeture()
+    {
+        return $this->fermeture;
+    }
+
+    /**
+     * @param \DateTime $fermeture
+     */
+    public function setFermeture($fermeture)
+    {
+        $this->fermeture = $fermeture;
+    }
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="ouverture", type="time", nullable=false)
+     */
+    private $ouverture;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fermeture", type="time", nullable=false)
+     */
+    private $fermeture;
     /**
      * @var string
      *

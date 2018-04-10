@@ -29,9 +29,9 @@ class Commentraire
     private $commentaire;
 
     /**
-     * @var BonPlanBundle\Entity\FosUser
+     * @var BonPlanBundle\Entity\User
      *
-     * @ORM\ManyToOne(targetEntity="FosUser")
+     * @ORM\ManyToOne(targetEntity="User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_ucomm", referencedColumnName="id")
      * })

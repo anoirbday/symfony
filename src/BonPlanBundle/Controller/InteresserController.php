@@ -16,6 +16,12 @@ use BonPlanBundle\Form\evenementForm;
 use BonPlanBundle\Form\rechercheEvenementForm;
 use BonPlanBundle\Repository\EtablissementRepository;
 use Doctrine\ORM\Query\Expr\Select;
+use Ivory\GoogleMap\Overlay\Animation;
+use Ivory\GoogleMap\Overlay\Icon;
+use Ivory\GoogleMap\Overlay\MarkerShape;
+use Ivory\GoogleMap\Overlay\MarkerShapeType;
+use Ivory\GoogleMap\Overlay\Symbol;
+use Ivory\GoogleMap\Overlay\SymbolPath;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
@@ -62,8 +68,17 @@ public function interesserAction($id,Request $request){
     $map->setHtmlId('map_canvas');
     $map->setAutoZoom(false);
     $map->setCenter(new Coordinate($Evenement->getIdEtablissement()->getLatitude(), $Evenement->getIdEtablissement()->getLongitude()));
-    $map->setMapOption('zoom', 2);
-    $map->getOverlayManager()->addMarker(new Marker(new Coordinate($Evenement->getIdEtablissement()->getLatitude(), $Evenement->getIdEtablissement()->getLongitude())));
+    $marker = new Marker(
+        new Coordinate($Evenement->getIdEtablissement()->getLatitude(), $Evenement->getIdEtablissement()->getLongitude()),
+        Animation::BOUNCE,
+        new Icon(),
+        new Symbol(SymbolPath::CIRCLE),
+        new MarkerShape(MarkerShapeType::CIRCLE, [1.1, 2.1, 1.4]),
+        ['clickable' => false]
+    );
+
+    $map->setMapOption('zoom', 8);
+    $map->getOverlayManager()->addMarker($marker);
     $map->addLibrary('drawing');
     $map->setMapOption('mapTypeId', MapTypeId::ROADMAP);
     $map->setStaticOption('maptype', MapTypeId::ROADMAP);
@@ -109,7 +124,7 @@ public function interesserAction($id,Request $request){
     $interesser = new Interesser();
 
     if ($Ev == null){
-
+        $test = true;
        $s="interesser vous!!";
     }
 
@@ -117,11 +132,11 @@ public function interesserAction($id,Request $request){
 
 
     else if ($Ev != null ){
-
+    $test = false;
 $s="vous ete deja interesser";
     }
 
-    return $this->render('BonPlanBundle:Default:blog1.html.twig', array("Evenement" => $Evenement,"s"=>$s,"Evenements"=>$Evenements,'map'=>$map,"Listinteresser"=>$listinteresser,"show"=>$show,"x"=>$x,'form'=>$form->createView()));
+    return $this->render('BonPlanBundle:Default:blog1.html.twig', array("Evenement" => $Evenement,"s"=>$s,"Evenements"=>$Evenements,'map'=>$map,"tests"=>$test,"Listinteresser"=>$listinteresser,"show"=>$show,"x"=>$x,'form'=>$form->createView()));
 
 
 

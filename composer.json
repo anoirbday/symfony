@@ -40,8 +40,7 @@
         "uran1980/fancybox-bundle": "*",
         "whiteoctober/tcpdf-bundle": "^1.0",
         "cmen/google-charts-bundle": "^2.2",
-        "yellowskies/qr-code-bundle": "^1.2"
-
+        "yellowskies/qr-code-bundle": "^1.2",
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

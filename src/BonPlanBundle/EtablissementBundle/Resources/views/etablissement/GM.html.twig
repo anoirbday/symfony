@@ -1,0 +1,36 @@
+{% extends "EtablissementBundle:etablissement:base.html.twig" %}
+
+{% block container %}
+    <section id="about" class="padding">
+    <div class="container full-width">
+        <a href="{{ path('Google_Maps',{'type':'amusement_park'}) }}"><button id="Cafes" style="margin-top: 10px" class="filter active" data-filter="all">Parcs D'Attraction</button></a>
+        <a href="{{ path('Google_Maps',{'type':'art_gallery'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Galeries D'Art</button></a>
+        <a href="{{ path('Google_Maps',{'type':'bakery'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Patisseries</button></a>
+        <a href="{{ path('Google_Maps',{'type':'bar'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Bars Lounges</button></a>
+        <a href="{{ path('Google_Maps',{'type':'beauty_salon'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Salons De Beauté</button></a>
+        <a href="{{ path('Google_Maps',{'type':'library'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Librairies</button></a>
+        <a href="{{ path('Google_Maps',{'type':'bowling_alley'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Bowling</button></a>
+        <a href="{{ path('Google_Maps',{'type':'car_rental'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Location Des Voitures</button></a>
+        <a href="{{ path('Google_Maps',{'type':'cafe'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Cafés</button></a>
+        <a href="{{ path('Google_Maps',{'type':'casino'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Casinos</button></a>
+        <a href="{{ path('Google_Maps',{'type':'florist'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Fleuristes</button></a>
+        <a href="{{ path('Google_Maps',{'type':'clothing_store'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Boutiques</button></a>
+        <a href="{{ path('Google_Maps',{'type':'gas_station'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Kiosques</button></a>
+        <a href="{{ path('Google_Maps',{'type':'gym'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Salles De Sport</button></a>
+        <a href="{{ path('Google_Maps',{'type':'jewelry_store'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Bijoutiers</button></a>
+        <a href="{{ path('Google_Maps',{'type':'liquor_store'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Magasins D'Alcool</button></a>
+        <a href="{{ path('Google_Maps',{'type':'meal_delivery'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Livraison</button></a>
+        <a href="{{ path('Google_Maps',{'type':'movie_theater'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Cinéma</button></a>
+        <a href="{{ path('Google_Maps',{'type':'museum'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Musées</button></a>
+        <a href="{{ path('Google_Maps',{'type':'night_club'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Boites De Nuit</button></a>
+        <a href="{{ path('Google_Maps',{'type':'parking'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Parking</button></a>
+        <a href="{{ path('Google_Maps',{'type':'night_club'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Boites De Nuit</button></a>
+        <a href="{{ path('Google_Maps',{'type':'restaurant'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Restaurants</button></a>
+        <a href="{{ path('Google_Maps',{'type':'shopping_mall'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Malls</button></a>
+        <a href="{{ path('Google_Maps',{'type':'spa'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Spa</button></a>
+        <a href="{{ path('Google_Maps',{'type':'travel_agency'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Agences De Voyages</button></a>
+        <a href="{{ path('Google_Maps',{'type':'zoo'}) }}"><button id="Cafes" style="margin-top: 10px" class="default_btn">Zoo</button></a>
+        <div id="map" style="width: 1100px; height: 490px"></div>
+    </div>
+    </section>
+{% endblock %}

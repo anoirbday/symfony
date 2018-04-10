@@ -59,41 +59,51 @@ class CategorieController extends Controller
     public function newAction(Request $request)
     {
         $categorie = new Categorie();
-        $form = $this->createForm('EtablissementBundle\Form\Categorie', $categorie);
-        $form->handleRequest($request);
-        for ($i=0;$i<=5; $i++)
-        {
-            $critereEvaluation1 = new Critereevaluation();
-            $form1 = $this->createForm('EtablissementBundle\Form\CritereEvaluation', $critereEvaluation1);
+        $critereEvaluation1 = new Critereevaluation();
+        $critereEvaluation2 = new Critereevaluation();
+        $critereEvaluation3 = new Critereevaluation();
+        $critereEvaluation4 = new Critereevaluation();
+        $critereEvaluation5 = new Critereevaluation();
+        $nom=$_GET['nomcategorie'];
+        echo $nom;
+        if($request->isMethod('POST')){
 
-            $form1->handleRequest($request);
+            $categorie->setNomCategorie($request->get('nomcategorie'));
+            $categorie->setEnabled(1);
 
-            if ($form->isSubmitted() && $form->isValid() ) {
-                $em = $this->getDoctrine()->getManager();
-                $categorie->setEnabled(1);
-                $em->persist($categorie);
-                $em->flush();
-                if ($form1->isSubmitted() && $form1->isValid()  )
-                {   $critereEvaluation1->setIdCategorie( $categorie);
-                    $em->persist($critereEvaluation1);
-                    $em->flush();
+            $em=$this->getDoctrine()->getManager();
+            $em->persist($categorie);
+            $em->flush();
 
-                    return $this->redirectToRoute('bon_plan_categorie4', array('idCategorie' => $categorie->getIdcategorie(),'idCritere' => $critereEvaluation1->getIdcritere()));
-                }
-        }
+            $critereEvaluation1->setNomCritereEvaluation($request->get('crit1'));
+            $critereEvaluation1->setIdCategorie($categorie);
+            $critereEvaluation2->setNomCritereEvaluation($request->get('crit2'));
+            $critereEvaluation2->setIdCategorie($categorie);
+            $critereEvaluation3->setNomCritereEvaluation($request->get('crit3'));
+            $critereEvaluation3->setIdCategorie($categorie);
+            $critereEvaluation4->setNomCritereEvaluation($request->get('crit4'));
+            $critereEvaluation4->setIdCategorie($categorie);
+            $critereEvaluation5->setNomCritereEvaluation($request->get('crit5'));
+            $critereEvaluation5->setIdCategorie($categorie);
 
+            $em->persist($critereEvaluation1);
+            $em->persist($critereEvaluation2);
+            $em->persist($critereEvaluation3);
+            $em->persist($critereEvaluation4);
+            $em->persist($critereEvaluation5);
+            $em->flush();
+            return $this->redirectToRoute('bon_plan_categorie4', array('idCategorie' => $categorie->getIdcategorie(),'idCritere' => $critereEvaluation1->getIdcritere()));
 
         }
 
         return $this->render('EtablissementBundle:categorie:new.html.twig', array(
-            'categorie' => $categorie,
-            'critereEvaluation' => $critereEvaluation1,
-            'form' => $form->createView(),
-            'form1' => $form1->createView(),
+
 
 
         ));
     }
+
+
 
 
 
@@ -122,15 +132,47 @@ class CategorieController extends Controller
     public function editAction(Request $request, Categorie $categorie)
     {
         $deleteForm = $this->createDeleteForm($categorie);
-        $editForm = $this->createForm('EtablissementBundle\Form\CategorieType', $categorie);
+        $editForm = $this->createForm('EtablissementBundle\Form\Categorie', $categorie);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $em = $this->getDoctrine()->getManager();
+            $categorie->setEnabled(1);
+            $em->persist($categorie);
+            $em->flush();
 
-            return $this->redirectToRoute('bon_plan_categorie8', array('idCategorie' => $categorie->getIdcategorie()));
+            $critereEvaluation1 = new Critereevaluation();
+            $critereEvaluation2 = new Critereevaluation();
+            $critereEvaluation3 = new Critereevaluation();
+            $critereEvaluation4 = new Critereevaluation();
+            $critereEvaluation5 = new Critereevaluation();
+
+            if ($request->isMethod('POST')) {
+
+
+                $critereEvaluation1->setNomCritereEvaluation($request->get('crit1'));
+                $critereEvaluation1->setIdCategorie($categorie);
+                $critereEvaluation2->setNomCritereEvaluation($request->get('crit2'));
+                $critereEvaluation2->setIdCategorie($categorie);
+                $critereEvaluation3->setNomCritereEvaluation($request->get('crit3'));
+                $critereEvaluation3->setIdCategorie($categorie);
+                $critereEvaluation4->setNomCritereEvaluation($request->get('crit4'));
+                $critereEvaluation4->setIdCategorie($categorie);
+                $critereEvaluation5->setNomCritereEvaluation($request->get('crit5'));
+                $critereEvaluation5->setIdCategorie($categorie);
+
+                $em->persist($critereEvaluation1);
+                $em->persist($critereEvaluation2);
+                $em->persist($critereEvaluation3);
+                $em->persist($critereEvaluation4);
+                $em->persist($critereEvaluation5);
+                $em->flush();
+                return $this->redirectToRoute('bon_plan_categorie4', array('idCategorie' => $categorie->getIdcategorie(), 'idCritere' => $critereEvaluation1->getIdcritere()));
+
+                // return $this->redirectToRoute('bon_plan_categorie8', array('idCategorie' => $categorie->getIdcategorie()));
+            }
         }
-
         return $this->render('EtablissementBundle:categorie:edit.html.twig', array(
             'categorie' => $categorie,
             'edit_form' => $editForm->createView(),

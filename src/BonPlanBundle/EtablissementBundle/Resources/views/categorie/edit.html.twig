@@ -190,7 +190,19 @@ font-size: 16px;" class="username">
                                 <div id="chartHours" class="ct-chart">
                                     {{ form_start(edit_form) }}
                                     {{ form_widget(edit_form) }}
-                                    <input type="submit" class="btn btn-danger square-btn-adjust" value="Enregistrer" />
+                                    <form method="post" id="form">
+
+                                        <i class="ti-export">
+                                        </i>
+                                        <br>
+                                        <label id="lab1" hidden="hidden">Critère d'évaluation n°1:</label>   <input type="text" id="crit1"  name="crit1" hidden="true"> <br>
+
+                                        <label id="lab2" hidden="hidden">Critère d'évaluation n°2:</label>   <input type="text" id="crit2" name="crit2"  hidden="true"> <br>
+                                        <label id="lab3" hidden="hidden">Critère d'évaluation n°3:</label>  <input type="text" id="crit3" name="crit3"  hidden="true"> <br>
+                                        <label id="lab4" hidden="hidden">Critère d'évaluation n°4:</label>  <input type="text" id="crit4" name="crit4"  hidden="true"> <br>
+                                        <label id="lab5" hidden="hidden">Critère d'évaluation n°5:</label>  <input type="text" id="crit5" name="crit5"  hidden="true"> <br>
+                                        <input type="submit" class="btn btn-danger square-btn-adjust" value="Enregistrer" hidden="true"/>
+                                    </form>
                                     {{ form_end(edit_form) }}
                                 </div>
                                 <div class="footer">
@@ -265,25 +277,65 @@ font-size: 16px;" class="username">
 <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
 <script src="{{ asset('assets/js/paper-dashboard.js') }}"></script>
 
-<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-<script src="{{ asset('assets/js/demo.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/jquery.js') }}"></script>
 
-<!-- <script type="text/javascript">
-    $(document).ready(function(){
 
-        demo.initChartist();
+<script>
+    $(document).ready(
+        function() {
+            $('.ti-export').click(
+                function(){
+                    $('#crit1').show();
+                    $('#lab1').show();
 
-        $.notify({
-            icon: 'ti-gift',
-            message: "Welcome to <b>Paper Dashboard</b> - a beautiful Bootstrap freebie for your next project."
+                }
 
-        },{
-            type: 'success',
-            timer: 4000
+            );
+            $('#crit1').keypress(
+                function(){
+                    $('#crit2').show();
+                    $('#lab2').show();
+
+                }
+
+            );
+            $('#crit2').keypress(
+                function(){
+                    $('#crit3').show();
+                    $('#lab3').show();
+
+                }
+
+            );   $('#crit3').keypress(
+                function(){
+                    $('#crit4').show();
+                    $('#lab4').show();
+
+                }
+
+            );   $('#crit4').keypress(
+                function(){
+                    $('#crit5').show();
+                    $('#lab5').show();
+
+                }
+
+            );
+            $('#crit5').keypress(
+                function(){
+                    $('.btn btn-danger square-btn-adjust').show();
+
+
+                }
+
+            );
         });
 
-    });
 </script>
+
+
+
+
 {% endblock %}
 </html>
 

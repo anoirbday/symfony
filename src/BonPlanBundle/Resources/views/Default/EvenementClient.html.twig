@@ -92,7 +92,7 @@
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
                     <div class="hm_top_search">
-                        <input type="search" name="search" placeholder="Search....">
+                        <input type="search" id="search" name="search" placeholder="Search....">
                         <span class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></span>
                     </div>
                 </div>
@@ -152,10 +152,11 @@
             <div class="row">
                 <div class="hm_news_inner hm_blogs">
                     {% for Evenement in Evenements %}
+                        <div id="all">
                         <div class="col-lg-4 col-md-4 col-sm-6">
                             <div class="hm_news_box">
                                 <div class="hm_news_img">
-                                    <img src="{{ asset('uploads/images/' ~ Evenement.photoEvenement) }}" alt="" class="img-responsive">
+                                    <img src="{{ asset('uploads/images/' ~ Evenement.photoEvenement) }}" alt="" class="img-responsive1">
                                     <div class="news_img_overlay"></div>
                                     <div class="overlay_buttons">
                                         <a class="popup-iframe" href="https://www.youtube.com/watch?v=KAQjLTjW-dM"><i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
@@ -183,7 +184,9 @@
 
                             </div>
                         </div>
+                        </div>
                     {% endfor %}
+                    <div id="filtred"></div>
                 </div>
 
             </div>
@@ -368,9 +371,16 @@
 
     $(function () {
         $("#fanc").fancybox({
-            'width'             : 500,
-            'height'            : 300,
-            'type'              :'iframe',
+            maxWidth    : 800,
+            maxHeight   : 600,
+            fitToView   : false,
+            width       : '30%',
+            height      : '40%',
+            autoSize    : false,
+            closeClick  : false,
+            type        : 'iframe',
+            openEffect  : 'none',
+            closeEffect : 'none',
             afterClose: function () {
                 parent.location.reload(true);
 
@@ -382,6 +392,52 @@
 
 
     ;
+</script>
+<script>
+    <script >
+    console.log('kk');
+    $('#search').keyup(
+        function () {
+            var serie =$('#search').val();
+            console.log(serie);
+            var DATA  = 'serie='+serie;
+            $.ajax({type:"POST",
+                    url: "{{ path('bon_plan_blog')}}"  ,
+                    data: DATA,
+                    success: function (data){
+                        console.log(data);
+                        $("#filtred").remove();
+                        $("#filtred").html("<div id='filtred2'></div>");
+                        $.each(data, function (k,el) {
+                            $("#filtred2").append(
+                               "                        <div class='col-lg-4 col-md-4 col-sm-6'>" +
+                                "                            <div class='hm_news_box'>" +
+                                "                                <div class='hm_news_img'>" +
+                                "                                    <img src='uploads/images/"+el.photoevenement+"' class='img-responsive1'>" +
+                                "                                    <div class='news_img_overlay'></div>" +
+                                "                                    <div class='overlay_buttons'>" +
+                                "                                        <a class='popup-iframe' href='https://www.youtube.com/watch?v=KAQjLTjW-dM'><i class='fa fa-play-circle-o' aria-hidden='true'></i></a>" +
+                                "                                    </div>" +
+                                "                                </div>" +
+                                "                                <div class='hm_news_data'>" +
+                                "                                    <h3><a>"+ el.nomEvenement +"</a></h3>" +
+                                "                                    <ul>" +
+                                "                                        <li><a ><i class='fa fa-calendar' aria-hidden='true'></i> "+ el.dateEvenement+
+                            "                                    <ul>  <li><a ><i class='fa fa-beer' aria-hidden='true'></i></a></li>" +
+                            "                                    </ul>" +
+                                                              el.descriptionEvenement +"
+                            "                                    <a href='/blog2/"+el.idEvenement +" class='news_btn'>read more</a>" +
+                            "                                   </div>" +
+                            "                            </div>\n" +
+                            "                        </div>\n"
+                            );
+                        })
+                    }
+                }
+            );
+        }
+    );
+
 </script>
 
 </body>
