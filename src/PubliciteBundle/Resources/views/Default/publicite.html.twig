@@ -177,7 +177,7 @@
                                     <ul class="footer_so_icons">
 
 
-                                        <li><a href="{{ path('remove_Pub',{'id':Publicite.idPublicite}) }}"><i aria-hidden="true"><img width="20" height="20" title="Supprimer votre Publicite" style="color: #990033" src="{{ asset('png/512/android-trash.png') }}"></i></a></li>
+                                        <li><a href="{{ path('remove_Pub',{'id':Publicite.idPublicite}) }}"onclick="return confirm('are u sure?')"><i aria-hidden="true"><img width="20" height="20" title="Supprimer votre Publicite" style="color: #990033" src="{{ asset('png/512/android-trash.png') }}"></i></a></li>
                                         &nbsp &nbsp;
 
                                         <li><a id="fancybox1" class="fancybox1" href="{{ path('update_Pub',{'id':Publicite.idPublicite}) }}" ><i aria-hidden="true"><img width="20" height="20" title="Modifier votre Publicite" style="color: #990033" src="{{ asset('png/512/edit.png') }}"></i></a></li>
@@ -366,14 +366,17 @@
 <script type="text/javascript" src="{{ asset('js/plugin/owl/owl.carousel.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/switcher.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.css" />
+
 
 
 <script type="text/javascript">
 
     $(function () {
         $("#fancybox").fancybox({
-            'width'             : 950,
-            'height'            : 400,
+            'width'             : 500,
+            'height'            : 300,
             'type'              :'iframe',
             afterClose: function () {
                 parent.location.reload(true);
@@ -383,18 +386,16 @@
         )})
 
     ;
-    $(function () {
-        $("#fancybox1").fancybox({
-            'width'             : 950,
-            'height'            : 400,
+
+    $(document).ready(function () {
+        $(".fancybox1").fancybox({
+            'width'             : 900,
+            'height'            : 500,
             'type'              :'iframe',
             afterClose: function () {
                 parent.location.reload(true);
 
-            }}
-        )})
-    $(document).ready(function () {
-        $(".fancybox1").fancybox();
+            }});
     })
     ;
     $('#form_ajouter').click(function(){

@@ -17,6 +17,7 @@ use Doctrine\ORM\Query\Expr\Select;
 use Skies\QRcodeBundle\Generator\Generator;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -89,7 +90,7 @@ class EvenementController extends Controller
         $form = $this->createFormBuilder($Evenement)
             ->add('nomEvenement',null,array("attr"=>array('class'=>'form-control')))
             ->add('dateEvenement', DateType::class)
-            ->add('descriptionEvenement')
+            ->add('descriptionEvenement',TextareaType::class,array('attr'=>array('cols'=>'30','rows'=>'5')))
 
 
             ->add('idEtablissement',EntityType::class,array(
@@ -248,6 +249,8 @@ public function UpdateAction(Request $request,$id)
         $pdf->setFontSubsetting(true);
         $pdf->SetFont('helvetica', '', 11, '', true);
         //$pdf->SetMargins(20,20,40, true);
+        $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
+        $pdf->setFooterData(array(0,64,0), array(0,64,128));
         $pdf->AddPage();
 
         $filename = 'ourcodeworld_pdf_demo';

@@ -47,7 +47,7 @@ ajouter_evenement:
     path:     /ajout
     defaults: { _controller: BonPlanBundle:Evenement:ajout }
 delete_evenement:
-    path:     /delete/{id}
+    path:     /deletes/{id}
     defaults: { _controller: BonPlanBundle:Evenement:Delete }
 bon_plan_blog2:
     path:     /blog2/{id}
