@@ -11,6 +11,7 @@ use BonPlanBundle\Entity\Evenement;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -27,7 +28,7 @@ class evenementForm extends AbstractType
     $builder
         ->add('nomEvenement')
         ->add('dateEvenement',DateType::class)
-        ->add('descriptionEvenement')
+        ->add('descriptionEvenement',TextareaType::class,array('attr'=>array('cols'=>'30','rows'=>'5')))
         ->add('photoEvenement', FileType::class, array('data_class' => null,'label'=>false ))
 
         ->add('save', SubmitType::class)

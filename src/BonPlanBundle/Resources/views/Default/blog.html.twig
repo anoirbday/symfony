@@ -370,13 +370,22 @@
 
     $(function () {
         $("#fancybox").fancybox({
-            'width'             : 500,
-            'height'            : 400,
-            'type'              :'iframe',
+            maxWidth    : 800,
+            maxHeight   : 600,
+            fitToView   : false,
+            width       : '80%',
+            height      : '90%',
+            autoSize    : false,
+            closeClick  : false,
+            type        : 'iframe',
+            openEffect  : 'none',
+            closeEffect : 'none',
             afterClose: function () {
-                parent.location.reload(true);
-
-            }})})
+                parent.location.reload(true)},
+            afterLoad: function(){
+                setTimeout( function() {$.fancybox.close(); },150000); // 3000 = 3 secs
+                }
+            })})
 
     $(document).ready(function() {
         $(".fancy").fancybox();

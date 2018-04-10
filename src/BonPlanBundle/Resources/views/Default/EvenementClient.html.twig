@@ -174,7 +174,7 @@
                                     <a href="{{ path('bon_plan_blog2',{'id':Evenement.idEvenement}) }}" class="news_btn">read more</a>
                                     <div class="hm_post_share">
                                         <div class="pull-left tags">
-                                               <a class="fancybox" id = "fancybox" href={{ path('my_app_mail_homepage') }}>reserver mail</a> <a  href="{{  path('pdf_export',{'id':Evenement.idEvenement}) }}">obtenir ticket</a></li></ul>
+                                               <a class="fanc" id = "fanc" href={{ path('my_app_mail_homepage') }}>reserver mail</a> <a  href="{{  path('pdf_export',{'id':Evenement.idEvenement}) }}">obtenir ticket</a></li></ul>
 
                                         </div></div></div>
 
@@ -361,12 +361,15 @@
 <script type="text/javascript" src="{{ asset('js/plugin/owl/owl.carousel.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/switcher.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.css" />
+
 <script type="text/javascript">
 
     $(function () {
-        $("#fancybox").fancybox({
-            'width'             : 950,
-            'height'            : 400,
+        $("#fanc").fancybox({
+            'width'             : 500,
+            'height'            : 300,
             'type'              :'iframe',
             afterClose: function () {
                 parent.location.reload(true);
@@ -374,12 +377,7 @@
             }}
         )})
 
-    $(document).ready(function() {
-        $(".fancybox").fancybox();
-    })
-    $(document).ready(function() {
-        $(".fancy").fancybox();
-    })
+
 
 
 
