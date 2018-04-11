@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Reservation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idreservation</th>
+                <td>{{ reservation.idReservation }}</td>
+            </tr>
+            <tr>
+                <th>Occasion</th>
+                <td>{{ reservation.occasion }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if reservation.date %}{{ reservation.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Heure</th>
+                <td>{% if reservation.heure %}{{ reservation.heure|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nbpersonne</th>
+                <td>{{ reservation.nbPersonne }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ reservation.message }}</td>
+            </tr>
+            <tr>
+                <th>Valid</th>
+                <td>{% if reservation.valid %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Checked</th>
+                <td>{% if reservation.checked %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('reservation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('reservation_edit', { 'id': reservation.idReservation }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

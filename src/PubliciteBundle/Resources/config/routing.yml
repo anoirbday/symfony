@@ -37,3 +37,9 @@ paiment:
 afteer:
     path: /oki
     defaults: { _controller: PubliciteBundle:Default:after }
+statistiquePub:
+    path: /nbclick
+    defaults: { _controller: PubliciteBundle:Default:Statistique }
+stats:
+    path: /stats
+    defaults: { _controller: PubliciteBundle:Default:Statistique }

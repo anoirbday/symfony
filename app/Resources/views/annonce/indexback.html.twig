@@ -1,0 +1,54 @@
+{% extends ('default/layoutback.html.twig') %}
+
+{% block body %}
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="span7">
+        <div class="widget stacked widget-table action-table">
+
+            <div class="widget-header">
+                <i class="icon-th-list"></i>
+                <h3>Les demandes d'ajout des publicités</h3>
+            </div> <!-- /widget-header -->
+
+            <div class="widget-content">
+
+                <table class="table table-striped table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>Description</th>
+                        <th>Tags</th>
+                        <th class="td-actions"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for annonce in annonces %}
+                        <tr>
+                            <td>{{ annonce.nom }}</td>
+                            <td><img src="{{ asset(annonce.photo) }}"></td>
+                            <td>{{ annonce.description | raw}}</td>
+                            <td class="td-actions">
+                                <a href="{{ path('annonce_valid' , { 'id': annonce.id }) }}" class="btn btn-small btn-primary">
+                                    <i class="btn-icon-only icon-ok"></i>
+                                </a>
+                                <a href="{{ path('annonce_refuser' , { 'id': annonce.id }) }}" class="btn btn-small">
+                                    <i class="btn-icon-only icon-remove"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div> <!-- /widget-content -->
+
+        </div> <!-- /widget -->
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% for reservation in reservations %}
+    <article class="service type-service hentry row one-col-service">
+        <div class="col-lg-6 col-md-7">
+
+
+        </div>
+
+        <div class="col-lg-6 col-md-5">
+            <div class="service-contents">
+                <h3 class="entry-title"><a href="{{ path('reservation_show', { 'id': reservation.idReservation }) }}">{{ reservation.idReservation }}</a></h3>
+                <div class="entry-content">
+
+                    <p>{{ reservation.occasion }}</p>
+
+                    <p>{% if reservation.date %}{{ reservation.date|date('Y-m-d') }}{% endif %}</p>
+                    <p>{% if reservation.heure %}{{ reservation.heure|date('H:i:s') }}{% endif %}</p>
+                    {{ reservation.nbPersonne }}
+
+
+
+                    <p>{{ reservation.message }}</p>
+                    <p>{% if reservation.valid %}Yes{% else %}No{% endif %}</p>
+                    <p>{% if reservation.checked %}Yes{% else %}No{% endif %}</p>
+
+
+
+
+                </div>
+
+                <ul>
+                    <li>
+                        <a href="{{ path('reservation_show', { 'id': reservation.idReservation }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('reservation_edit', { 'id': reservation.idReservation }) }}">edit</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </article>
+
+{% endfor %}

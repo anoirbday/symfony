@@ -256,42 +256,49 @@
                 </div>
             </div>
             <div class="row">
-                <div class="new_pro_inner">
+                <div class="hm_news_inner hm_blogs" id="fgh">
                     {% for experience in experiences %}
-                        {% if (app.user.id) == (experience.idEtablissement.id.id) %}
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="new_pro_box">
-                                    <div class="new_pro_img">
-                                        <img src="{{ asset('uploads/images/') }}{{ experience.preuve }}" ; alt="" class="img-responsive3" />
-                                    </div>
-                                    <div class="new_pro_data">
-                                        <h3><a href="{{ path('bon_plan_affichExpProp', { 'idExp': experience.idExp }) }}">Lire plus</a></h3>
+                    {% if (app.user.id) == (experience.idEtablissement.id.id) %}
 
-
-                                        <ul  style="word-break: break-all" >
-
-                                            <i class="fa fa-user" aria-hidden="true"></i> {{ experience.id.nom }}<br>
-                                            <a href="{{ path('etablissement_test', { 'idEtablissement': experience.idEtablissement.idEtablissement }) }}"><i class="fa fa-home" aria-hidden="true"></i>{{ experience.idEtablissement.nomEtablissement }}</a><br>
-                                            <a style="word-wrap: break-word; width: inherit" ><i class="fa fa-pencil" aria-hidden="true"></i>{{ experience.descriptionExperience }} {{ experience.noteExp|rating }}</a><br>
-                                            <a><i class="fa fa-calendar" aria-hidden="true"></i>{% if experience.dateExp %}{{ experience.dateExp|date('Y-m-d') }}{% endif %}</a>
-
-
-                                        </ul>
-                                    </div>
+                    <div class="col-md-4 col-md-4 col-md-6" style="width: 430px;height: auto" >
+                            <div class="new_pro_box">
+                                <div class="new_pro_img">
+                                    <a href="{{ path('bon_plan_affichExp', { 'idExp': experience.idExp }) }}">
+                                        <img src="{{ asset('uploads/images/') }}{{ experience.preuve }}"  alt="" class="img-responsive1"; height="150"; />
+                                    </a>
                                 </div>
                             </div>
-                        {% endif %}
+                            <div class="hm_news_data">
+                                <h3><a href="{{ path('bon_plan_affichExp', { 'idExp': experience.idExp }) }}">Lire plus</a></h3>
+
+
+                                <ul  style="word-break: break-all" >
+
+                                    <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> {{ experience.id.nom }}</a></li><br><br>
+                                    <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>{{ experience.idEtablissement.nomEtablissement }}</a></li><br><br>
+                                    <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{% if experience.dateExp %}{{ experience.dateExp|date('Y-m-d') }}{% endif %}</a></li><br><br>
+
+                                    <li ><a style="word-wrap: break-word; width: inherit" ><i class="fa fa-pencil" aria-hidden="true"></i>{{ experience.descriptionExperience }} </a></li><br><br>
+                                    <li><a href="#"><i aria-hidden="true"></i>{{ experience.noteExp|rating }}</a></li>
+
+
+
+                                </ul>
+
+
+                            </div>
+                        </div>
+                    {% endif %}
+
                     {% endfor %}
+
                 </div>
             </div>
-
         </div>
+
         <div class="nav" align="center">
             {{ knp_pagination_render(experiences) }}
         </div>
-
-
-
 
     </div>
     <!--Choose section start-->

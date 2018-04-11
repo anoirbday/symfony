@@ -41,5 +41,18 @@ WHERE pu.idEtablissement = et.idEtablissement  AND pu.enabled=0");
 
         return $query->getResult();
     }
+    public function findStat()
+    {
+        $query=$this->getEntityManager()
+            ->createQuery("SELECT  SUM(p.nbrClick) from BonPlanBundle:Publicite p  GROUP BY p.idPublicite");
+        return $query->getResult();
+    }
+    public function findCount($id)
+    {
+        $query=$this->getEntityManager()
+            ->createQuery("select p.nbrClick from BonPlanBundle:Publicite p WHERE p.idPublicite=:n  ")
+        ->setParameter('n',$id);
+        return $query->getSingleScalarResult();
+    }
 
 }

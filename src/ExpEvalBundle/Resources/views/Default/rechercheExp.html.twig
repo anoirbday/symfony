@@ -1,0 +1,30 @@
+{% for experience in experiences %}
+    <div class="col-md-4 col-md-4 col-md-6" style="width: 250px;height: auto" >
+        <div class="new_pro_box">
+            <div class="new_pro_img">
+                <a href="{{ path('bon_plan_affichExp', { 'idExp': experience.idExp }) }}">
+                    <img src="{{ asset('uploads/images/') }}{{ experience.preuve }}"  alt="" class="img-responsive"; height="150"; />
+                </a>
+            </div>
+        </div>
+        <div class="hm_news_data">
+            <h3><a href="{{ path('bon_plan_affichExp', { 'idExp': experience.idExp }) }}">Lire plus</a></h3>
+
+
+            <ul  style="word-break: break-all" >
+
+                <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i> {{ experience.id.nom }}</a></li><br>
+                <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i>{{ experience.idEtablissement.nomEtablissement }}</a></li><br>
+                <li ><a style="word-wrap: break-word; width: inherit" ><i class="fa fa-pencil" aria-hidden="true"></i>{{ experience.descriptionExperience }} {{ experience.noteExp|rating }}</a></li><br>
+                <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i>{% if experience.dateExp %}{{ experience.dateExp|date('Y-m-d') }}{% endif %}</a></li>
+
+
+            </ul>
+
+
+            {% if (app.user.id) == (experience.id.id)  %}
+                <a href="{{ path('bon_plan_modifExpClient', { 'idExp': experience.idExp }) }}">Modifier</a>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}

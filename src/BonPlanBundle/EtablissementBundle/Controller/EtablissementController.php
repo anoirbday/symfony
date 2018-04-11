@@ -391,33 +391,41 @@ class EtablissementController extends Controller
         return new Response('Error!', 400);
     }
     public function statAction(){
-        $pieChart=new PieChart();
+        $pieChart1=new PieChart();
         $em = $this->getDoctrine()->getManager();
      //  $classes=$em->getRepository("BonPlanBundle:Etablissement")->CountNbEtabParCategorie();
-      $classes = $em->getRepository("BonPlanBundle:Categorie")->findBy(array('enabled' =>1));
+      $classes1 = $em->getRepository("BonPlanBundle:Categorie")->findBy(array('enabled' =>1));
         $totalCat=0;
-        foreach ($classes as $classe){
+        foreach ($classes1 as $classe){
 
             $totalCat=$totalCat+$classe->getIdCategorie();
         }
-        $data=array();
+        $data1=array();
         $stat=['classe','idCategorie'];
         $nb=0;
-        array_push($data,$stat);
-        foreach ($classes as $classe){
+        array_push($data1,$stat);
+        foreach ($classes1 as $classe){
             $stat=array();
-            $classes2=$em->getRepository("BonPlanBundle:Etablissement")->CountNbEtabParCategorie($classe->getIdCategorie());
-            array_push($stat,$classe->getNomCategorie(),(($classes2*100)/$totalCat));
-            $nb=($classes2*100)/100;
+            $classes3=$em->getRepository("BonPlanBundle:Etablissement")->CountNbEtabParCategorie($classe->getIdCategorie());
+            array_push($stat,$classe->getNomCategorie(),(($classes3*100)/$totalCat));
+            $nb=($classes3*100)/100;
             $stat=[$classe->getNomCategorie(),$nb];
-            array_push($data,$stat);
+            array_push($data1,$stat);
       }
-        $pieChart->getData()->setArrayToDataTable($data);
-        $pieChart->getOptions()->getChartArea()->setHeight(350);
-        $pieChart->getOptions()->getChartArea()->setWidth(600);
+        $pieChart1->getData()->setArrayToDataTable(
+            $data1
+        );
+        $pieChart1->getOptions()->setTitle('Statistique sur le Nombre des établissements par catégorie');
+        $pieChart1->getOptions()->setHeight(500);
+        $pieChart1->getOptions()->setWidth(900);
+        $pieChart1->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart1->getOptions()->getTitleTextStyle()->setColor('#990033');
+        $pieChart1->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart1->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart1->getOptions()->getTitleTextStyle()->setFontSize(20);
 
         return $this->render('EtablissementBundle:etablissement:test.html.twig',array(
-            'piechart' => $pieChart));
+            'piechart1' => $pieChart1));
 
     }
 

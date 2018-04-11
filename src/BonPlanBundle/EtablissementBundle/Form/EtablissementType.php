@@ -23,15 +23,15 @@ class EtablissementType extends AbstractType
     {
         $builder->add('nomEtablissement', TextType::class, array('required'=>true,'attr'   =>  array(
             'class'   => 'form-control','placeholder'=>'Nom de vote établissement' )))->add('idCategorie')->add('adresseEtablissement' ,TextType::class, array('required'=>true,'attr'   =>  array(
-        'class'   => 'form-control','placeholder'=>'Veuillez saisir une adresse complète' )))->add('telephoneEtablissement', NumberType::class, array('required'=>false,'attr'   =>  array(
+        'class'   => 'form-control','placeholder'=>'Veuillez saisir une adresse complète(Avenue,Rue;Ville' )))->add('telephoneEtablissement', NumberType::class, array('required'=>false,'attr'   =>  array(
         'class'   => 'form-control','placeholder'=>'Numéro doit être composé de 8 chiffres' )))->add('ouverture', TimeType::class, array('required'=>true,'attr'   =>  array(
-            'class'   => 'form-control','placeholder'=>'Veuillez saisir vos horaires de travail' )))->add('fermeture', TimeType::class, array('required'=>true,'attr'   =>  array(
-            'class'   => 'form-control','placeholder'=>'Veuillez saisir vos horaires de travail' )))->add('descriptionEtablissement',TextareaType::class, array('attr'   =>  array(
+            'class'   => 'form-control' )))->add('fermeture', TimeType::class, array('required'=>true,'attr'   =>  array(
+            'class'   => 'form-control' )))->add('descriptionEtablissement',TextareaType::class, array('attr'   =>  array(
             'class'   => 'form-control','placeholder'=>'Veuillez saisir une description détaillée' )))
             ->add('photoEtablissement', FileType::class, array('required'=>true,'label' => 'Photo de votre établissement','data_class'=>null,'attr'   =>  array(
                 'class'   => 'form-control')))->add('photoPatente', FileType::class, array('required'=>false,'data_class'=>null,'attr'   =>  array(
                 'class'   => 'form-control')))->add('codePostal', NumberType::class, array('required'=>false,'attr'   =>  array(
-                'class'   => 'form-control','id' => 'code')))->add('budget', ChoiceType::class, array('choices' => array('Faible' => 'Faible', 'Moyen' => 'Moyen', 'Cher' => 'Cher'),
+                'class'   => 'form-control','id' => 'code','placeholder'=>'votre code postal' )))->add('budget', ChoiceType::class, array('choices' => array('Faible' => 'Faible', 'Moyen' => 'Moyen', 'Cher' => 'Cher'),
                 'required' => true,
                 'multiple' => false,'attr'   =>  array(
                     'class'   => 'form-control','placeholder'=>'Veuillez saisir le budget de vote établissement' )))->add('siteWeb' ,TextType::class, array('required'=>true,'attr'   =>  array(

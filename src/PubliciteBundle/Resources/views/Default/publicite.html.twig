@@ -143,6 +143,7 @@
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ path('bon_plan_homepage') }}">Home</a></li>
                         <li class="breadcrumb-item active"><a id="fancybox" href="{{ path('ajouterpublicite') }}"> Ajouter Publicite </a></li>
+                        <li class="breadcrumb-item active"><a href="{{ path('stats' ,{'idUser':app.user.id}) }}"> Statistique </a></li>
                     </ol>
                 </div>
             </div>
@@ -182,7 +183,7 @@
 
                                         <li><a id="fancybox1" class="fancybox1" href="{{ path('update_Pub',{'id':Publicite.idPublicite}) }}" ><i aria-hidden="true"><img width="20" height="20" title="Modifier votre Publicite" style="color: #990033" src="{{ asset('png/512/edit.png') }}"></i></a></li>
                                         &nbsp &nbsp;
-                                        <li> <iframe src="https://www.facebook.com/plugins/share_button.php?href=http://127.0.0.1:8000/BonPlan/proprietaire/accueilprop/list&layout=button_count&size=small&mobile_iframe=true&appId=2052658948344519&width=83&height=20" width="73" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe></li>
+                                        <li> <iframe src="https://www.facebook.com/plugins/share_button.php?href=http://127.0.0.1:8000/BonPlan/proprietaire/list&layout=button_count&size=small&mobile_iframe=true&appId=2052658948344519&width=83&height=20" width="73" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe></li>
 
 
                                     </ul>

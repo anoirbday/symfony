@@ -1,0 +1,4 @@
+annonce_annonce:
+    resource: "@AnnonceBundle/Resources/config/routing/annonce.yml"
+    prefix:   /annonce
+

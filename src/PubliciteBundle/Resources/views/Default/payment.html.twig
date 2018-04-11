@@ -1,4 +1,19 @@
-<center><h2>Veuillez payer pour ajouter votre Publicite</h2>
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.css" />
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.pack.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<center>
+    <br>
+    <br>
+    <br>
+
+
+    <h2>Veuillez payer pour ajouter votre Publicite</h2>
+    <br>
+    <img src="{{ asset('/images/stripe1.png') }}">
+    <br>
+    <br>
+    <br>
 <form action="{{ path('order_checkout') }}" method="POST">
     <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
@@ -9,5 +24,7 @@
             data-locale="auto"
             data-currency="eur">
     </script>
+    <br>
+
 </form>
 </center>
