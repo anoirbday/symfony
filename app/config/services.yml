@@ -60,3 +60,21 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
+    yassine.image_uploader:
+        class: yassineBundle\ImageUpload
+        arguments: ['%images_directory%']
+    yassine.doctrine_image_listener:
+        class: yassineBundle\EventListener\ImageUploadListener
+        arguments: ['@yassine.image_uploader']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+    yassine1.image_uploader:
+        class: yassineBundle\ImageUpload
+        arguments: ['%images_directory%']
+    yassine1.doctrine_image_listener1:
+        class: yassineBundle\ImageUploadListener
+        arguments: ['@yassine.image_uploader']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }

@@ -1,0 +1,15 @@
+produit_index:
+    path:     /produit/
+    defaults: { _controller: yassineBundle:produit:index }
+
+yassine_Rechercheproduit:
+    path:     /Recherche
+    defaults: { _controller: yassineBundle:produit:recherche }
+
+yassine_offre_homepage:
+    path:     /offre/
+    defaults: { _controller: yassineBundle:offre:index }
+
+yassine_excel:
+    path:     /exportToExcel
+    defaults: { _controller: yassineBundle:produit:export }

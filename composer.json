@@ -9,7 +9,9 @@
             "BonPlanBundle\\": "src/BonPlanBundle",
             "EtablissementBundle\\": "src/BonPlanBundle/EtablissementBundle",
             "PubliciteBundle\\": "src/PubliciteBundle",
-            "ExpEvalBundle\\": "src/ExpEvalBundle"
+            "ExpEvalBundle\\": "src/ExpEvalBundle",
+            "yassineBundle\\": "src/yassineBundle"
+
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
@@ -44,8 +46,7 @@
         "yellowskies/qr-code-bundle": "^1.2",
         "knplabs/knp-paginator-bundle": "^2.7",
         "blackknight467/star-rating-bundle": "^2.0"
-
-
+        "egyg33k/csv-bundle": "^1.0"
 
 
 

@@ -4,6 +4,8 @@ namespace BonPlanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use BonPlanBundle;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Produit
  *
@@ -29,9 +31,9 @@ class Produit
     private $nomProduit;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="photo_produit", type="string", length=2000, nullable=false)
+     * @Assert\File(mimeTypes={ "image/jpeg" })
+     * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Ajouter une image du Produit")
      */
     private $photoProduit;
 
@@ -52,6 +54,85 @@ class Produit
      */
     private $idEtablissement;
 
+    /**
+     * @return int
+     */
+    public function getIdProduit()
+    {
+        return $this->idProduit;
+    }
+
+    /**
+     * @param int $idProduit
+     */
+    public function setIdProduit($idProduit)
+    {
+        $this->idProduit = $idProduit;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNomProduit()
+    {
+        return $this->nomProduit;
+    }
+
+    /**
+     * @param string $nomProduit
+     */
+    public function setNomProduit($nomProduit)
+    {
+        $this->nomProduit = $nomProduit;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhotoProduit()
+    {
+        return $this->photoProduit;
+    }
+
+    /**
+     * @param string $photoProduit
+     */
+    public function setPhotoProduit($photoProduit)
+    {
+        $this->photoProduit = $photoProduit;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrixProduit()
+    {
+        return $this->prixProduit;
+    }
+
+    /**
+     * @param float $prixProduit
+     */
+    public function setPrixProduit($prixProduit)
+    {
+        $this->prixProduit = $prixProduit;
+    }
+
+    /**
+     * @return Etablissement
+     */
+    public function getIdEtablissement()
+    {
+        return $this->idEtablissement;
+    }
+
+    /**
+     * @param Etablissement $idEtablissement
+     */
+    public function setIdEtablissement($idEtablissement)
+    {
+        $this->idEtablissement = $idEtablissement;
+    }
 
 }
 

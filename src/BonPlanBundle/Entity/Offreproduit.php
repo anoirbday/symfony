@@ -3,7 +3,9 @@
 namespace BonPlanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use BonPlanBundle;
+use yassineBundle;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Offreproduit
  *
@@ -22,7 +24,7 @@ class Offreproduit
     private $idOp;
 
     /**
-     * @var BonPlanBundle\Entity\Produit
+     * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Produit")
      * @ORM\JoinColumns({
@@ -32,7 +34,7 @@ class Offreproduit
     private $idProduit;
 
     /**
-     * @var BonPlanBundle\Entity\Offre
+     * @var integer
      *
      * @ORM\ManyToOne(targetEntity="Offre")
      * @ORM\JoinColumns({
@@ -40,6 +42,54 @@ class Offreproduit
      * })
      */
     private $idOffre;
+
+    /**
+     * @return int
+     */
+    public function getIdOp()
+    {
+        return $this->idOp;
+    }
+
+    /**
+     * @param int $idOp
+     */
+    public function setIdOp($idOp)
+    {
+        $this->idOp = $idOp;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdProduit()
+    {
+        return $this->idProduit;
+    }
+
+    /**
+     * @param Produit int
+     */
+    public function setIdProduit($idProduit)
+    {
+        $this->idProduit = $idProduit;
+    }
+
+    /**
+     * @return int
+     */
+    public function getIdOffre()
+    {
+        return $this->idOffre;
+    }
+
+    /**
+     * @param Offre int
+     */
+    public function setIdOffre($idOffre)
+    {
+        $this->idOffre = $idOffre;
+    }
 
 
 }
