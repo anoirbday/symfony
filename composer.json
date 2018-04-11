@@ -43,10 +43,10 @@
         "whiteoctober/tcpdf-bundle": "^1.0",
         "yellowskies/qr-code-bundle": "^1.2",
         "knplabs/knp-paginator-bundle": "^2.7",
-        "blackknight467/star-rating-bundle": "^2.0",
-        "cmen/google-charts-bundle": "^2.2",
-        "yellowskies/qr-code-bundle": "^1.2",
-        "yellowskies/qr-code-bundle": "^1.2"
+        "blackknight467/star-rating-bundle": "^2.0"
+
+
+
 
 
     },
