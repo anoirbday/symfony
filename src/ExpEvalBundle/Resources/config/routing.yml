@@ -43,3 +43,6 @@ bon_plan_deleteExpClient:
 bon_plan_topEtab:
     path:     /topEtab
     defaults: { _controller: ExpEvalBundle:Default:topEtab }
+bon_plan_expJson:
+    path:     /rechercheExp/{nomEtablissement}
+    defaults: { _controller: ExpEvalBundle:Experience:rechercheAjax }

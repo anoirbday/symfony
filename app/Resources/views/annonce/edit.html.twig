@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Modifier Annonce</h1>
+    <script src="{{ asset('bundles/ckeditor/ckeditor.js') }}"></script>
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input type="submit" value="Modifier" /> <a href="{{ path('annonce_index') }}">Revenir a la page d'accueil</a>
+    {{ form_end(edit_form) }}
+
+
+
+{% endblock %}

@@ -323,62 +323,8 @@
 <script type="text/javascript" src="{{ asset('js/wow.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/plugin/owl/owl.carousel.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
-<script>
-    $(document).ready(function() {
-        var myCenter = new google.maps.LatLng(36.898392,10.1875433);
 
-        function initialize() {
-            var mapProp = {
-                center: myCenter,
-                zoom: 10,
-                scrollwheel: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("contact_map"), mapProp);
-            var icon = {
-                url: 'images/icon/map_pin.png'
-            };
-            var marker = new google.maps.Marker({
-                position: myCenter,
-                map: map,
-                title: 'Bon Plan',
-                icon: icon
-            });
-            marker.setMap(map);
-            var infowindow = new google.maps.InfoWindow({
-                content: "<span> Bienvenue dans Bon Plan </span>"
-            });
-            google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map, marker);
-            });
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    });
-</script>
-<script>
-    {#{$(document).ready(function(){#}
-    {#$('#insert_form').on('submit',function (event){#}
-    {#event.preventDefault();#}
-    {#if($('#name').val()==""){#}
-    {#alert("Vous devez saisir une catégorie");#}
-    {#}#}
-    {#else {#}
-    {#$.ajax({#}
-    {#method:"POST",#}
-    {#url:"{{ path('bon_plan_categorie') }}",#}
-    {#data:$('#insert_form').serialize(),#}
-    {#success:function (data) {#}
-    {#$('#insert_form')[0].reset();#}
-    {#$('.hm_login_form_overlay').modal('hide');#}
-    {#}#}
-    {#})#}
-    {#}#}
-    {#} )#}
 
-    {#});#}
-    {#}#}
-
-</script>
 <!--map-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNdePPJKYq0ptBV_AFi_4RnmUtMa1ZLFg&amp;libraries=places">
 </script>
@@ -387,26 +333,79 @@
 <script type="text/javascript" src="{{ asset('js/custom.js') }}"></script>
 <script>
     google.maps.event.addDomListener(window, 'load', initialize);
-
+    var myCenter = new google.maps.LatLng(36.898392,10.1875433);
 
     function initialize() {
 
-        var autocomplete = new google.maps.places.Autocomplete(document.getElementById('adresse'));
-        google.maps.event.addListener(autocomplete, 'place_changed', function () {
-            var places= autocomplete.getPlace();
-            var location = places.geometry.location.lat() ;
-            var location2 = places.geometry.location.lng()  ;
-            $('#latitude').val(location);
-            $('#longitude').val(location2);
+        var map = new google.maps.Map(document.getElementById("contact_map"), {
+            center: myCenter,
+            zoom: 10
+        });
 
-            //document.getElementById('r1').innerText=location
-            //document.getElementById('r2').innerHTML = location2
+        var autocomplete = new google.maps.places.Autocomplete(document.getElementById('adresse'));
+        autocomplete.bindTo('bounds', map);
+        var infowindow = new google.maps.InfoWindow({
+            content: "<span> Bienvenue dans Bon Plan </span>"
+        });
+
+        var marker = new google.maps.Marker({
+            position: myCenter,
+            map: map,
+            title: 'Bon Plan'
+        });
+        marker.setMap(map);
+
+        marker.addListener('click', toggleBounce);
+
+
+        google.maps.event.addListener(marker, 'drag', function (event) {
+            document.getElementById('longitude').value = event.latLng.lat();
+            document.getElementById('latitude').value = event.latLng.lng();
 
         });
 
+        google.maps.event.addListener(autocomplete, 'place_changed', function () {
+            infowindow.close();
+            marker.setVisible(false);
+            var places = autocomplete.getPlace();
+            if (places.geometry.viewport) {
+                map.fitBounds(places.geometry.viewport);
 
+            } else {
 
+                map.setCenter(places.geometry.location);
+                map.setZoom(10);  // Why 17? Because it looks good.
 
+            }
+            marker.setPosition(places.geometry.location);
+            marker.setVisible(true);
+
+            var location = places.geometry.location.lat();
+            var location2 = places.geometry.location.lng();
+            $('#latitude').val(location);
+            $('#longitude').val(location2);
+
+            var address = '';
+            if (places.address_components) {
+                address = [
+                    (places.address_components[0] && places.address_components[0].short_name || ''),
+                    (places.address_components[1] && places.address_components[1].short_name || ''),
+                    (places.address_components[2] && places.address_components[2].short_name || '')
+                ].join(' ');
+            }
+
+            infowindow.setContent('<div><strong>' + places.name + '</strong><br>' + address);
+            infowindow.open(map, marker);
+
+        });
+
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
 
     }
 

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <script src="{{ asset('bundles/ckeditor/ckeditor.js') }}"></script>
+    <h1>Annonce creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Ajouter" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('annonce_index') }}">Revenir a la page d'accueil</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,5 +1,8 @@
 <body background="{{ asset('images/choose.jpg') }}">
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.css" />
+<script type="text/javascript" charset="utf-8"></script>
 
 <center><h1>Ajouter Publicite</h1></center>
 
@@ -55,15 +58,10 @@
 
     $(function () {
         $("#button").fancybox({
-            maxWidth    : 800,
-            maxHeight   : 600,
-            fitToView   : false,
-            width       : '50%',
-            height      : '50%',
-            autoSize    : false,
-            closeClick  : false,
-            type        : 'iframe',
-            openEffect  : 'none',
+            "type"		: 	"iframe",
+            "maxWidth"  : 	500,
+            "maxHeight"	: 	300,
+            "autoResize": 	false,
             afterClose: function () {
                 parent.location.reload(true);
 

@@ -31,6 +31,12 @@ class ExperienceRepository extends EntityRepository
     }
 
 
+    public function FindByLetters($string)
+    {
+        $query = $this->getEntityManager()->createQuery("SELECT e FROM ExpEvalBundle:Experience e WHERE e.idEtablissement IN (SELECT et.idEtablissement FROM BonPlanBundle:Etablissement et WHERE et.nomEtablissement LIKE :tit)")
+            ->setParameter('tit','%'.$string.'%');
+        return $query->getResult();
+    }
 
 
 

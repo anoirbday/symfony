@@ -192,7 +192,7 @@ font-size: 16px;" class="username">
                                     {{ form_widget(edit_form) }}
                                     <form method="post" id="form">
 
-                                        <i class="ti-export">
+                                        <i class="ti-export" ><label id="llllllll">Ajouter Les Critères des évaluations </label>
                                         </i>
                                         <br>
                                         <label id="lab1" hidden="hidden">Critère d'évaluation n°1:</label>   <input type="text" id="crit1"  name="crit1" hidden="true"> <br>
@@ -283,7 +283,7 @@ font-size: 16px;" class="username">
 <script>
     $(document).ready(
         function() {
-            $('.ti-export').click(
+            $('#llllllll').click(
                 function(){
                     $('#crit1').show();
                     $('#lab1').show();

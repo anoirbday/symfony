@@ -8,8 +8,10 @@ use ExpEvalBundle\Repository\ExperienceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Experience controller.
@@ -329,4 +331,25 @@ class ExperienceController extends Controller
             ->getForm()
             ;
     }
+
+    public function stockageAction($nomEtablissement){
+        $em = $this->getDoctrine()->getManager();
+        $exps = $em->getRepository("ExpEvalBundle:Experience")->FindByLetters($nomEtablissement);
+
+        return $this->render('@ExpEval/Default/rechercheExp.html.twig',array(
+            "experiences" => $exps,
+        ));
+    }
+
+
+    public function rechercheAjaxAction(Request $request, $nomEtablissement){
+        if($request->isXmlHttpRequest()){
+            $temp = $this->forward('ExpEvalBundle:Experience:stockage',array(
+                'nomEtablissement' => $nomEtablissement
+            ))->getContent();
+            return new JsonResponse($temp);
+        }
+        return new Response('Error!', 400);
+    }
+
 }

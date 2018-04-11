@@ -2,11 +2,14 @@
 
 namespace PubliciteBundle\Controller;
 
+use BonPlanBundle\Entity\Etablissement;
 use BonPlanBundle\Entity\Publicite;
 
+use BonPlanBundle\Entity\User;
 use BonPlanBundle\Repository\EtablissementRepository;
 
 
+use CMEN\GoogleChartsBundle\GoogleCharts\Charts\PieChart;
 use PubliciteBundle\Form\PubliciteForm;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -220,6 +223,76 @@ public function facebookAction()
     public function afterAction(){
         return $this->render('@Publicite/Default/after.html.twig');
     }
+    public function StatistiqueAction(Request $request)
+    {
+        $pieChart = new PieChart();
+        $em= $this->getDoctrine();
+        {  $user = $this->container->get('security.token_storage')->getToken()->getUser();
+
+        $mesetab= $em->getRepository("BonPlanBundle:Etablissement")->findBy(array('id'=>$user));
+        foreach($mesetab as $e)
+        {
+            $id=$e->getIdEtablissement();
+            $classes = $em->getRepository("BonPlanBundle:Publicite")->findBy(array('idEtablissement'=>$e));
+
+        }
+
+        $totalCat=0;
+        foreach ($classes as $classe){
+
+            $totalCat=$totalCat+$classe->getIdPublicite();
+        }
+            $data=array();
+            $stat=['classe','nbrClick'];
+            $nb=0;
+            array_push($data,$stat);
+            foreach ($classes as $classe){
+                $stat=array();
+                $classes2=$em->getRepository("BonPlanBundle:Publicite")->findCount($classe->getIdPublicite());
+                array_push($stat,$classe->getTitre(),(($classes2*100)/$totalCat));
+                $nb=($classes2*100)/100;
+                $stat=[$classe->getTitre(),$nb];
+                array_push($data,$stat);
+            }
+
+
+        }
+        $pieChart->getData()->setArrayToDataTable(
+            $data
+       );
+        $pieChart->getOptions()->setTitle('Statistique sur les Nombres de click sur les Publicites');
+        $pieChart->getOptions()->setHeight(500);
+        $pieChart->getOptions()->setWidth(900);
+        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setColor('#990033');
+        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+        return $this->render('PubliciteBundle:Default:statPub.html.twig', array('piechart' =>
+            $pieChart));
+    }
+//    public function StatistiqueAction(){
+//        $pieChart = new PieChart();
+//        $em = $this->getDoctrine()->getManager();
+//        $pieChart=$em->getRepository("BonPlanBundle:Publicite")->findStat();
+//        $data=array();
+//        $pieChart->getData()->setArrayToDataTable(
+//            $data
+//        );
+//        $pieChart->getOptions()->setTitle('My Daily Activities');
+//        $pieChart->getOptions()->setHeight(500);
+//        $pieChart->getOptions()->setWidth(900);
+//        $pieChart->getOptions()->getTitleTextStyle()->setBold(true);
+//        $pieChart->getOptions()->getTitleTextStyle()->setColor('#009900');
+//        $pieChart->getOptions()->getTitleTextStyle()->setItalic(true);
+//        $pieChart->getOptions()->getTitleTextStyle()->setFontName('Arial');
+//        $pieChart->getOptions()->getTitleTextStyle()->setFontSize(20);
+//
+//
+//        return $this->render('PubliciteBundle:Default:statPub.html.twig', array('piechart' =>
+//            $pieChart));
+//
+//    }
 
 
 

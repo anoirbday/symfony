@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <head> <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
+
+    </head>
+    <h1>liste des Annonces</h1>
+
+
+    <h1>rechercher</h1>
+
+    <form>
+
+        <input id="nom" type="text"  name="nom" placeholder="nom">
+
+    </form>
+<div id="res">
+        {% for annonce in annonces %}
+            {% if annonce.valid == 1 %}
+        <article class="service type-service hentry row one-col-service">
+            <div class="col-lg-6 col-md-7">
+
+                <figure>
+                    <a>
+                        <img src="{{ asset(annonce.photo) }}">
+                    </a>
+                </figure>
+            </div>
+
+            <div class="col-lg-6 col-md-5">
+                <div class="service-contents">
+                    <h3 class="entry-title"><a href="{{ path('annonce_show', { 'id': annonce.id }) }}">{{ annonce.nom }}</a></h3>
+                    <div class="entry-content">
+
+                        <p>{{ annonce.type }}</p>
+
+                        <p>{{ annonce.description | raw}}</p>
+                        {% for rate in rating %}
+                            {% if annonce.id == rate.annonce %}
+                                {{ rate.1|rating(5, "fa-1x")  }}
+                            {% endif %}
+                        {% endfor %}
+
+                    </div>
+
+                            <a class="read-more" href="{{ path('annonce_delete', { 'id': annonce.id }) }}">supprimer</a>
+                            <a class="read-more" href="{{ path('annonce_edit', { 'id': annonce.id }) }}">modifier</a>
+                </div>
+            </div>
+        </article>
+                            {% endif %}
+                            {% endfor %}
+</div>
+                            <a href="{{ path('annonce_new') }}">Ajouter une annonce</a>
+
+    <div class="navigation text-center">
+        {{ knp_pagination_render(annonces) }}
+    </div>
+    <script src="{{ asset('js/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script>
+
+        $('#nom').keyup(function(){
+            var input= $("#nom").val();
+            $.ajax({
+                type: "POST",
+                url: "{{ path('recherche_annonce') }}",
+                data: {'nom': input},
+                success: function (data) {
+
+                    console.log(data);
+
+                    $("#res").html(data);
+
+
+                }
+            });
+
+        });
+
+    </script>
+{% endblock %}

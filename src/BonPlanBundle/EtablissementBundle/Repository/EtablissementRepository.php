@@ -40,7 +40,7 @@ class EtablissementRepository extends \Doctrine\ORM\EntityRepository
     {
         $query = $this->getEntityManager()->createQuery("select count (e.idEtablissement) as nb from BonPlanBundle:Etablissement e WHERE e.enabled=1 AND e.idCategorie=:n  ")
             ->setParameter('n',$id);
-        return $query->getSingleScalarResult();;
+        return $query->getSingleScalarResult();
     }
 
 }

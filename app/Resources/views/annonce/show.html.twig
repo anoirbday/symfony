@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <head> <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
+
+    </head>
+    <h1>Annonce</h1>
+
+
+    <article class="service type-service hentry row one-col-service">
+        <div class="col-lg-6 col-md-7">
+
+            <figure>
+                <a>
+                    <img src="{{ asset(annonce.photo) }}">
+                </a>
+            </figure>
+        </div>
+        <div class="col-lg-6 col-md-5">
+            <div class="service-contents">
+                <h3 class="entry-title"><a href="{{ path('annonce_show', { 'id': annonce.id }) }}">{{ annonce.nom }}</a></h3>
+                <div class="entry-content">
+
+                    <p>{{ annonce.type }}</p>
+
+                    <p>{{ annonce.description | raw }}</p>
+
+                    <div class="controls">
+                        <h5>Donnez une note</h5>
+                        {{ form_widget(form.rating) }}   </div>
+                    {{ form_end(form) }}
+                </div>
+
+                <a class="read-more" href="{{ path('annonce_delete', { 'id': annonce.id }) }}">supprimer</a>
+                <a class="read-more" href="{{ path('annonce_edit', { 'id': annonce.id }) }}">modifier</a>
+            </div>
+        </div>
+    </article>
+    <script src="{{ asset('js/jquery-2.2.3.min.js') }}"></script>
+
+{% endblock %}
