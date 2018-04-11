@@ -1,7 +1,9 @@
 yassine_offre:
     resource: "@yassineBundle/Controller/offreController.php"
     type:     annotation
-
+annonce:
+    resource: "@AnnonceBundle/Resources/config/routing.yml"
+    prefix:   /BonPlan
 yassine_produit:
     resource: "@yassineBundle/Controller/ProduitController.php"
     type:     annotation
@@ -64,3 +66,5 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+ancarebeca_fullcalendar:
+    resource: "@FullCalendarBundle/Resources/config/routing.yml"

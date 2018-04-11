@@ -31,7 +31,10 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
             new ExpEvalBundle\ExpEvalBundle(),
-            new Egyg33k\CsvBundle\Egyg33kCsvBundle()
+            new Egyg33k\CsvBundle\Egyg33kCsvBundle(),
+            new AncaRebeca\FullCalendarBundle\FullCalendarBundle(),
+            new AnnonceBundle\AnnonceBundle(),
+
 
 
 

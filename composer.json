@@ -10,7 +10,9 @@
             "EtablissementBundle\\": "src/BonPlanBundle/EtablissementBundle",
             "PubliciteBundle\\": "src/PubliciteBundle",
             "ExpEvalBundle\\": "src/ExpEvalBundle",
-            "yassineBundle\\": "src/yassineBundle"
+            "yassineBundle\\": "src/yassineBundle",
+            "AnnonceBundle\\": "src/AnnonceBundle"
+
 
         },
         "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
@@ -21,6 +23,8 @@
     },
     "require": {
         "php": ">=5.5.9",
+        "ancarebeca/full-calendar-bundle": "^5.0",
+        "blackknight467/star-rating-bundle": "^2.0",
         "cmen/google-charts-bundle": "^2.2",
         "doctrine/doctrine-bundle": "^1.6",
         "doctrine/orm": "^2.5",
@@ -28,9 +32,11 @@
         "egeloen/google-map-bundle": "^3.0",
         "egeloen/serializer": "^1.0",
         "egeloen/serializer-bundle": "^1.0",
+        "egyg33k/csv-bundle": "^1.0",
         "friendsofsymfony/user-bundle": "~2.0",
         "hackzilla/barcode-bundle": "^2.0",
         "incenteev/composer-parameter-handler": "^2.0",
+        "knplabs/knp-paginator-bundle": "^2.7",
         "php-http/guzzle6-adapter": "^1.1",
         "php-http/message": "^1.6",
         "sensio/distribution-bundle": "^5.0.19",
@@ -43,13 +49,7 @@
         "twig/twig": "^1.0||^2.0",
         "uran1980/fancybox-bundle": "*",
         "whiteoctober/tcpdf-bundle": "^1.0",
-        "yellowskies/qr-code-bundle": "^1.2",
-        "knplabs/knp-paginator-bundle": "^2.7",
-        "blackknight467/star-rating-bundle": "^2.0"
-        "egyg33k/csv-bundle": "^1.0"
-
-
-
+        "yellowskies/qr-code-bundle": "^1.2"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

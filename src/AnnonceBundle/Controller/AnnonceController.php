@@ -3,10 +3,8 @@
 namespace AnnonceBundle\Controller;
 
 use AnnonceBundle\Entity\Annonce;
-use AnnonceBundle\Entity\Rating;
 use AnnonceBundle\Form\RateType;
 
-use blackknight467\StarRatingBundle\Form\RatingType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -97,11 +95,10 @@ class AnnonceController extends Controller
 
 
 
-        $rating = $em->getRepository('AnnonceBundle:Rating')->AVGRating();
 
         return $this->render('annonce/index.html.twig', array(
             'annonces' => $result,
-            'rating' => $rating
+
 
         ));
 

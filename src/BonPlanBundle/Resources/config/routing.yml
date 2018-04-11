@@ -1,3 +1,6 @@
+bon_plan_reservation:
+    resource: "@BonPlanBundle/Resources/config/routing/reservation.yml"
+    prefix:   /reservation
 bon_plan_homepage:
     path:     /index
     defaults: { _controller: BonPlanBundle:Default:index }
