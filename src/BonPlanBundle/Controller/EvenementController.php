@@ -310,6 +310,22 @@ public function UpdateAction(Request $request,$id)
     }
 
 
+    public function stockageAction($nomEvenement){
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository("BonPlanBundle:Evenement")->FindByLetters($nomEvenement);
+        return $this->render('BonPlanBundle:Default:recherche.html.twig',array(
+            "Evenements" => $events,
+        ));
+    }
+    public function rechercheAjaxAction(Request $request, $nomEvenement){
+        if($request->isXmlHttpRequest()){
+            $temp = $this->forward('BonPlanBundle:Evenement:stockage',array(
+                'nomEvenement' => $nomEvenement
+            ))->getContent();
+            return new JsonResponse($temp);
+        }
+        return new Response('Error!', 400);
+    }
 
 
 

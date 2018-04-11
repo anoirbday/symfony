@@ -97,4 +97,6 @@ nb:
 blog2prop:
     path:  /prop2/{id}
     defaults: { _controller:  BonPlanBundle:Evenement:blog2 }
-
+bon_plan_rechercheevents:
+    path:     /rechercheEvents/{nomEvenement}
+    defaults: { _controller: BonPlanBundle:Evenement:rechercheAjax }

@@ -50,28 +50,12 @@
                 <div class="col-lg-8 col-md-8 col-sm-8">
                     <div class="hm_top_login">
                         <ul>
-                            <li><a href="javascript:" class="popup-with-form"><i class="fa fa-user" aria-hidden="true"></i> login</a></li>
-                            <li><a href="javascript:" class="popup-signup-form"><i class="fa fa-pencil" aria-hidden="true"></i> register</a></li>
-                            <li><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i> checkout</a></li>
+                            <li><a href="{{ path("fos_user_security_login") }}" ><i class="fa fa-user" aria-hidden="true"></i> Se connecter</a></li>
+                            <li><a href="{{ path('fos_user_registration_register') }}" ><i class="fa fa-pencil" aria-hidden="true"></i> S'inscrire</a></li>
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-sm-4 pull-right">
-                    <div class="top_usd">
-                        <div class="hm_top_wishlist">
-                            <p><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Wishlist</a></p>
-                        </div>
-                        <div class="hm_top_usd">
-                            <p><a href="javascript:"><i class="fa fa-angle-down" aria-hidden="true"></i> usd</a></p>
-                            <ul class="usd_dropmenu">
-                                <li><a href="#">EUR - Euro</a></li>
-                                <li><a href="#">USD - US Dollar</a></li>
-                                <li><a href="#">GBP - British Pound</a></li>
-                            </ul>
 
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -85,57 +69,23 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="hm_top_search">
-                        <input type="search" name="search" placeholder="Search....">
-                        <span class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></span>
-                    </div>
+
                 </div>
             </div>
         </div>
         <div class="hm_header_overlay"></div>
     </div>
-    <!--menu start-->
-    <div class="hm_menu_wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="hm_menu_wrap">
-                        <nav>
-                            <div class="menu_btn"><span></span><span></span><span></span></div>
-                            <div class="hm_menu">
-                                <ul>
-                                    <li class="dropdown"><a href="{{ path('bon_plan_homepage') }}">home</a>
 
-                                    </li>
-                                    <li><a href="{{ path('bon_plan_about') }}">about</a></li>
-                                    <li><a href="{{ path('bon_plan_service') }}">services</a></li>
-                                    <li class="dropdown"><a href="{{ path('bon_plan_gallery') }}">gallery</a>
-
-                                    </li>
-                                    <li><a href="{{ path('bon_plan_blog') }}">blog</a>
-
-                                    </li>
-                                    <li><a href="{{ path('bon_plan_shop') }}">shop</a>
-
-                                    </li>
-                                    <li class="active dropdown"><a href="{{ path('bon_plan_contact') }}">contact</a></li>
-                                </ul>
-                            </div>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <!--banner start-->
     <div class="hm_bread_wrapper">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <h1>S'inscrire</h1>
+                    <h1>Gestion des comptes</h1>
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ path('bon_plan_homepage') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path('bon_plan_homepage') }}">Accueil</a></li>
                         <li class="breadcrumb-item active">Inscription</li>
+                        <li class="breadcrumb-item active">Authentification</li>
                     </ol>
                 </div>
             </div>
@@ -150,7 +100,7 @@
                 <div class="col-lg-6 col-md-6 padding_center padding_center">
                     <div class="hm_form">
                         <div class="col-lg-10 col-md-12">
-                            <h1>send a message</h1>
+                            <h1>S'inscrire/Se connecter</h1>
                             {#<form class="form-inline">#}
                                 {#<div class="form-group">#}
                                     {#<div class="form-control">#}
@@ -158,6 +108,8 @@
 
                             {% block body %}
                                 {%  block fos_user_content %}
+                                    {{ form_widget(form.dateNaissance,{'attr': {'class': 'form-control'}}) }}
+
                                 {% endblock %}
                             {% endblock %}
                                     {#<input type="text" class="form-control" id="name" placeholder="Name">#}

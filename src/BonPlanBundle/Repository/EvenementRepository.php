@@ -58,4 +58,10 @@ WHERE ev.idEtablissement = et.idEtablissement AND et.idEtablissement = :nom")
             ->setParameter('nom', $nom->getIdEtablissement());
         return $query->getResult();
     }
+    public function FindByLetters($string)
+    {
+        $query = $this->getEntityManager()->createQuery("SELECT e FROM BonPlanBundle:Evenement e WHERE e.nomEvenement like :tit")
+            ->setParameter('tit','%'.$string.'%');
+        return $query->getResult();
+    }
 }

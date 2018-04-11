@@ -199,12 +199,13 @@ class EtablissementController extends Controller
 //      }
         $n = $em->getRepository("BonPlanBundle:Etablissement")->CountNbFavoris($idetab);
 
-
+  $produits= $em->getRepository('BonPlanBundle:Produit')->findBy(array('idEtablissement' => $idetab));
         return $this->render('EtablissementBundle:etablissement:UnEtabClient.html.twig', array(
             'etablissement' => $etablissement,
             'critereEvaluations' => $critereEvaluations,
             'nb'=>$n,
             'Evaluations' => $evaluations,
+            'produits' => $produits,
             'adresse'=>$etablissement->getAdresseEtablissement(),
         ));
     }
@@ -295,7 +296,7 @@ class EtablissementController extends Controller
                 $file2->move(
                     $this->getParameter('brochures_directory'),$fileName2
                 );
-                $etablissement->setPhotoPatente($etablissement->getPhotoPatente());
+                $etablissement->setPhotoPatente($fileName2);
 
 
                 $this->getDoctrine()->getManager()->flush();
@@ -428,5 +429,8 @@ class EtablissementController extends Controller
             'piechart1' => $pieChart1));
 
     }
+
+
+
 
 }

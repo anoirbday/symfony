@@ -46,9 +46,9 @@ class offreController extends Controller
                 array('titreOffre' => $offre->getTitreOffre()));
 
         } else {
-      //      $offre = $em->getRepository("BonPlanBundle:Offre")->findAll();
-            $sqlall='SELECT p
-                    FROM Offre
+            $offre = $em->getRepository("BonPlanBundle:Offre")->findAll();
+         /*   $sqlall='SELECT p
+                    FROM Offre p
                     WHERE p.id_offre=:idetab
                     ';
             $sql = 'SELECT o.titre_offre, o.description_offre, o.date_debut, o.date_fin, o.photo_offre, p.nom_produit
@@ -63,15 +63,15 @@ class offreController extends Controller
                     ';
 
             $stmt = $conn->prepare($sqlall);
-            $stmt->execute(['idetab' => $offre->getId]);
+            $stmt->execute(['idetab' => $offre->getIdOffre()]);
 
 
               return $this->render('offre/indexprop.html.twig', array(
                 'form2' => $Form->createView(), 'offres' => $stmt->fetchAll(), 'off'=>$offre))  ;
-
+*/
         }
         return $this->render('offre/indexprop.html.twig', array(
-            'form2' => $Form->createView(), 'offres' =>$stmt
+            'form2' => $Form->createView(), 'off' =>$offre
         ));
 
     }

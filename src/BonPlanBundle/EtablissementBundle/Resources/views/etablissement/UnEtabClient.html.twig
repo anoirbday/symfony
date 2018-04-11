@@ -150,7 +150,7 @@
                                             {{ critereEvaluations[i].nomCritereEvaluation }}
 
 
-                                            {% for j in 0..Evaluations[i][1] %}
+                                            {% for j in 1..Evaluations[i][1] %}
                                                     <span class="fa fa-star"></span>
                                                 {% endfor %}
                                             <br>
@@ -226,118 +226,19 @@
                                 <div class="owl-carousel owl-theme related_pro_slider">
                                     <div class="item">
                                         <div class="hm_pro_box">
+                                            {% for produit in produits %}
+
                                             <div class="hm_pro_img">
-                                                <img src="{{ asset('images/pro1.jpg') }}" alt="" class="img-responsive">
+                                                <img src="{{ asset('uploads/images/' ~ produit.photoProduit) }}" alt="" class="img-responsive">
                                                 <div class="pro_price_wrap">
-                                                    <span class="pro_price">$89.99/-</span>
-                                                    <a href="#" class="pro_buy"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
+                                                    <span class="pro_price">{{ produit.nomProduit }}</span>
+                                                    <a href="{{ path('produit_show', { 'idProduit': produit.idProduit }) }} " class="pro_buy"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
                                                 </div>
                                             </div>
-                                            <div class="hm_pro_data">
-                                                <h3><a href="#">Showcase Elephant</a></h3>
-                                                <div class="rating">
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </div>
-                                                <p>lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                            </div>
+{% endfor %}
                                         </div>
                                     </div>
-                                    <!--2-->
-                                    <div class="item">
-                                        <div class="hm_pro_box">
-                                            <div class="hm_pro_img">
-                                                <img src="{{ asset('images/pro2.jpg') }}" alt="" class="img-responsive">
-                                                <div class="pro_price_wrap">
-                                                    <span class="pro_price">$85.99/-</span>
-                                                    <a href="#" class="pro_buy"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="hm_pro_data">
-                                                <h3><a href="#">Showcase</a></h3>
-                                                <div class="rating">
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </div>
-                                                <p>lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--3-->
-                                    <div class="item">
-                                        <div class="hm_pro_box">
-                                            <div class="hm_pro_img">
-                                                <img src="{{ asset('images/pro3.jpg') }}" alt="" class="img-responsive">
-                                                <div class="pro_price_wrap">
-                                                    <span class="pro_price">$90.99/-</span>
-                                                    <a href="#" class="pro_buy"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="hm_pro_data">
-                                                <h3><a href="#">Ladies Purse</a></h3>
-                                                <div class="rating">
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </div>
-                                                <p>lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--4-->
-                                    <div class="item">
-                                        <div class="hm_pro_box">
-                                            <div class="hm_pro_img">
-                                                <img src="{{ asset('images/pro4.jpg') }}" alt="" class="img-responsive">
-                                                <div class="pro_price_wrap">
-                                                    <span class="pro_price">$75.99/-</span>
-                                                    <a href="#" class="pro_buy"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="hm_pro_data">
-                                                <h3><a href="#">Wooden Showcase</a></h3>
-                                                <div class="rating">
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </div>
-                                                <p>lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--5-->
-                                    <div class="item">
-                                        <div class="hm_pro_box">
-                                            <div class="hm_pro_img">
-                                                <img src="{{ asset('images/pro5.jpg') }}" alt="" class="img-responsive">
-                                                <div class="pro_price_wrap">
-                                                    <span class="pro_price">$70.99/-</span>
-                                                    <a href="#" class="pro_buy"><i class="fa fa-cart-plus" aria-hidden="true"></i></a>
-                                                </div>
-                                            </div>
-                                            <div class="hm_pro_data">
-                                                <h3><a href="#">Paper Dolls</a></h3>
-                                                <div class="rating">
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                    <span class="fa fa-star"></span>
-                                                </div>
-                                                <p>lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>

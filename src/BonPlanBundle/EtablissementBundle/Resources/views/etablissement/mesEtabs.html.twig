@@ -92,10 +92,10 @@
                             <div class="menu_btn"><span></span><span></span><span></span></div>
                             <div class="hm_menu">
                                 <ul>
-                                    <li class="dropdown"><a href="{{ path('bon_plan_homepage') }}">Accueil</a>
+                                    <li class="active dropdown"><a href="{{ path('bon_plan_homepage') }}">Accueil</a>
 
                                     </li>
-                                    <li class="active dropdown"><a href="">Etablissement</a>
+                                    <li><a href="">Etablissement</a>
                                         <ul class="sub-menu">
                                             <li><a href="{{ path('bon_plan_etablissement2') }}">Mes Etablissements</a></li>
                                             <li><a href="{{ path('bon_plan_etablissement1') }}">Ajouter Etablissement</a></li>
@@ -106,7 +106,10 @@
                                     <li class="dropdown"><a href="{{ path('affiche_publicite') }}">Publicité</a>
 
                                     </li>
-                                    <li class="dropdown"><a href="#">Offre</a>
+                                    <li class="dropdown"><a href="{{ path('offre_index') }}">Offre</a>
+
+                                    </li>
+                                    <li class="dropdown"><a  href="{{ path('produit_index') }}">Produit</a>
 
                                     </li>
                                     <li class="dropdown"><a href="#">Statistique</a>
@@ -121,6 +124,7 @@
             </div>
         </div>
     </div>
+
     <!--banner start-->
     <div class="hm_bread_wrapper">
         <div class="container">

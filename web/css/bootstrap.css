@@ -2524,6 +2524,7 @@ label {
   display: inline-block;
   max-width: 100%;
   margin-bottom: 5px;
+  color: #FFFFFF;
   font-weight: bold;
 }
 input[type="search"] {

@@ -1,51 +1,35 @@
-<script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
-<h1>Recherche DQL des voitures par série</h1>
-{{ form_start(form)}}
-    {{ form_end(form) }}
+{% for Evenement in Evenements %}
+    <div id="all">
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <div class="hm_news_box">
+                <div class="hm_news_img">
+                    <img src="{{ asset('uploads/images/' ~ Evenement.photoEvenement) }}" alt="" class="img-responsive1">
+                    <div class="news_img_overlay"></div>
+                    <div class="overlay_buttons">
+                        <a class="popup-iframe" href="https://www.youtube.com/watch?v=KAQjLTjW-dM"><i class="fa fa-play-circle-o" aria-hidden="true"></i></a>
+                    </div>
+                </div>
 
-<h2>Liste des voitures</h2>
-<div id="div"></div>
+                <div class="hm_news_data">
 
-<script>
+                    <h3><a href="{{ path('bon_plan_blog') }}">{{ Evenement.nomEvenement }}</a></h3>
+                    <ul>
+                        <li><a href="#"><i class="fa fa-calendar" aria-hidden="true"></i> {{ Evenement.dateEvenement|date("m/d/Y") }}</a></li>
+                    </ul>
+                    <ul>  <li><a href="#"><i class="fa fa-beer" aria-hidden="true"></i> {{ Evenement.idEtablissement.getNomEtablissement}}</a></li>
+                    </ul>
+                    {{ Evenement.descriptionEvenement }}
+                    <a href="{{ path('bon_plan_blog2',{'id':Evenement.idEvenement}) }}" class="news_btn">read more</a>
+                    <div class="hm_post_share">
+                        <div class="pull-left tags">
+                            <a class="fanc" id = "fanc" href={{ path('my_app_mail_homepage') }}>reserver mail</a> <a  href="{{  path('pdf_export',{'id':Evenement.idEvenement}) }}">obtenir ticket</a></li></ul>
 
-    $(function(){
-        $('#recherche_evenement_form_nomEvenement').keyup(
-            function () {
-                //Récupération de la série
-                var nom=$('#recherche_evenement_form_nomEvenement').val();
-                //Construction de la requête à solliciter
-                var Data = 'nomEvenement=' + nom;
+                        </div></div></div>
 
-                $.ajax({
-                        //Construction de l'objet XHR avec la méthode POST
-                        type: "POST",
-                        url: "{{ path('recherche_evenement') }}",
-                        data: Data,
-                        //Test sur le succèes de réponse
-                        success: function (data) {
-                            console.log(data);
-                            //Affichage des données récupérés dans un div
-                            $("#div").html(
-                                "<table id='res' border='1'>"+
-                                "<td>Nom</td>"+
-                                "<td>date</td>"+
-                                "<td>description</td></table>");
 
-                            //Parcours
-                            $.each(data, function (k,el) {
-                                $("#affichage").hide();
-                                $("#res").append(
-                                    "<tr>"+
-                                    "<td>"+el.nomEvenement+"</td>"+
-                                    "<td>"+el.dateEvenement+"</td>"+
-                                    "<td>"+ el.descriptionEvenement+ "</td>"+
-                                    "</tr>"
-                                );
-                            })
-                        }
-                    }
-                );
-            }
-        );
-    });
-</script>
+
+
+            </div>
+        </div>
+    </div>
+{% endfor %}
