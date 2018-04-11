@@ -2,6 +2,7 @@
 
 namespace BonPlanBundle\Controller;
 
+use BonPlanBundle\Entity\Reservation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -94,9 +95,51 @@ class DefaultController extends Controller
         $Publicite = $em->getRepository("BonPlanBundle:Publicite")->finddate();
         return $this->render('BonPlanBundle:Default:accueilClient.html.twig',array("Publicites" => $Publicite));
     }
-    public function profileAction()
+    public function profileAction(Request $request)
     {
-        return $this->render('BonPlanBundle:Default:profil.html.twig');
+
+
+        $em=$this->getDoctrine()->getManager();
+        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+            $username = $user->getId();
+        }
+
+        if($request->isXmlHttpRequest()){
+            if($request->get('btnval')!=null)
+            {
+
+                $serializer = new Serializer(array(new ObjectNormalizer()));
+                $testprop=$em->getRepository('BonPlanBundle:Reservation')->find($request->get('test'));
+                $testprop->setChecked(true);
+                $testprop->setValid(true);
+                $em->flush();
+                $voitures=$em->getRepository(Reservation::class)
+                    ->findBy(array('checked'=>false));
+                $data = $serializer->normalize($voitures);
+                return new JsonResponse($data);
+            }
+
+            if($request->get('noval')!=null)
+            {
+                $serializer = new Serializer(array(new ObjectNormalizer()));
+                $testprop=$em->getRepository('BonPlanBundle:Reservation')->find($request->get('test'));
+                $testprop->setChecked(true);
+                $testprop->setValid(false);
+                $em->flush();
+                $voitures=$em->getRepository(Reservation::class)
+                    ->findBy(array('checked'=>false));
+                $data = $serializer->normalize($voitures);
+                return new JsonResponse($data);
+            }
+        }
+
+        $testprop=$em->getRepository('BonPlanBundle:Reservation')->findequi($username);
+        return $this->render('BonPlanBundle:Default:profil.html.twig', array(
+            'res' => $testprop,
+
+        ));
     }
     public function EvenementAdminAction()
     {
@@ -109,5 +152,57 @@ class DefaultController extends Controller
     public function accEtabAction()
     {
         return $this->render('EtablissementBundle:etablissement:mesEtabs.html.twig');
+    }
+    public function EventListAction()
+    {
+        $em=$this->getDoctrine()->getManager();
+
+        $testprop=$em->getRepository('BonPlanBundle:Reservation')->findAll();
+        return $this->render('BonPlanBundle:Default:accueilProp.html.twig', array(
+            'res' => $testprop,
+
+        ));
+    }
+
+    public function loadDataAction()
+    {
+        $em=$this->getDoctrine()->getManager();
+        if( $this->container->get( 'security.authorization_checker' )->isGranted( 'IS_AUTHENTICATED_FULLY' ) )
+        {
+            $user = $this->container->get('security.token_storage')->getToken()->getUser();
+            $username = $user->getId();
+        }
+        $times=$em->getRepository('BonPlanBundle:Reservation')->cal($username);
+        $dd=new Reservation();
+        $dd->getDate();
+
+        //$x=array();
+        /* $it=new Item();
+         $it->setTitle("tt");
+         $it->setStart("2018-01-02");*/
+        //$x=array("title"=>"haw test","start"=>"2018-01-02");
+        // array_push($x, $it);
+        $x=array();
+        foreach ($times  as $i) {
+            $it=new Item();
+            $it->setTitle($i->getOccasion());
+            $it->setStart($i->getDate()->format('Y-m-d'));
+            $it->setTextColor("white");
+            if($i->getOccasion()=="Birthday")
+            {
+                $it->setColor("blue");
+            }else{
+                $it->setColor("red");
+            }
+
+
+            array_push($x, $it);
+
+        }
+
+        //str_replace(array('[', ']'), '', htmlspecialchars(json_encode($result), ENT_NOQUOTES));
+        $response = new JsonResponse($x);
+        return $response->setData(($x));
+        // return $response;
     }
 }

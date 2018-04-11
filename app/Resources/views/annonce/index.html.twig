@@ -40,12 +40,9 @@
                         <p>{{ annonce.type }}</p>
 
                         <p>{{ annonce.description | raw}}</p>
-                        {% for rate in rating %}
-                            {% if annonce.id == rate.annonce %}
-                                {{ rate.1|rating(5, "fa-1x")  }}
-                            {% endif %}
-                        {% endfor %}
 
+
+</div>
                     </div>
 
                             <a class="read-more" href="{{ path('annonce_delete', { 'id': annonce.id }) }}">supprimer</a>

@@ -36,6 +36,9 @@
     <link rel="stylesheet" href="{{ asset('js/plugin/owl/owl.carousel.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" />
     <link rel="stylesheet" href="{{ asset('css/colors/default.css') }}" id="colors" />
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('bundles/fullcalendar/css/fullcalendar/fullcalendar.min.css') }}" />
+    {% endblock %}
 
 </head>
 
@@ -104,7 +107,7 @@
                             <div class="menu_btn"><span></span><span></span><span></span></div>
                             <div class="hm_menu">
                                 <ul>
-                                    <li class="dropdown"><a href="{{ path('bon_plan_homepage') }}">home</a>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_accueilProp') }}">home</a>
 
                                     </li>
                                     <li><a href="{{ path('bon_plan_about') }}">about</a></li>
@@ -118,7 +121,7 @@
                                     <li><a href="{{ path('bon_plan_shop') }}">shop</a>
 
                                     </li>
-                                    <li class="active dropdown"><a href="{{ path('bon_plan_contact') }}">contact</a></li>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_contact') }}">contact</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -128,79 +131,119 @@
         </div>
     </div>
     <!--banner start-->
-    <div class="hm_bread_wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <h1>Se connecter</h1>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{ path('bon_plan_homepage') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Connexion</li>
-                    </ol>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!--contact form wrapper-->
     <div class="contact_form_wrapper">
         <div class="container-fluid">
             <div class="row">
 
-                <div class="col-lg-6 col-md-6 padding_center padding_center">
-
-                    <div class="hm_form">
-
-                        <div class="col-lg-10 col-md-12">
-
-                            <h1>Vos informations</h1>
 
 
-                            <form class="form-inline">
-                                {#<div class="form-group">#}
-                                {#<div class="form-control">#}
 
-                                <div class="fos_user_user_show">
-                                    <p>Nom: {{ app.user.username }}</p>
-                                    <p>E-mail:  {{ app.user.email }}</p>
+
+                <div class="col-lg-10 col-md-12">
+
+
+
+
+                    <form class="form-inline">
+                        {#<div class="form-group">#}
+                        {#<div class="form-control">#}
+
+                        <div class="fos_user_user_show">
+                            <p>Nom: {{ app.user.username }}</p>
+                            <p>E-mail:  {{ app.user.email }}</p>
+                        </div>
+
+                        {# {% block body %}
+                             {%  block fos_user_content %}
+                             {% endblock %}
+                         {% endblock %}#}
+                        {#<input type="text" class="form-control" id="name" placeholder="Name">#}
+                        {#</div>#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                        {#<input type="email" class="form-control" id="email" placeholder="Email">#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                        {#<input type="text" class="form-control" id="number" placeholder="Phone">#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                        {#<input type="text" class="form-control" id="subject" placeholder="Subject">#}
+                        {#</div>#}
+                        {#<div class="form-group textarea">#}
+                        {#<textarea class="form-control" rows="3" id="message" placeholder="Message"></textarea>#}
+                        {#</div>#}
+                        {#<div class="con_btn">#}
+                        {#<a href="javascript:" class="hm_btn submit_frm"> submit</a>#}
+                        {#</div>#}
+
+
+
+
+                        {#<p id="err_msg"></p>#}
+
+                    </form>
+
+                    <div class="con_btn" align="right">
+                        <a href="{{ path('fos_user_change_password') }}" class="hm_btn"> Changer mot de passe</a>
+                    </div>
+                </div>
+                <div class="hm_arrivals_wrapper">
+
+                    <div class="row">
+                        {% block body %}
+                            {% include '@FullCalendar/Calendar/calendar.html.twig' %}
+                        {% endblock %}
+                        <div class="new_pro_inner">
+                            {% for i in res %}
+                                <div class="col-lg-4 col-md-4 col-sm-6" id="valid{{ i.idReservation }}tt" name="no{{ i.idReservation }}tt">
+                                    <div class="new_pro_box">
+                                        <div class="new_pro_img">
+                                            <img src="{% if i.occasion == "birthday" %}
+     http://127.0.0.1/birthday.jpg
+{% elseif i.occasion == "ppp" %}
+   http://127.0.0.1/fiançaille.jpg
+{% else %}
+     http://127.0.0.1/party.jpg
+{% endif %}" alt="" class="img-responsive" />
+                                        </div>
+                                        <div class="new_pro_data">
+                                            <h3><a href="{{ path('bon_plan_shop1') }}">{{ i.occasion }}</a></h3>
+                                            <p>{{ i.message }}</p>
+                                            <span class="pro_price"> Heure : {{ i.heure | date('h:m:s') }} </span><br>
+                                            <span class="pro_price"> Date : {{ i.date | date('m/d/y') }} </span>
+                                            <span class="cart_icon"><a href="{{ path('bon_plan_profile')}}"><i class="fa fa-check" aria-hidden="true" id="valid{{ i.idReservation }}"  name="{{ i.idReservation }}"></i></a></span>
+                                            <br>
+                                            <span class="cart_icon"><a href="{{ path('bon_plan_profile')}}"><i class="fa fa-times" aria-hidden="true" id="no{{ i.idReservation }}"  name="{{ i.idReservation }}"></i></a></span>
+                                        </div>
+                                    </div>
                                 </div>
-
-                               {# {% block body %}
-                                    {%  block fos_user_content %}
-                                    {% endblock %}
-                                {% endblock %}#}
-                                {#<input type="text" class="form-control" id="name" placeholder="Name">#}
-                                {#</div>#}
-                                {#</div>#}
-                                {#<div class="form-group">#}
-                                {#<input type="email" class="form-control" id="email" placeholder="Email">#}
-                                {#</div>#}
-                                {#<div class="form-group">#}
-                                {#<input type="text" class="form-control" id="number" placeholder="Phone">#}
-                                {#</div>#}
-                                {#<div class="form-group">#}
-                                {#<input type="text" class="form-control" id="subject" placeholder="Subject">#}
-                                {#</div>#}
-                                {#<div class="form-group textarea">#}
-                                {#<textarea class="form-control" rows="3" id="message" placeholder="Message"></textarea>#}
-                                {#</div>#}
-                                {#<div class="con_btn">#}
-                                {#<a href="javascript:" class="hm_btn submit_frm"> submit</a>#}
-                                {#</div>#}
-
-
-
-
-                                {#<p id="err_msg"></p>#}
-
-                            </form>
-
-                            <div class="con_btn" align="right">
-                                <a href="{{ path('fos_user_change_password') }}" class="hm_btn"> Changer mot de passe</a>
+                            {% endfor %}
+                            <!--2-->
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <div class="new_pro_box">
+                                    <div class="new_pro_data">
+                                        <h3><a href="{{ path('bon_plan_shop1') }}">Deep fried pomfret.</a></h3>
+                                        <p>orem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+                                        <span class="pro_price">Nombre d'étoiles</span>
+                                        <span class="cart_icon"><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></span>
+                                    </div>
+                                    <div class="new_pro_img">
+                                        <img src="{{ asset('images/new_pro2.jpg') }}" alt="" class="img-responsive" />
+                                    </div>
+                                </div>
                             </div>
+                            <!--3-->
+                            <!--4-->
+                            <!--5-->
+                            <!--6-->
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
@@ -332,6 +375,12 @@
 <script type="text/javascript" src="{{ asset('js/wow.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/plugin/owl/owl.carousel.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('js/jquery.fancybox.min.js') }}"></script>
+{% block javascripts %}
+
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/lib/moment.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('bundles/fullcalendar/js/fullcalendar/fullcalendar.default-settings.js') }}"></script>
+{% endblock %}
 <!--map-->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNdePPJKYq0ptBV_AFi_4RnmUtMa1ZLFg&amp;libraries=places">
 </script>
@@ -369,6 +418,64 @@
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     });
+</script>
+
+<script>
+
+    function formatDate(date) {
+        var d = new Date(),
+            month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+
+        return [year, month, day].join('-');
+    }
+
+    $('[id^=valid]').click(function(event) {
+        event.preventDefault();
+        var x=$(this).attr('id');
+        var DATA =  { 'btnval':true ,'test': $(this).attr('name')};
+        $.ajax({
+            type: "POST",
+            url: "{{ path('bon_plan_profile')}}",
+            data:DATA,
+            success: function (data) {
+                console.log(data);
+                $("#"+x+"tt").hide();
+                //$( "#div" ).html("<table id='res' border='1'></table>");
+
+
+            },
+
+
+        });
+        return false; // for good measure
+    });
+
+    $('[id^=no]').click(function(event) {
+        event.preventDefault();
+        var x=$(this).attr('id');
+        var DATA =  { 'noval':true ,'test': $(this).attr('name')};
+        $.ajax({
+            type: "POST",
+            url: "{{ path('bon_plan_profile')}}",
+            data:DATA,
+            success: function (data) {
+                console.log(data);
+                $("div[name='"+x+"tt']").hide();
+                //$( "#div" ).html("<table id='res' border='1'></table>");
+
+
+            },
+
+
+        });
+        return false; // for good measure
+    });
+
 </script>
 
 </body>
