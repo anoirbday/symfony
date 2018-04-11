@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new AppBundle\AppBundle(),
             new BonPlanBundle\BonPlanBundle(),
+            new yassineBundle\yassineBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Uran1980\FancyBoxBundle\Uran1980FancyBoxBundle(),
             new WhiteOctober\TCPDFBundle\WhiteOctoberTCPDFBundle(),
@@ -30,6 +31,7 @@ class AppKernel extends Kernel
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
             new blackknight467\StarRatingBundle\StarRatingBundle(),
             new ExpEvalBundle\ExpEvalBundle(),
+            new Egyg33k\CsvBundle\Egyg33kCsvBundle()
 
 
 

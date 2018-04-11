@@ -1,0 +1,244 @@
+<html>
+<head>
+    <title>DevBrain - HTML Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="" />
+    <meta name="MobileOptimized" content="320">
+    <!-- favicon links-->
+    <link rel="icon" type="image/icon" href="favicon.png" />
+    <!-- main css -->
+    <link rel="stylesheet" href="{{ asset('css/fonts.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/magnific-popup.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/custom_animation.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/flaticon.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/jquery.fancybox.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('js/plugin/owl/owl.carousel.css') }}" />
+    <!--revolution-->
+
+    <link href="{{ asset('js/plugin/revolution/css/settings.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('js/plugin/revolution/css/layers.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('js/plugin/revolution/css/navigation.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('js/plugin/owl/owl.carousel.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" media="screen" />
+    <link rel="stylesheet" href="{{ asset('css/colors/default.css') }}" id="colors" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+
+
+</head>
+<body>
+
+<!--main wrapper start-->
+<div id="wrapper">
+    <!--top_header start-->
+    <div class="hm_top_info">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="hm_top_login">
+                        <p><b>Bonjour {{ app.user.username }} ! Bienvenue dans BonPlan </b></p>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 pull-right">
+                    <div class="top_usd">
+                        <div class="hm_top_wishlist">
+                            <p><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-cart-plus" aria-hidden="true"></i> Se déconnecter</a></p>
+                        </div>
+
+                        <div class="hm_top_usd">
+                            <p><a href="javascript:"><i class="fa fa-angle-down" aria-hidden="true"></i> Mon profil</a></p>
+                            <ul class="usd_dropmenu">
+                                <li><a href="{{ path('bon_plan_shop') }}">Mes favoris</a></li>
+                                <li><a href="#">Mes expériences</a></li>
+                                <li><a href="{{ path ('bon_plan_profile') }}" >Mon profil </a></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!--Header start-->
+    <div class="hm_header_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-6">
+                    <div class="hm_logo">
+                        <a href="{{ path('bon_plan_homepage') }}"><img src="{{ asset('images/logo.png') }}" alt="" class="img-responsive"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hm_header_overlay"></div>
+    </div>
+    <!--menu start-->
+    <div class="hm_menu_wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="hm_menu_wrap">
+                        <nav>
+                            <div class="menu_btn"><span></span><span></span><span></span></div>
+                            <div class="hm_menu">
+                                <ul>
+                                    <li class="active dropdown"><a href="{{ path('bon_plan_homepage') }}">Accueil</a>
+
+                                    </li>
+                                    <li><a href="{{ path('bon_plan_etablissement5') }}">Etablissement</a></li>
+                                    <li><a href="{{ path('List_Client') }}">Evénement</a></li>
+                                    <li class="dropdown"><a href="{{ path('offre_index') }}">Offre</a>
+
+                                    </li>
+                                    <li class="dropdown"><a  href="{{ path('produit_index') }}">Produit</a>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_filClient') }}">Actualité</a></li>
+                                    <li><a href="{{ path('bon_plan_contact') }}">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% block body %}
+</div>
+<div class="hm_news_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="hm_news_inner hm_blogs">
+
+            <h1>Offre</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idoffre</th>
+                <td>{{ offre.idOffre }}</td>
+            </tr>
+            <tr>
+                <th>Titreoffre</th>
+                <td>{{ offre.titreOffre }}</td>
+            </tr>
+            <tr>
+                <th>Descriptionoffre</th>
+                <td>{{ offre.descriptionOffre }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{% if offre.dateDebut %}{{ offre.dateDebut|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{% if offre.dateFin %}{{ offre.dateFin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Photo Offre</th>
+                <td><img src="{{ asset('uploads/images/' ~ offre.photoOffre) }}" height="100px" width="250px"></td>
+            </tr>
+            <tr>
+                <th>Nombre like</th>
+                <td>{{ offre.nombreLike }}</td>
+            </tr>
+            <tr>
+                <th>Nombredislike</th>
+                <td>{{ offre.nombreDislike }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <form action="{{ path('offre_index') }}">
+            <input type="submit" value="Back to the list" />
+        </form>
+    </ul>
+    <ul>
+        <form action="{{ path('offre_edit', { 'idOffre': offre.idOffre }) }}">
+            <input type="submit" value="Edit" />
+        </form>
+    </ul>
+    <ul>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+
+    </ul>
+{% endblock %}
+
+<!--footer start-->
+<div class="hm_footer_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="hm_footer_box">
+                    <img src="{{ asset('images/logo.png') }}" alt="" class="img-responsive">
+                    <p class="footer_about_para">Keep calm and hang out with friends</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="hm_footer_box">
+                    <h3 class="footer_heading">Lien</h3>
+                    <ul>
+                        <li><a href="{{ path('bon_plan_homepage') }}">Accueil</a></li>
+                        <li><a href="{{ path('bon_plan_shop') }}">shop</a></li>
+                        <li><a href="404.html">404 page</a></li>
+                        <li><a href="javascript:">login</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6">
+                <div class="hm_footer_box hm_footer_contact">
+                    <h3 class="footer_heading">Nos informations</h3>
+                    <ul>
+                        <li><span class="footer_icon"><i class="fa fa-map-marker" aria-hidden="true"></i> </span>
+                            <p class="foo_con_para">Z.I. Chotrana II B.P. 160 Pôle Technologique El Ghazela - Ariana 2083</p>
+                        </li>
+                        <li><span class="footer_icon"><i class="fa fa-phone" aria-hidden="true"></i> </span>
+                            <p class="foo_con_para">+216 70 250 000</p>
+                        </li>
+                        <li><a href="mailto:nadia.khemakhem@esprit.tn"><span class="footer_icon"><i class="fa fa-envelope" aria-hidden="true"></i> </span><p class="foo_con_para">BonPlan@gmail.com</p></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--bottom footer start-->
+<div class="hm_bottom_footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <p>Copyrights &copy; 2018 All Rights Reserved by Himanshusofttech</p>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <ul class="footer_so_icons">
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

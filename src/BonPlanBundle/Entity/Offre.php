@@ -4,6 +4,8 @@ namespace BonPlanBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use BonPlanBundle;
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Offre
  *
@@ -50,8 +52,8 @@ class Offre
     private $dateFin;
 
     /**
+     * @Assert\File(mimeTypes={ "image/jpeg" , "image/png"})
      * @var string
-     *
      * @ORM\Column(name="photo_offre", type="string", length=2000, nullable=false)
      */
     private $photoOffre;
@@ -79,6 +81,150 @@ class Offre
      * })
      */
     private $idEtablissement;
+
+    /**
+     * @return int
+     */
+    public function getIdOffre()
+    {
+        return $this->idOffre;
+    }
+
+    /**
+     * @param int $idOffre
+     */
+    public function setIdOffre($idOffre)
+    {
+        $this->idOffre = $idOffre;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitreOffre()
+    {
+        return $this->titreOffre;
+    }
+
+    /**
+     * @param string $titreOffre
+     */
+    public function setTitreOffre($titreOffre)
+    {
+        $this->titreOffre = $titreOffre;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescriptionOffre()
+    {
+        return $this->descriptionOffre;
+    }
+
+    /**
+     * @param string $descriptionOffre
+     */
+    public function setDescriptionOffre($descriptionOffre)
+    {
+        $this->descriptionOffre = $descriptionOffre;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateDebut()
+    {
+        return $this->dateDebut;
+    }
+
+    /**
+     * @param \DateTime $dateDebut
+     */
+    public function setDateDebut($dateDebut)
+    {
+        $this->dateDebut = $dateDebut;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateFin()
+    {
+        return $this->dateFin;
+    }
+
+    /**
+     * @param \DateTime $dateFin
+     */
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhotoOffre()
+    {
+        return $this->photoOffre;
+    }
+
+    /**
+     * @param string $photoOffre
+     */
+    public function setPhotoOffre($photoOffre)
+    {
+        $this->photoOffre = $photoOffre;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNombreLike()
+    {
+        return $this->nombreLike;
+    }
+
+    /**
+     * @param int $nombreLike
+     */
+    public function setNombreLike($nombreLike)
+    {
+        $this->nombreLike = $nombreLike;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNombreDislike()
+    {
+        return $this->nombreDislike;
+    }
+
+    /**
+     * @param int $nombreDislike
+     */
+    public function setNombreDislike($nombreDislike)
+    {
+        $this->nombreDislike = $nombreDislike;
+    }
+
+    /**
+     * @return Etablissement
+     */
+    public function getIdEtablissement()
+    {
+        return $this->idEtablissement;
+    }
+
+    /**
+     * @param Etablissement $idEtablissement
+     */
+    public function setIdEtablissement($idEtablissement)
+    {
+        $this->idEtablissement = $idEtablissement;
+    }
 
 
 }

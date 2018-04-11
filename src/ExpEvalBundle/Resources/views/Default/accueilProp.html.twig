@@ -90,9 +90,15 @@
                                         <li class="active dropdown"><a href="{{ path('bon_plan_homepage') }}">Accueil</a>
 
                                         </li>
-                                        <li><a href="#">Etablissement</a></li>
-                                        <li><a href="#">Evénement</a></li>
-                                        <li class="dropdown"><a href="#">Publicité</a>
+                                        <li><a href="">Etablissement</a>
+                                            <ul class="sub-menu">
+                                                <li><a href="{{ path('bon_plan_etablissement2') }}">Mes Etablissements</a></li>
+                                                <li><a href="{{ path('bon_plan_etablissement1') }}">Ajouter Etablissement</a></li>
+
+                                            </ul>
+                                        </li>
+                                        <li><a href="{{ path('bon_plan_blog') }}">Evénement</a></li>
+                                        <li class="dropdown"><a href="{{ path('affiche_publicite') }}">Publicité</a>
 
                                         </li>
                                         <li class="dropdown"><a href="#">Offre</a>
@@ -110,6 +116,7 @@
                 </div>
             </div>
         </div>
+
         <!--banner start-->
         <div class="hm_banner_wrapper">
             <div id="rev_slider_1068_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-alias="levano4export" data-source="gallery" style="background-color:transparent;">

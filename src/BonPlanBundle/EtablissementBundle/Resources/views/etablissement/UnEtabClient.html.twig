@@ -102,11 +102,7 @@
                                     <li><a href="#">Evénement</a></li>
                                     <li class="dropdown"><a href="#">Publicité</a>
 
-                                    </li>
-                                    <li class="dropdown"><a href="#">Offre</a>
-
-                                    </li>
-                                    <li class="dropdown"><a href="#">Statistique</a>
+                                    </li><li class="dropdown"><a href="#">Statistique</a>
 
                                     </li>
 
@@ -361,21 +357,17 @@
                                 {{ etablissement.Budget }}                             </div>
                         </div>
                         <!--blog categories-->
-                        <div class="sidebar-widget widget_categories">
+
+                        <!--product tags-->
+                        <div class="sidebar-widget sidebar_tags">
                             <div class="sidebar-title">
-                                <h2>Menu</h2>
+                                <h2>Nos Offres</h2>
                             </div>
                             <ul>
-                                <li><a href="{{ path('bon_plan_homepage') }}">Accueil <span class="cat_no"></span></a></li>
-                                <li><a href="{{ path('bon_plan_etablissement5') }}">Etablissement <span class="cat_no"></span></a></li>
-                                <li><a href="#">Evenement <span class="cat_no"></span></a></li>
-                                <li><a href="#">Offre <span class="cat_no"></span></a></li>
-                                <li><a href="#">Publicité <span class="cat_no"></span></a></li>
-                                <li><a href="#">Statistique <span class="cat_no"></span></a></li>
+                                <li><a href="{{ path('offre_index_client') }}">Afficher offre</a></li>
 
                             </ul>
                         </div>
-
 
                     </div>
                 </div>
