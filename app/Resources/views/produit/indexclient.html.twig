@@ -122,7 +122,7 @@
         <div class="row">
             <div class="hm_news_inner hm_blogs">
 
-                <h1>Produits list</h1>
+                <h1>Liste des Produits</h1>
                 {{ form(form1) }}
                 <table class="ui compact sortable table">
                     <thead>
@@ -135,20 +135,13 @@
                     </thead>
                     <tbody>
                     {% for produit in produits %}
-                        <tr>
+                    {% if (app.user.id) == (produit.idEtablissement.id.id) %}
+
+                    <tr>
                             <td>{{ produit.nomProduit }}</td>
                             <td> <img src="{{ asset('uploads/images/' ~ produit.photoProduit) }}" height="100px" width="250px"></td>
                             <td>{{ produit.prixProduit }} DT</td>
-                            <td>
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('produit_show', { 'idProduit': produit.idProduit }) }}">show</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('produit_edit', { 'idProduit': produit.idProduit }) }}">edit</a>
-                                    </li>
-                                </ul>
-                            </td>
+
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -156,10 +149,11 @@
 
 
 
+                {% endif %}
 
                 {% endblock %}
 
-            </div></div></div></div></div>
+            </div></div></div></div>
     <!--footer start-->
     <div class="hm_footer_wrapper">
         <div class="container">

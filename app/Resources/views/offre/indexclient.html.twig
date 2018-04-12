@@ -123,41 +123,42 @@
                 <div class="hm_news_inner hm_blogs">
 
 
-    <h1>Offres list</h1>
-{{ form(form2) }}
-<table class="ui compact sortable table">
-    <thead>
-    <tr bgcolor="#980033" style="color: #FEA571 ">
-        <th>Titre Offre</th>
-        <th>Description Offre</th>
-        <th>Date Debut</th>
-        <th>Date Fin</th>
-        <th>Photo Offre</th>
-        <th>Produits</th>
-    </tr>
-    </thead>
+                    <h1>Liste des Offres</h1>
+                    {{ form(form2) }}
+                    <table class="ui compact sortable table">
+                        <thead>
+                        <tr bgcolor="#980033" style="color: #FEA571 ">
+                            <th>Titre Offre</th>
+                            <th>Description Offre</th>
+                            <th>Date Debut</th>
+                            <th>Date Fin</th>
+                            <th>Photo Offre</th>
+                            <th>Produits</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for offre in offres %}
+
+                        <tr>
+                                <td>{{ offre.titreOffre }}</td>
+                                <td>{{ offre.descriptionOffre }}</td>
+                                <td>{% if offre.dateDebut %}{{ offre.dateDebut|date('Y-m-d') }}{% endif %}</td>
+                                <td>{% if offre.dateFin %}{{ offre.dateFin|date('Y-m-d') }}{% endif %}</td>
+                                <td><img src="{{ asset('uploads/images/' ~ offre.photoOffre) }}" height="100px" width="250px"></td>
+
+                                <td>PRODUITS</td>
 
 
-    {% for offre in offres %}
-        <tr>
-            <td>{{ offre.titreOffre }}</td>
-            <td>{{ offre.descriptionOffre }}</td>
-            <td>{% if offre.dateDebut %}{{ offre.dateDebut|date('Y-m-d') }}{% endif %}</td>
-            <td>{% if offre.dateFin %}{{ offre.dateFin|date('Y-m-d') }}{% endif %}</td>
-            <td><img src="{{ asset('uploads/images/' ~ offre.photoOffre) }}" height="100px" width="250px"></td>
+                            </tr>
 
-            <td>PRODUITS</td>
-
-
-        </tr>
-
-    {% endfor %}
+                        {% endfor %}
 
 
 
-    {% endblock %}
-</table>
-                </div></div></div></div></div>
+                        {% endblock %}
+
+                    </table>
+                </div></div></div></div>
     <!--footer start-->
     <div class="hm_footer_wrapper">
         <div class="container">

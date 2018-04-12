@@ -125,44 +125,45 @@
         <div class="row">
             <div class="hm_news_inner hm_blogs">
 
-            <h1>Produit</h1>
+                <h1>Produit</h1>
 
-    <table class="ui compact sortable table">
-        <tbody>
-            <tr>
-                <th>Nom Produit</th>
-                <td>{{ produit.nomProduit }}</td>
-            </tr>
-            <tr>
-                <th>Photo Produit</th>
-                <td> <img src="{{ asset('uploads/images/' ~ produit.photoProduit) }}" height="100px" width="250px"></td>
-            </tr>
-            <tr>
-                <th>Prix Produit</th>
-                <td>{{ produit.prixProduit }} DT</td>
-            </tr>
-        </tbody>
-    </table>
+                <table class="ui compact sortable table">
+                    <tbody>
+                    <tr>
+                        <th>Nom Produit</th>
+                        <td>{{ produit.nomProduit }}</td>
+                    </tr>
+                    <tr>
+                        <th>Photo Produit</th>
+                        <td> <img src="{{ asset('uploads/images/' ~ produit.photoProduit) }}" height="100px" width="250px"></td>
+                    </tr>
+                    <tr>
+                        <th>Prix Produit</th>
+                        <td>{{ produit.prixProduit }} DT</td>
+                    </tr>
+                    </tbody>
+                </table>
 
-    <ul>
-        <form action="{{ path('produit_index') }}">
-            <input type="submit" value="Back to the list" />
-        </form>
-    </ul>
-        <ul>
-            <form action="{{ path('produit_edit', { 'idProduit': produit.idProduit }) }}">
-                <input type="submit" value="Edit" />
-            </form>
-        </ul>
-    <ul>
+                <ul>
+                    <form action="{{ path('produit_index') }}">
+                        <input type="submit" value="Back to the list" />
+                    </form>
+                </ul>
+                <ul>
+                    <form action="{{ path('produit_edit', { 'idProduit': produit.idProduit }) }}">
+                        <input type="submit" value="Edit" />
+                    </form>
+                </ul>
+                <ul>
 
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
 
-    </ul>
-{% endblock %}
-</div></div></div></div></div>
+                </ul>
+                {% endblock %}
+
+            </div></div></div></div></div>
 <!--footer start-->
 <div class="hm_footer_wrapper">
     <div class="container">

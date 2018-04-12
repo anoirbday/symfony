@@ -127,39 +127,28 @@
 
             <h1>Offre</h1>
 
-    <table>
+    <table class="ui compact sortable table">
         <tbody>
+
             <tr>
-                <th>Idoffre</th>
-                <td>{{ offre.idOffre }}</td>
-            </tr>
-            <tr>
-                <th>Titreoffre</th>
+                <th>Titre Offre</th>
                 <td>{{ offre.titreOffre }}</td>
             </tr>
             <tr>
-                <th>Descriptionoffre</th>
+                <th>Description Offre</th>
                 <td>{{ offre.descriptionOffre }}</td>
             </tr>
             <tr>
-                <th>Datedebut</th>
+                <th>Date Debut</th>
                 <td>{% if offre.dateDebut %}{{ offre.dateDebut|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Datefin</th>
+                <th>Date Fin</th>
                 <td>{% if offre.dateFin %}{{ offre.dateFin|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
                 <th>Photo Offre</th>
                 <td><img src="{{ asset('uploads/images/' ~ offre.photoOffre) }}" height="100px" width="250px"></td>
-            </tr>
-            <tr>
-                <th>Nombre like</th>
-                <td>{{ offre.nombreLike }}</td>
-            </tr>
-            <tr>
-                <th>Nombredislike</th>
-                <td>{{ offre.nombreDislike }}</td>
             </tr>
         </tbody>
     </table>
@@ -170,7 +159,7 @@
         </form>
     </ul>
     <ul>
-        <form action="{{ path('offre_edit', { 'idOffre': offre.idOffre }) }}">
+        <form action="{{ path('offre_edit', { 'idOffre': offre.idOffre }) }}    ">
             <input type="submit" value="Edit" />
         </form>
     </ul>
