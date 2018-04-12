@@ -25,10 +25,10 @@ class offreController extends Controller
      */
     public function indexAction(Request $request)
     {
-         $conn = $this->container->get('doctrine')->getEntityManager()->getConnection();
+        $conn = $this->container->get('doctrine')->getEntityManager()->getConnection();
 
 
-
+        $stmt=Request::class;
 
         $offre = new Offre();
         $em = $this->getDoctrine()->getManager();
@@ -39,7 +39,7 @@ class offreController extends Controller
 
 
         if ($Form->isValid())
-        //if ($Form->isSubmitted() && false === $Form->isValid())
+            //if ($Form->isSubmitted() && false === $Form->isValid())
         {
 
             $offre = $em->getRepository("BonPlanBundle:Offre")->findBy(
@@ -47,10 +47,7 @@ class offreController extends Controller
 
         } else {
             $offre = $em->getRepository("BonPlanBundle:Offre")->findAll();
-         /*   $sqlall='SELECT p
-                    FROM Offre p
-                    WHERE p.id_offre=:idetab
-                    ';
+
             $sql = 'SELECT o.titre_offre, o.description_offre, o.date_debut, o.date_fin, o.photo_offre, p.nom_produit
                     FROM Offreproduit op
                     
@@ -62,16 +59,17 @@ class offreController extends Controller
                     
                     ';
 
-            $stmt = $conn->prepare($sqlall);
-            $stmt->execute(['idetab' => $offre->getIdOffre()]);
+            $stmt = $conn->prepare($sql);
+            $stmt->execute();
 
 
-              return $this->render('offre/indexprop.html.twig', array(
+
+            return $this->render('offre/indexprop.html.twig', array(
                 'form2' => $Form->createView(), 'offres' => $stmt->fetchAll(), 'off'=>$offre))  ;
-*/
+
         }
         return $this->render('offre/indexprop.html.twig', array(
-            'form2' => $Form->createView(), 'off' =>$offre
+            'form2' => $Form->createView(), 'off' =>$offre, 'offres'=>$stmt
         ));
 
     }
@@ -103,20 +101,20 @@ class offreController extends Controller
                 array('titreOffre' => $offre->getTitreOffre()));
 
         } else {
-           // $offre = $em->getRepository("BonPlanBundle:Offre")->findAll();
-            $sqlall='SELECT o
-                    FROM BonPlanBundle:Offre o
-                    WHERE o.id_offre LIKE :idetab
-                    ';
+            $offre = $em->getRepository("BonPlanBundle:Offre")->findAll();
+            /*       $sqlall='SELECT o
+                           FROM BonPlanBundle:Offre o
+                           WHERE o.id_offre LIKE :idetab
+                           ';
 
-            $stmt = $conn->prepare($sqlall);
-            $stmt->execute(['idetab' => $offre->getIdEtablissement()]);
-
+                   $stmt = $conn->prepare($sqlall);
+                   $stmt->execute(['idetab' => $offre->getIdEtablissement()]);
+       */
 
         }
 
         return $this->render('offre/indexclient.html.twig', array(
-            'form2' => $Form->createView(), 'offres' => $stmt
+            'form2' => $Form->createView(), 'offres' => $offre
         ));
     }
 
@@ -143,29 +141,31 @@ class offreController extends Controller
             $em->persist($offre);
             $em->flush();
             $em2 = $this->getDoctrine()->getManager();
-         //  $offre2->setIdOffre(5555);
-        //    $prdt->setIdProduit(66666);
-         //   $offreprod = new Offreproduit();
-         //   $offreprod->setIdOffre(55555);
-           // $offreprod->setIdProduit(666666);
-          //  $em2->persist($offreprod);
-           // $em2->flush();
+            //  $offre2->setIdOffre(5555);
+            //    $prdt->setIdProduit(66666);
+            //   $offreprod = new Offreproduit();
+            //   $offreprod->setIdOffre(55555);
+            // $offreprod->setIdProduit(666666);
+            //  $em2->persist($offreprod);
+            // $em2->flush();
 
             $conn = $this->container->get('doctrine')->getEntityManager()->getConnection();
 
             $cbs=$request->get('cb');
 
-          //  $k=$_GET('cb');
-            $n=count($cbs);
-            for ($i=0;$i<$n;$i++){
+            //  $k=$_GET('cb');
 
-            $sql = 'INSERT INTO offreproduit(id_offre, id_produit) VALUES (:ido,:idp)';
-            $stmt = $conn->prepare($sql);
-            $stmt->execute(['ido' => $offre->getIdOffre(), 'idp' => $i]);
-            }
+            $n=count($cbs);
+            /*  for ($i=0;$i<3;$i++){
+
+                  $sql = 'INSERT INTO offreproduit(id_offre, id_produit) VALUES (:ido,:idp)';
+                  $stmt = $conn->prepare($sql);
+                  $stmt->execute(['ido' => $offre->getIdOffre(), 'idp' => $i]);
+              }*/
+
             return $this->redirectToRoute('offre_show', array('idOffre' => $offre->getIdoffre()));
 
-          //  $prdt->getIdProduit()
+            //  $prdt->getIdProduit()
         }
 
         return $this->render('offre/new.html.twig', array(
@@ -249,6 +249,6 @@ class offreController extends Controller
             ->setAction($this->generateUrl('offre_delete', array('idOffre' => $offre->getIdoffre())))
             ->setMethod('DELETE')
             ->getForm()
-        ;
+            ;
     }
 }

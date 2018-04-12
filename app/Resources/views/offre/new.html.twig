@@ -125,52 +125,123 @@
         <div class="row">
             <div class="hm_news_inner hm_blogs">
 
-            <h1>Offre creation</h1>
-<table>
- <td>   {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
+                <h1>Offre creation</h1>
+                {{ form_start(form) }}
 
- </td>
+                <table>
+                    <table>
+                        <tr>
+                            <td> <font color="#a9a9a9"><h3>Titre de l'Offre</h3></font></td>
+                            <td aria-placeholder="Titre Offre">{{ form_widget(form.titreOffre) }}</td>
+                        </tr>
+                        <tr><td><BR></td></tr>
+                        <tr>
+                            <td> <font color="#a9a9a9"><h3>Description de l'Offre</h3></font></td>
+                            <td aria-placeholder="Description Offre">{{ form_widget(form.descriptionOffre) }}</td>
+                        </tr>
+                        <tr><td><BR></td></tr>
+                        <tr>
+                            <td> <font color="#a9a9a9"><h3>Dade Debut de l'Offre</h3></font></td>
+                            <td>{{ form_widget(form.dateDebut) }}</td>
+                        </tr>
+                        <tr><td><BR></td></tr>
+                        <tr>
+                            <td> <font color="#a9a9a9"><h3>Dade Fin de l'Offre</h3></font></td>
+                            <td>{{ form_widget(form.dateFin) }}</td>
+                        </tr>
+                        <tr><td><BR></td></tr>
+                        <tr>
+                            <td> <font color="#a9a9a9"><h3>Photo de l'Offre</h3></font></td>
+                            <td>{{ form_widget(form.photoOffre) }}</td>
+                        </tr>
+                        <tr><td><BR></td></tr>
+                        <tr>
+                            <td> <font color="#a9a9a9"><h3>L'Etablissement</h3></font></td>
+                            <td>{{ form_widget(form.idEtablissement) }}</td>
+                        </tr>
+                        <tr><td><BR></td></tr>
 
-    <td>
-
-        <h1>Produits list</h1>
-        <table class="ui compact sortable table" o>
-            <thead>
-            <tr bgcolor="#980033" style="color: #FEA571 ">
-                <th>Nom Produit</th>
-                <th>Photo Produit</th>
-                <th>Prix Produit</th>
-                <th>Selectionner Produit</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for produit in produits %}
-                <tr>
-                    <td>{{ produit.nomProduit }}</td>
-                    <td> <img src="{{ asset('uploads/images/' ~ produit.photoProduit) }}" height="100px" width="250px"></td>
-                    <td>{{ produit.prixProduit }} DT</td>
-                    <td><input type="checkbox" value="{{ produit.idProduit }}" name="cb[]"></td>
-
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </td>
-
-
-
-</table>
-    <ul>
-        <li>
-            <a href="{{ path('offre_index') }}">Back to the list</a>
-        </li>
-    </ul>
+                    </table>
 
 
-{% endblock %}
+
+
+
+
+                        <td>
+
+                            <h1>Produits list</h1>
+                            <table class="ui compact sortable table" o>
+                                <thead>
+                                <tr bgcolor="#980033" style="color: #FEA571 ">
+                                    <th>Nom Produit</th>
+                                    <th>Photo Produit</th>
+                                    <th>Prix Produit</th>
+                                    <th>Selectionner Produit</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for produit in produits %}
+                                {% if (app.user.id) == (produit.idEtablissement.id.id) %}
+                                <tr>
+                                        <td>{{ produit.nomProduit }}</td>
+                                        <td> <img src="{{ asset('uploads/images/' ~ produit.photoProduit) }}" height="100px" width="250px"></td>
+                                        <td>{{ produit.prixProduit }} DT</td>
+                                        <td><input type="checkbox" value="{{ produit.idProduit }}" name="cb[]"></td>
+                   {#     <td><input type="checkbox" value="{{ produit.idProduit }}" name="prod{{ loop.index }}"></td>#}
+
+                                    </tr>
+                               {% endif %}
+                                {% endfor %}
+                                </tbody>
+
+                        </td>
+
+
+                        <tr>
+                            <td> <font color="#a9a9a9"><h3>Valider l'Ajout</h3></font></td>
+                            <td><input type="submit" value="Ajouter" /></td>
+                        </tr>
+                        <tr><td><BR></td></tr>
+                    </table>
+                            {{ form_end(form) }}
+
+                            <ul>
+                        <form action="{{ path('offre_index') }}">
+                            <input type="submit" value="Retourner vers la liste des offres" />
+                        </form>
+                    </ul>
+                    </tr>
+
+                </table>
+                {#--------------------------------
+                    <input type="button" onclick="getProdIdCb()">
+
+                <ul>
+                    <li>
+                        <a href="{{ path('offre_index') }}">Back to the list</a>
+                    </li>
+                </ul>
+
+                <script>
+
+                    function getProdIdCb() {
+                        var produit=document.querySelectorAll('input[name^="prod"]');
+                        var ids = "q";
+                        for (var i=0; i<produit.length; i++){
+                            if (produit[i].checked){
+
+                                var ids = ids + produit[i].value;
+                            }
+                        }
+                        alert(ids);
+                    }
+
+                </script>
+                --------------------------------#}
+                {% endblock %}
+
+
 
 <!--footer start-->
 <div class="hm_footer_wrapper">

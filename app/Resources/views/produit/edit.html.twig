@@ -125,25 +125,60 @@
         <div class="row">
             <div class="hm_news_inner hm_blogs">
 
-            <h1>Produit edit</h1>
+                <h1>Produit edit</h1>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('produit_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
-{% endblock %}
-</div></div></div></div></div>
+                {{ form_start(edit_form) }}
+
+                <table>
+                    <tr>
+                        <td> <font color="#a9a9a9"><h3>Nom du Produit</h3></font></td>
+                        <td>{{ form_widget(edit_form.nomProduit) }}</td>
+                    </tr>
+                    <tr><td><BR></td></tr>
+                    <tr>
+                        <td> <font color="#a9a9a9"><h3>Prix du Produit</h3></font></td>
+                        <td>{{ form_widget(edit_form.prixProduit) }}</td>
+                    </tr>
+                    <tr><td><BR></td></tr>
+
+                    <tr>
+                        <td> <font color="#a9a9a9"><h3>Photo du Produit</h3></font></td>
+                        <td>{{ form_widget(edit_form.photoProduit) }}</td>
+                    </tr>
+                    <tr><td><BR></td></tr>
+                    <tr>
+                        <td> <font color="#a9a9a9"><h3>L'Etablissement</h3></font></td>
+                        <td>{{ form_widget(edit_form.idEtablissement) }}</td>
+                    </tr>
+                    <tr><td><BR></td></tr>
+
+                    <tr>
+                        <td> <font color="#a9a9a9"><h3>Valider l'Ajout</h3></font></td>
+                        <td><input type="submit" value="Edit" /></td>
+                    </tr>
+                    <tr><td><BR></td></tr>
+
+                </table>
+
+                {{ form_end(edit_form) }}
+
+
+
+                <ul>
+                    <form action="{{ path('produit_index') }}">
+                        <input type="submit" value="Retourner vers la liste des Produits" />
+                    </form>
+                </ul>
+                <ul>
+                    {{ form_start(delete_form) }}
+                    <input type="submit" value="Delete">
+                    {{ form_end(delete_form) }}
+
+                </ul>
+                {% endblock %}
+
+            </div></div></div></div></div>
 <!--footer start-->
 <div class="hm_footer_wrapper">
     <div class="container">

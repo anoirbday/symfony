@@ -125,7 +125,7 @@
         <div class="row">
             <div class="hm_news_inner hm_blogs">
 
-            <h1>Offres list</h1>
+            <h1>Liste des Offres</h1>
     {{ form(form2) }}
     <table class="ui compact sortable table">
         <thead>
@@ -168,7 +168,7 @@
                                </tr>
         #}
         {% for offre in off %}
-{% if (app.user.id) == (offre.idEtablissement.id.id) %}
+            {#{% if (app.user.id) == (offre.idEtablissement.id.id) %}#}
         <tr>
                                <td>{{ offre.titreOffre }}</td>
                                <td>{{ offre.descriptionOffre }}</td>
@@ -177,10 +177,11 @@
                                <td><img src="{{ asset('uploads/images/' ~ offre.photoOffre) }}" height="100px" width="250px"></td>
 
                                    <td>
-  PRODUIT                                {#     {% for of in offres %}
+
+                                       {% for of in offres %}
                                        {{ of.nom_produit }}
                                        {% endfor %}
-#}
+
                                    </td>
 
                                <td>
@@ -195,7 +196,7 @@
                                </td>
 
                            </tr>
-        {% endif %}
+       {# {% endif %}#}
         {% endfor %}
 
 

@@ -125,19 +125,50 @@
         <div class="row">
             <div class="hm_news_inner hm_blogs">
 
-            <h1>Produit creation</h1>
+                <h1>Produit creation</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('produit_index') }}">Back to the list</a>
-        </li>
-    </ul>
-{% endblock %}
+                {{ form_start(form) }}
+
+                <table>
+                    <tr>
+                        <td> <font color="#a9a9a9"><h3>Nom du Produit</h3></font></td>
+                        <td aria-placeholder="Nom Produit">{{ form_widget(form.nomProduit) }}</td>
+                    </tr>
+                    <tr><td><BR></td></tr>
+                    <tr>
+                        <td> <font color="#a9a9a9"><h3>Prix du Produit</h3></font></td>
+                        <td aria-placeholder="Prix Produit">{{ form_widget(form.prixProduit) }}</td>
+                    </tr>
+                    <tr><td><BR></td></tr>
+
+                    <tr>
+                        <td> <font color="#a9a9a9"><h3>Photo du Produit</h3></font></td>
+                        <td>{{ form_widget(form.photoProduit) }}</td>
+                    </tr>
+                    <tr><td><BR></td></tr>
+                    <tr>
+                        <td> <font color="#a9a9a9"><h3>L'Etablissement</h3></font></td>
+                        <td>{{ form_widget(form.idEtablissement) }}</td>
+                    </tr>
+                    <tr><td><BR></td></tr>
+
+                    <tr>
+                        <td> <font color="#a9a9a9"><h3>Valider l'Ajout</h3></font></td>
+                        <td><input type="submit" value="Ajouter" /></td>
+                    </tr>
+                    <tr><td><BR></td></tr>
+
+                </table>
+
+                {{ form_end(form) }}
+                <ul>
+                    <form action="{{ path('produit_index') }}">
+                        <input type="submit" value="Retourner vers la liste des Produits" />
+                    </form>
+                </ul>
+                {% endblock %}
+
 </div></div></div></div></div>
 <!--footer start-->
 <div class="hm_footer_wrapper">
