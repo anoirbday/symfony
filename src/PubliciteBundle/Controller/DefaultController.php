@@ -144,7 +144,7 @@ class DefaultController extends Controller
             $Publicite->setEnabled(0);
             $em->persist($Publicite);
             $em->flush();
-            return $this->redirectToRoute('affiche_publicite');
+            return $this->redirectToRoute('message');
 
         }
         return $this->render('@Publicite/Default/update.html.twig', array('form' => $form->createView(),'Publicites'=>$Publicite));
@@ -293,6 +293,9 @@ public function facebookAction()
 //            $pieChart));
 //
 //    }
+    public function succesAction(){
+        return $this->render('@Publicite/Default/message.html.twig');
+    }
 
 
 
