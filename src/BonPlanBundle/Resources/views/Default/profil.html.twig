@@ -52,25 +52,19 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-8">
                     <div class="hm_top_login">
-                        <ul>
-                            <li><a href="javascript:" class="popup-with-form"><i class="fa fa-user" aria-hidden="true"></i> login</a></li>
-                            <li><a href="javascript:" class="popup-signup-form"><i class="fa fa-pencil" aria-hidden="true"></i> register</a></li>
-                            <li><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i> checkout</a></li>
-                        </ul>
+                        <p><b>Bonjour {{ app.user.username }} ! Bienvenue dans BonPlan </b></p>
+
                     </div>
+
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-4 pull-right">
                     <div class="top_usd">
                         <div class="hm_top_wishlist">
-                            <p><a href="#"><i class="fa fa-heart" aria-hidden="true"></i> Wishlist</a></p>
+                            <p><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-cart-plus" aria-hidden="true"></i> Se déconnecter</a></p>
                         </div>
+
                         <div class="hm_top_usd">
-                            <p><a href="javascript:"><i class="fa fa-angle-down" aria-hidden="true"></i> usd</a></p>
-                            <ul class="usd_dropmenu">
-                                <li><a href="#">EUR - Euro</a></li>
-                                <li><a href="#">USD - US Dollar</a></li>
-                                <li><a href="#">GBP - British Pound</a></li>
-                            </ul>
+                            <p><a href="{{ path('bon_plan_profile') }}"><i class="fa fa-angle-down" aria-hidden="true"></i> Mon profil</a></p>
 
                         </div>
                     </div>
@@ -78,6 +72,10 @@
             </div>
         </div>
     </div>
+
+
+
+
     <!--Header start-->
     <div class="hm_header_wrapper">
         <div class="container">
@@ -85,12 +83,6 @@
                 <div class="col-lg-8 col-md-8 col-sm-6">
                     <div class="hm_logo">
                         <a href="{{ path('bon_plan_homepage') }}"><img src="{{ asset('images/logo.png') }}" alt="" class="img-responsive"></a>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-6">
-                    <div class="hm_top_search">
-                        <input type="search" name="search" placeholder="Search....">
-                        <span class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></span>
                     </div>
                 </div>
             </div>
@@ -107,21 +99,28 @@
                             <div class="menu_btn"><span></span><span></span><span></span></div>
                             <div class="hm_menu">
                                 <ul>
-                                    <li class="dropdown"><a href="{{ path('bon_plan_accueilProp') }}">home</a>
+                                    <li class="active dropdown"><a href="{{ path('bon_plan_accueilProp') }}">Accueil</a>
 
                                     </li>
-                                    <li><a href="{{ path('bon_plan_about') }}">about</a></li>
-                                    <li><a href="{{ path('bon_plan_service') }}">services</a></li>
-                                    <li class="dropdown"><a href="{{ path('bon_plan_gallery') }}">gallery</a>
+                                    <li><a>Etablissement</a>
+                                        <ul class="sub-menu">
+                                            <li><a href="{{ path('bon_plan_etablissement2') }}">Mes Etablissements</a></li>
+                                            <li><a href="{{ path('bon_plan_etablissement1') }}">Ajouter Etablissement</a></li>
+
+                                        </ul>
+                                    </li>
+                                    <li><a href="{{ path('bon_plan_blog') }}">Evénement</a></li>
+                                    <li class="dropdown"><a href="{{ path('affiche_publicite') }}">Publicité</a>
 
                                     </li>
-                                    <li><a href="{{ path('bon_plan_blog') }}">blog</a>
+                                    <li class="dropdown"><a href="{{ path('offre_index') }}">Offre</a>
 
                                     </li>
-                                    <li><a href="{{ path('bon_plan_shop') }}">shop</a>
+                                    <li class="dropdown"><a  href="{{ path('produit_index') }}">Produit</a>
 
                                     </li>
-                                    <li class="dropdown"><a href="{{ path('bon_plan_contact') }}">contact</a></li>
+
+
                                 </ul>
                             </div>
                         </nav>
@@ -222,19 +221,7 @@
                                 </div>
                             {% endfor %}
                             <!--2-->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <div class="new_pro_box">
-                                    <div class="new_pro_data">
-                                        <h3><a href="{{ path('bon_plan_shop1') }}">Deep fried pomfret.</a></h3>
-                                        <p>orem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                        <span class="pro_price">Nombre d'étoiles</span>
-                                        <span class="cart_icon"><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></span>
-                                    </div>
-                                    <div class="new_pro_img">
-                                        <img src="{{ asset('images/new_pro2.jpg') }}" alt="" class="img-responsive" />
-                                    </div>
-                                </div>
-                            </div>
+
                             <!--3-->
                             <!--4-->
                             <!--5-->

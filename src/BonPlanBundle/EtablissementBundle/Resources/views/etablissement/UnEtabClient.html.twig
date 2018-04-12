@@ -95,17 +95,14 @@
                             <div class="menu_btn"><span></span><span></span><span></span></div>
                             <div class="hm_menu">
                                 <ul>
-                                    <li ><a href="{{ path('bon_plan_homepage') }}">Accueil</a>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_accueilClient') }}">Accueil</a>
 
                                     </li>
-                                    <li class="active dropdown"><a href="#">Etablissement</a></li>
-                                    <li><a href="#">Evénement</a></li>
-                                    <li class="dropdown"><a href="#">Publicité</a>
-
-                                    </li><li class="dropdown"><a href="#">Statistique</a>
-
-                                    </li>
-
+                                    <li class="active dropdown"><a href="{{ path('bon_plan_etablissement5') }}">Etablissement</a></li>
+                                    <li class="dropdown"><a href="{{ path('List_Client') }}">Evénement</a></li>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_filClient') }}">Actualité</a></li>
+                                    <li class="dropdown"><a href="{{ path('reservation_index') }}">Reservation</a></li>
+                                    <li class="dropdown"><a href="{{ path('annonce_index') }}">Annonce</a></li>
                                 </ul>
                             </div>
                         </nav>

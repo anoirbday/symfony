@@ -98,13 +98,14 @@
                             <div class="menu_btn"><span></span><span></span><span></span></div>
                             <div class="hm_menu">
                                 <ul>
-                                    <li class="active dropdown"><a href="{{ path('bon_plan_homepage') }}">Accueil</a>
+                                    <li class="active dropdown"><a href="{{ path('bon_plan_accueilClient') }}">Accueil</a>
 
                                     </li>
-                                    <li><a href="{{ path('bon_plan_etablissement5') }}">Etablissement</a></li>
-                                    <li><a href="{{ path('List_Client') }}">Evénement</a></li>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_etablissement5') }}">Etablissement</a></li>
+                                    <li class="dropdown"><a href="{{ path('List_Client') }}">Evénement</a></li>
                                     <li class="dropdown"><a href="{{ path('bon_plan_filClient') }}">Actualité</a></li>
-                                    <li><a href="{{ path('bon_plan_contact') }}">Contact</a></li>
+                                    <li class="dropdown"><a href="{{ path('reservation_index') }}">Reservation</a></li>
+                                    <li class="dropdown"><a href="{{ path('annonce_index') }}">Annonce</a></li>
                                 </ul>
                             </div>
                         </nav>
@@ -238,102 +239,7 @@
         </div>
     </div>
     <!--New Arrivals section start-->
-    <div class="hm_arrivals_wrapper">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <h1 class="hm_heading"><span class="hm_color">Recemment</span> Parmi nous</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="new_pro_inner">
-                    <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="new_pro_box">
-                            <div class="new_pro_img">
-                                <img src="{{ asset('images/new_pro1.jpg') }}" alt="" class="img-responsive" />
-                            </div>
-                            <div class="new_pro_data">
-                                <h3><a href="{{ path('bon_plan_shop1') }}">Jellied eels.</a></h3>
-                                <p>orem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                <span class="pro_price">Nombre d'étoiles</span>
-                                <span class="cart_icon"><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--2-->
-                    <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="new_pro_box">
-                            <div class="new_pro_data">
-                                <h3><a href="{{ path('bon_plan_shop1') }}">Deep fried pomfret.</a></h3>
-                                <p>orem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                <span class="pro_price">Nombre d'étoiles</span>
-                                <span class="cart_icon"><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></span>
-                            </div>
-                            <div class="new_pro_img">
-                                <img src="{{ asset('images/new_pro2.jpg') }}" alt="" class="img-responsive" />
-                            </div>
-                        </div>
-                    </div>
-                    <!--3-->
-                    <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="new_pro_box">
-                            <div class="new_pro_img">
-                                <img src="{{ asset('images/new_pro3.jpg') }}" alt="" class="img-responsive" />
-                            </div>
-                            <div class="new_pro_data">
-                                <h3><a href="{{ path('bon_plan_shop1') }}">Marinated swordfish</a></h3>
-                                <p>orem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                <span class="pro_price">$12 Only</span>
-                                <span class="cart_icon"><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--4-->
-                    <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="new_pro_box">
-                            <div class="new_pro_img">
-                                <img src="{{ asset('images/new_pro4.jpg') }}" alt="" class="img-responsive" />
-                            </div>
-                            <div class="new_pro_data">
-                                <h3><a href="{{ path('bon_plan_shop1') }}">Jellied</a></h3>
-                                <p>orem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                <span class="pro_price">$18 Only</span>
-                                <span class="cart_icon"><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--5-->
-                    <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="new_pro_box">
-                            <div class="new_pro_data">
-                                <h3><a href="{{ path('bon_plan_shop1') }}">Salmon</a></h3>
-                                <p>orem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                <span class="pro_price">$16 Only</span>
-                                <span class="cart_icon"><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></span>
-                            </div>
-                            <div class="new_pro_img">
-                                <img src="{{ asset('images/new_pro5.jpg') }}" alt="" class="img-responsive" />
-                            </div>
-                        </div>
-                    </div>
-                    <!--6-->
-                    <div class="col-lg-4 col-md-4 col-sm-6">
-                        <div class="new_pro_box">
-                            <div class="new_pro_img">
-                                <img src="{{ asset('images/new_pro6.jpg') }}" alt="" class="img-responsive" />
-                            </div>
-                            <div class="new_pro_data">
-                                <h3><a href="{{ path('bon_plan_shop1') }}">Salmon roe.</a></h3>
-                                <p>orem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-                                <span class="pro_price">$20 Only</span>
-                                <span class="cart_icon"><a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!--Choose section start-->
     <div class="hm_choose_wrapper">
         <div class="container">

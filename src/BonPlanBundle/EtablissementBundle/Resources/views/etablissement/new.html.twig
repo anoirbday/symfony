@@ -92,27 +92,28 @@
                             <div class="menu_btn"><span></span><span></span><span></span></div>
                             <div class="hm_menu">
                                 <ul>
-                                    <li class="dropdown"><a href="{{ path('bon_plan_homepage') }}">Accueil</a>
+                                    <li class="dropdown"><a href="{{ path('bon_plan_accueilProp') }}">Accueil</a>
 
                                     </li>
-                                    <li><a href="">Etablissement</a>
+                                    <li class="active dropdown"><a>Etablissement</a>
                                         <ul class="sub-menu">
                                             <li><a href="{{ path('bon_plan_etablissement2') }}">Mes Etablissements</a></li>
                                             <li><a href="{{ path('bon_plan_etablissement1') }}">Ajouter Etablissement</a></li>
 
                                         </ul>
                                     </li>
-                                    <li class="active dropdown"><a href="{{ path('bon_plan_blog') }}">Evénement</a></li>
+                                    <li><a href="{{ path('bon_plan_blog') }}">Evénement</a></li>
                                     <li class="dropdown"><a href="{{ path('affiche_publicite') }}">Publicité</a>
 
                                     </li>
-                                    <li class="dropdown"><a href="#">Offre</a>
+                                    <li class="dropdown"><a href="{{ path('offre_index') }}">Offre</a>
 
                                     </li>
-                                    <li class="dropdown"><a href="#">Statistique</a>
+                                    <li class="dropdown"><a  href="{{ path('produit_index') }}">Produit</a>
 
                                     </li>
-                                    <li><a href="{{ path('bon_plan_contact') }}">Contact</a></li>
+
+
                                 </ul>
                             </div>
                         </nav>
