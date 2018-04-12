@@ -43,3 +43,6 @@ statistiquePub:
 stats:
     path: /stats
     defaults: { _controller: PubliciteBundle:Default:Statistique }
+message:
+    path: /succes
+    defaults: { _controller: PubliciteBundle:Default:succes }
