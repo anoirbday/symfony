@@ -64,8 +64,7 @@ class CategorieController extends Controller
         $critereEvaluation3 = new Critereevaluation();
         $critereEvaluation4 = new Critereevaluation();
         $critereEvaluation5 = new Critereevaluation();
-        $nom=$_GET['nomcategorie'];
-        echo $nom;
+
         if($request->isMethod('POST')){
 
             $categorie->setNomCategorie($request->get('nomcategorie'));
@@ -96,7 +95,7 @@ class CategorieController extends Controller
 
         }
 
-        return $this->render('EtablissementBundle:categorie:new.html.twig', array(
+        return $this->render('EtablissementBundle:categorie:edit.html.twig', array(
 
 
 

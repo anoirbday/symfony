@@ -46,70 +46,63 @@
         <div class="sidebar-wrapper">
             <div class="logo">
                 <a href="http://www.creative-tim.com" class="simple-text">
-                    Creative Tim
-                </a>
+BonPlan                </a>
             </div>
 
             <ul class="nav">
                 <li class="active">
-                    <a href="#">
+                    <a href="{{ path('bon_plan_accueilAdmin') }}">
                         <i class="ti-panel"></i>
                         <p>Dashboard</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ path('annonce_indexback') }}">
                         <i class="ti-user"></i>
-                        <p>User Profile</p>
+                        <p>Demande d'annonces</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{  path('valider_Pub')  }}">
                         <i class="ti-view-list-alt"></i>
-                        <p>Ajouter un article</p>
+                        <p>Demandes Publicites</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ path('List_Admin') }}">
                         <i class="ti-text"></i>
                         <p>liste des événements</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ path('bon_plan_categorie') }}">
                         <i class="ti-pencil-alt2"></i>
-                        <p>Liste des articles</p>
+                        <p>Demandes Categorie</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ path('bon_plan_etablissement6') }}">
                         <i class="ti-map"></i>
-                        <p>Liste reclamation</p>
+                        <p>Liste Etablissement</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ path('bon_plan_filAdmin') }}">
                         <i class="ti-bell"></i>
-                        <p>Notifications</p>
+                        <p>Actualité</p>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{ path('bon_plan_categorie4') }}">
                         <i class="backcornertop"></i>
-                        <p>lister categ</p>
+                        <p>lister Categorie</p>
                     </a>
                 </li>
 
-                <li class="active-pro">
-                    <a href="#">
-                        <i class="ti-export"></i>
-                        <p>ajouter categ</p>
-                    </a>
-                </li>
+
             </ul>
         </div>
     </div>
-
     <div class="main-panel">
         <nav class="navbar navbar-default">
 
@@ -125,29 +118,13 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><div style="color: white;
+                        <li><div style="color: black;
 padding: 15px 50px 5px 50px;
 float: right;
 font-size: 16px;" class="username">
                                 {{app.user.username}} &nbsp;
                                 <a href="{{ path('fos_user_security_logout') }}" class="btn btn-danger square-btn-adjust">Logout</a>
                             </div></li>
-                        <li>
-
-
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">statistique
-                                <i class="ti-panel"></i>
-                                <ul class="dropdown-menu">
-
-                                    <li><a href="#">statistique en batton</a></li>
-                                    <li><a href="#">statistique en pie</a></li>
-                                    <li><a href="#">statistique en ligne</a></li>
-
-                                </ul>
-
-
-
-
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Notifications
                                 <i class="ti-bell"></i></a>
@@ -164,13 +141,12 @@ font-size: 16px;" class="username">
                             </ul>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="ti-settings"></i>
-                                <p>Settings</p>
+                            <a href="{{ path('bon_plan_etablissement11') }}">
+                                <i class="ti-panel"></i>
+                                <p>Statistiques</p>
                             </a>
                         </li>
                     </ul>
-
                 </div>
             </div>
             {% endblock %}
@@ -270,8 +246,7 @@ font-size: 16px;" class="username">
 
                     <li>
                         <a href="http://www.creative-tim.com">
-                            Creative Tim
-                        </a>
+BonPlan                        </a>
                     </li>
                     <li>
                         <a href="http://blog.creative-tim.com">
