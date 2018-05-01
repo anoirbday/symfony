@@ -37,6 +37,9 @@ use Ivory\GoogleMap\Base\Bound;
 use Ivory\GoogleMap\Base\Coordinate;
 use Ivory\GoogleMap\MapTypeId;
 use Ivory\GoogleMap\Overlay\Marker;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
 class InteresserController extends Controller
 {
 
@@ -51,6 +54,13 @@ class InteresserController extends Controller
         $em->flush();
         return $this->redirectToRoute('List_Client');
     }
+
+
+
+
+
+
+
 public function interesserAction($id,Request $request){
 
     $em = $this->getDoctrine()->getManager();
@@ -150,6 +160,19 @@ $s="vous ete deja interesser";
         $Evenements = $em->getRepository("BonPlanBundle:Interesser")->isinteresser($user,$Evenement);
 
         return $this->redirectToRoute($Evenements);
+
+
+    }
+    public function isinteresserjSONAction($id,$user){
+
+        $em = $this->getDoctrine()->getManager();
+        $user =$em->getRepository("BonPlanBundle:User")->find($user);
+        $Evenement = $em->getRepository("BonPlanBundle:Evenement")->find($id);
+        $Evenements = $em->getRepository("BonPlanBundle:Interesser")->isinteresser($user,$Evenement);
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($Evenements);
+        return new JsonResponse($formatted);
 
 
     }
