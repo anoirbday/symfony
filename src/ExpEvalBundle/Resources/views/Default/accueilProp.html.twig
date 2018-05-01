@@ -232,7 +232,7 @@
                                         <img src="{{ asset('uploads/images/') }}{{ experience.preuve }}" ; alt="" class="img-responsive" height="300"; width="300"/>
                                     </div>
                                     <div class="new_pro_data">
-                                        <h3><a href="{{ path('bon_plan_affichExp', { 'idExp': experience.idExp }) }}">Lire plus</a></h3>
+                                        <h3><a href="{{ path('bon_plan_affichExpProp', { 'idExp': experience.idExp }) }}">Lire plus</a></h3>
                                       <p>id user : {{app.user.id  }}</p>
                                         <p>id user etab: {{experience.idEtablissement.id  }}</p>
 <p>                       {{ experience.noteExp|rating }}

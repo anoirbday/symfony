@@ -16,6 +16,14 @@ class PubliciteRipository extends EntityRepository
         $query=$this->getEntityManager()
             ->createQuery("select pu from BonPlanBundle:Publicite pu, BonPlanBundle:Etablissement et
 WHERE pu.idEtablissement = et.idEtablissement AND et.id = :nom AND pu.enabled=1")
+            ->setParameter('nom', $nom);
+        return $query->getResult();
+    }
+    public function findprop1($nom)
+    {
+        $query=$this->getEntityManager()
+            ->createQuery("select pu from BonPlanBundle:Publicite pu, BonPlanBundle:Etablissement et
+WHERE pu.idEtablissement = et.idEtablissement AND et.id = :nom AND pu.enabled=1")
             ->setParameter('nom', $nom->getId());
         return $query->getResult();
     }
@@ -54,5 +62,6 @@ WHERE pu.idEtablissement = et.idEtablissement  AND pu.enabled=0");
         ->setParameter('n',$id);
         return $query->getSingleScalarResult();
     }
+
 
 }

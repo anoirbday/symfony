@@ -3,6 +3,7 @@
 namespace BonPlanBundle\Controller;
 
 use BonPlanBundle\Entity\Reservation;
+use BonPlanBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -204,5 +205,27 @@ class DefaultController extends Controller
         $response = new JsonResponse($x);
         return $response->setData(($x));
         // return $response;
+    }
+    public function login1Action (Request $request) {
+        $em=$this->getDoctrine()->getManager();
+        $user=$em->getRepository(User::class)->findOneBy(['username' =>$request->get('username')]);
+        if($user){
+            $factory = $this->get('security.encoder_factory');
+            $encoder = $factory->getEncoder($user);
+            $salt = $user->getSalt();
+
+            if($encoder->isPasswordValid($user->getPassword(),$request->get('password'), $salt)){
+                $serializer=new Serializer([new ObjectNormalizer()]);
+                $formatted=$serializer->normalize($user);
+                return new JsonResponse($formatted);
+            }
+        }
+        return new JsonResponse("Failed");
+    }
+    public function GetUserbyIdAction(Request $request){
+        $user = $this->getDoctrine()->getRepository(User::class)->find($request->get('id'));
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($user);
+        return new JsonResponse($formatted);
     }
 }

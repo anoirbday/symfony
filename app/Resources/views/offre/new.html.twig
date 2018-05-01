@@ -137,53 +137,6 @@
             <div class="hm_news_inner hm_blogs">
 
 
-            <h1>Offre creation</h1>
-<table>
- <td>   {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
- </td>
-
-    <td>
-
-        <h1>Produits list</h1>
-        <table class="ui compact sortable table" o>
-            <thead>
-            <tr bgcolor="#980033" style="color: #FEA571 ">
-                <th>Nom Produit</th>
-                <th>Photo Produit</th>
-                <th>Prix Produit</th>
-                <th>Selectionner Produit</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for produit in produits %}
-                <tr>
-                    <td>{{ produit.nomProduit }}</td>
-                    <td> <img src="{{ asset('uploads/images/' ~ produit.photoProduit) }}" height="100px" width="250px"></td>
-                    <td>{{ produit.prixProduit }} DT</td>
-                    <td><input type="checkbox" value="{{ produit.idProduit }}" name="cb[]"></td>
-
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
-    </td>
-
-
-
-</table>
-    <ul>
-        <li>
-            <a href="{{ path('offre_index') }}">Back to the list</a>
-        </li>
-    </ul>
-
-
-{% endblock %}</div></div></div></div>
-
                 <h1>Offre creation</h1>
                 {{ form_start(form) }}
 
@@ -222,57 +175,50 @@
 
                     </table>
 
+        <h1>Produits list</h1>
+        <table class="ui compact sortable table" o>
+            <thead>
+            <tr bgcolor="#980033" style="color: #FEA571 ">
+                <th>Nom Produit</th>
+                <th>Photo Produit</th>
+                <th>Prix Produit</th>
+                <th>Selectionner Produit</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for produit in produits %}
+                <tr>
+                    <td>{{ produit.nomProduit }}</td>
+                    <td> <img src="{{ asset('uploads/images/' ~ produit.photoProduit) }}" height="100px" width="250px"></td>
+                    <td>{{ produit.prixProduit }} DT</td>
+                    <td><input type="checkbox" value="{{ produit.idProduit }}" name="cb[]"></td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </td>
 
 
 
+</table>
+    <ul>
+        <li>
+            <a href="{{ path('offre_index') }}">Back to the list</a>
+        </li>
+    </ul>
 
 
-                        <td>
-
-                            <h1>Produits list</h1>
-                            <table class="ui compact sortable table">
-                                <thead>
-                                <tr bgcolor="#980033" style="color: #FEA571 ">
-                                    <th>Nom Produit</th>
-                                    <th>Photo Produit</th>
-                                    <th>Prix Produit</th>
-                                    <th>Selectionner Produit</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {% for produit in produits %}
-                                {% if (app.user.id) == (produit.idEtablissement.id.id) %}
-                                <tr>
-                                        <td>{{ produit.nomProduit }}</td>
-                                        <td> <img src="{{ asset('uploads/images/' ~ produit.photoProduit) }}" height="100px" width="250px"></td>
-                                        <td>{{ produit.prixProduit }} DT</td>
-                                        <td><input type="checkbox" value="{{ produit.idProduit }}" name="cb[]"></td>
-                   {#     <td><input type="checkbox" value="{{ produit.idProduit }}" name="prod{{ loop.index }}"></td>#}
-
-                                    </tr>
-                               {% endif %}
-                                {% endfor %}
-                                </tbody>
-
-                        </td>
+{% endblock %}</div></div></div></div>
 
 
-                        <tr>
-                            <td> <font color="#a9a9a9"><h3>Valider l'Ajout</h3></font></td>
-                            <td><input type="submit" value="Ajouter" /></td>
-                        </tr>
-                        <tr><td><BR></td></tr>
-                    </table>
+
+                         <center> <font color="#a9a9a9"><h3>Valider l'Ajout</h3></font><input type="submit" value="Ajouter"/></center>
+<br>
+
                             {{ form_end(form) }}
 
-                            <ul>
-                        <form action="{{ path('offre_index') }}">
-                            <input type="submit" value="Retourner vers la liste des offres" />
-                        </form>
-                    </ul>
-                    </tr>
 
-                </table>
                 {#--------------------------------
                     <input type="button" onclick="getProdIdCb()">
 
@@ -298,7 +244,6 @@
 
                 </script>
                 --------------------------------#}
-                {% endblock %}
 
 
 
