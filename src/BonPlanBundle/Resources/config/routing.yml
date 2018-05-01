@@ -103,6 +103,30 @@ blog2prop:
 bon_plan_rechercheevents:
     path:     /rechercheEvents/{nomEvenement}
     defaults: { _controller: BonPlanBundle:Evenement:rechercheAjax }
+
+afficheJson:
+    path:  /even
+    defaults: { _controller: BonPlanBundle:Evenement:acc }
+afficheJson1:
+    path:  /Publicite/{id}/
+    defaults: { _controller: PubliciteBundle:Default:Mobile }
+addpublicite:
+    path:     /add/publicite/{titre}/{descriptionPublicite}/{photoPublicite}/{idEtablissement}/{date}/
+    defaults: { _controller: PubliciteBundle:Default:AddPublicite }
+login1:
+    path:  /login1/{username}/{password}/
+    defaults: { _controller: BonPlanBundle:Default:login1 }
+GetUserbyId:
+    path:  /GetUser/{id}/
+    defaults: { _controller: BonPlanBundle:Default:GetUserbyId }
+GetEtab:
+    path:  /etabM
+    defaults: { _controller: BonPlanBundle:Evenement:GetEtab }
+afficheJson2:
+    path:  /Publicite1
+    defaults: { _controller: PubliciteBundle:Default:Mobile1 }
+
+
 afficheJsonclient:
     path:  /evenClient
     defaults: { _controller: BonPlanBundle:Evenement:abc }
@@ -120,3 +144,4 @@ UpdateJsonEven:
 afficheJsonsprop:
     path:  /even/{id}
     defaults: { _controller: BonPlanBundle:Evenement:acc }
+

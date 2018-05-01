@@ -88,7 +88,7 @@ class DefaultController extends Controller
     public function listAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $Publicite = $em->getRepository("BonPlanBundle:Publicite")->findprop($this->getUser());
+        $Publicite = $em->getRepository("BonPlanBundle:Publicite")->findprop1($this->getUser());
         return $this->render('PubliciteBundle:Default:publicite.html.twig', array("Publicites" => $Publicite));
 
     }
@@ -295,6 +295,46 @@ public function facebookAction()
 //    }
     public function succesAction(){
         return $this->render('@Publicite/Default/message.html.twig');
+    }
+    public function MobileAction($id)
+    {$tasks = $this->getDoctrine()->getManager()
+        ->getRepository('BonPlanBundle:Publicite')
+        ->findprop($id);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
+    public function AddPubliciteAction(Request $request,$titre,$descriptionPublicite,$photoPublicite,Etablissement $idEtablissement,\dateTime $date){
+    $em=$this->getDoctrine()->getManager();
+    $publicite = new Publicite();
+    $Etablissement = $em->getRepository("BonPlanBundle:Etablissement")->find($idEtablissement);
+    $publicite->setIdEtablissement($Etablissement) ;
+    $publicite->setTitre($titre) ;
+    $publicite->setDescriptionPublicite($descriptionPublicite) ;
+    $publicite->setPhotoPublicite($photoPublicite) ;
+    $publicite->setDatedebut($date);
+    $publicite->setEnabled(1) ;
+
+
+    $encoder = new JsonResponse();
+    $nor = new ObjectNormalizer();
+    $nor->setCircularReferenceHandler(function ($obj){return $obj->getId() ;});
+    $em->persist($publicite);
+    $em->flush();
+
+    $serializer = new Serializer(array($nor,$encoder));
+    $formatted = $serializer->normalize($publicite);
+    return new JsonResponse($formatted);
+
+
+}
+    public function Mobile1Action()
+    {$tasks = $this->getDoctrine()->getManager()
+        ->getRepository('BonPlanBundle:Publicite')
+        ->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
     }
 
 

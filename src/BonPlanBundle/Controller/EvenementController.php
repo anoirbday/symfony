@@ -352,6 +352,27 @@ public function UpdateAction(Request $request,$id)
         }
         return new Response('Error!', 400);
     }
+    public function accAction()
+    {$tasks = $this->getDoctrine()->getManager()
+        ->getRepository('BonPlanBundle:Evenement')
+        ->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
+    public function GetEtabAction(){
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository("BonPlanBundle:Etablissement")->findAll();
+        $normalizer = new ObjectNormalizer();
+        $encoder = new JsonResponse();
+        $normalizer->setCircularReferenceHandler(function ($object){
+            return $object->getId();
+        });
+        $serializer = new Serializer(array($normalizer, $encoder));
+        $formatted = $serializer->normalize($events);
+        return new JsonResponse($formatted);
+
+    }
 
 
 
