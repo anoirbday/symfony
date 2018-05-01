@@ -50,7 +50,33 @@ use Hackzilla\BarcodeBundle\Utility\Barcode;
 
 class EvenementController extends Controller
 {
+    public function accAction($id)
+    {$tasks = $this->getDoctrine()->getManager()
+        ->getRepository('BonPlanBundle:Evenement')
+        ->findprops($id);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
+    public function abcAction()
+    {$tasks = $this->getDoctrine()->getManager()
+        ->getRepository('BonPlanBundle:Evenement')
+        ->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
 
+
+    public function differentAction($id)
+    {
+        $tasks = $this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Evenement')
+            ->find($id);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
     public function listAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -328,5 +354,50 @@ public function UpdateAction(Request $request,$id)
     }
 
 
+
+
+        public function newFormationAction(Request $request,$description, Etablissement $id,$nom,\DateTime $date)
+        { $em = $this->getDoctrine()->getManager();
+ $Evenement = new Evenement();
+            $Evenement->setIdEtablissement($id);
+            $Evenement->setDescriptionEvenement($description);
+            $Evenement->setDateEvenement($date);
+            $Evenement->setNomEvenement($nom);
+
+
+            $em->persist($Evenement);
+            $em->flush();
+            $encoder = new JsonResponse();
+            $normalizer = new ObjectNormalizer();
+            $normalizer->setCircularReferenceHandler(function ($object){
+                return $object->getId();
+            });
+            $serializer = new Serializer(array($normalizer, $encoder));
+            $formatted = $serializer->normalize($Evenement);
+            return new JsonResponse($formatted);
+
+        }
+    public function updateJsonAction(Request $request,$description, Etablissement $id,$nom,\DateTime $date ,$idEven)
+    { $em = $this->getDoctrine()->getManager();
+        $Evenement = $em->getRepository("BonPlanBundle:Evenement")->find($idEven);
+        $Evenement->setIdEtablissement($id);
+        $Evenement->setDescriptionEvenement($description);
+        $Evenement->setDateEvenement($date);
+        $Evenement->setNomEvenement($nom);
+        $Evenement->setPhotoEvenement($Evenement->getPhotoEvenement());
+        $Evenement->setIdEvenement($idEven);
+
+        $em->persist($Evenement);
+        $em->flush();
+        $encoder = new JsonResponse();
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceHandler(function ($object){
+            return $object->getId();
+        });
+        $serializer = new Serializer(array($normalizer, $encoder));
+        $formatted = $serializer->normalize($Evenement);
+        return new JsonResponse($formatted);
+
+    }
 
 }

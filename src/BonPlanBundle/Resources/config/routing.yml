@@ -103,3 +103,20 @@ blog2prop:
 bon_plan_rechercheevents:
     path:     /rechercheEvents/{nomEvenement}
     defaults: { _controller: BonPlanBundle:Evenement:rechercheAjax }
+afficheJsonclient:
+    path:  /evenClient
+    defaults: { _controller: BonPlanBundle:Evenement:abc }
+
+ajout:
+    path:  /new/{nom}/{description}/{date}/{id}
+    defaults: { _controller: BonPlanBundle:Evenement:newFormation }
+isinteresserJson:
+    path: /isinteresserJson/{id}/{user}
+    defaults: { _controller:  BonPlanBundle:Interesser:isinteresserjSON }
+UpdateJsonEven:
+    path: /updateJson/{nom}/{description}/{date}/{id}/{idEven}
+    defaults: { _controller:  BonPlanBundle:Evenement:updateJson }
+
+afficheJsonsprop:
+    path:  /even/{id}
+    defaults: { _controller: BonPlanBundle:Evenement:acc }
