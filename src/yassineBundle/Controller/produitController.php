@@ -2,7 +2,11 @@
 
 namespace yassineBundle\Controller;
 
+use BonPlanBundle\Entity\Etablissement;
 use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use yassineBundle\Form\RecherchProduitForm;
 use BonPlanBundle\Entity\Produit;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -202,4 +206,120 @@ public function exportAction(){
     $csv->output('ListeProduits.csv');
     exit;
 }
+    public function affichageAction(){
+
+        $produit=$this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Produit')
+            ->findAll();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($produit);
+        return new JsonResponse($formatted);
+
+    }
+    public function affichageetabAction(){
+
+        $produit=$this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Etablissement')
+            ->findAll();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($produit);
+        return new JsonResponse($formatted);
+
+    }
+
+
+    public function findnameAction($nomProduit){
+
+        $produit=$this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Produit')
+            ->find($nomProduit);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($produit);
+        return new JsonResponse($formatted);
+
+    }
+
+
+    public function findidAction($idProduit){
+
+        $produit=$this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Produit')
+            ->find($idProduit);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($produit);
+        return new JsonResponse($formatted);
+    }
+
+    public function findidetabAction($idEtablissement){
+
+        $produit=$this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Produit')
+            ->find($idEtablissement);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($produit);
+        return new JsonResponse($formatted);
+    }
+    public function ajoutAction(Request $request,$nomProduit,$photoProduit,$prixProduit,Etablissement $idEtablissement){
+        $em=$this->getDoctrine()->getManager();
+        $produit= new Produit();
+        $Etablissement = $em->getRepository("BonPlanBundle:Etablissement")->find($idEtablissement);
+        $produit->setIdEtablissement($Etablissement) ;
+        $produit->setNomProduit($nomProduit) ;
+        $produit->setPhotoProduit($photoProduit) ;
+        $produit->setPrixProduit($prixProduit) ;
+
+
+
+        $encoder = new JsonResponse();
+        $nor = new ObjectNormalizer();
+        $nor->setCircularReferenceHandler(function ($obj){return $obj->getId() ;});
+        $em->persist($produit);
+        $em->flush();
+
+        $serializer = new Serializer(array($nor,$encoder));
+        $formatted = $serializer->normalize($produit);
+        return new JsonResponse($formatted);
+
+
+    }
+
+   /* public function ajoutAction(Request $request){
+
+        $em=$this->getDoctrine()->getManager();
+        $produit= new Produit();
+
+
+        $produit->setNomProduit($request->get('nom_produit'));
+        $produit->setPrixProduit($request->get('prix_produit'));
+        $etabliss= new Etablissement();
+        $etabliss->setIdEtablissement(1);
+
+        $produit->setPhotoProduit($request->get('photo_produit'));
+        $produit->setIdEtablissement("".$request->get('id_etablissement'));
+        // $produit->setIdEtablissement($etabliss->getIdEtablissement());
+        $em->persist($produit);
+        $em->flush();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($produit);
+        return new JsonResponse($formatted);
+
+    }*/
+
+
+
+    public function deleteproduitAction(Request $request, Produit $produit)
+    {
+        $form = $this->createDeleteForm($produit);
+        $form->handleRequest($request);
+
+        // if ($form->isSubmitted() && $form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($produit);
+        $em->flush();
+
+        // }
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($produit);
+        return new JsonResponse($formatted);
+    }
 }

@@ -2,12 +2,17 @@
 
 namespace yassineBundle\Controller;
 
+use BonPlanBundle\Entity\Etablissement;
 use BonPlanBundle\Entity\Offre;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use BonPlanBundle\Entity\Offreproduit;
 use BonPlanBundle\Entity\Produit;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 use yassineBundle\Form\RecherchOffreForm;
 
 /**
@@ -250,5 +255,103 @@ class offreController extends Controller
             ->setMethod('DELETE')
             ->getForm()
             ;
+    }
+    public function affichageAction(){
+
+        $offre=$this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Offre')
+            ->findAll();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($offre);
+        return new JsonResponse($formatted);
+
+    }
+
+
+    public function findnameAction($titreOffre){
+
+        $offre=$this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Offre')
+            ->find($titreOffre);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($offre);
+        return new JsonResponse($formatted);
+
+    }
+
+
+    public function findidAction($idOffre){
+
+        $offre=$this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Offre')
+            ->find($idOffre);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($offre);
+        return new JsonResponse($formatted);
+
+    }
+    public function  ajoutAction(Request $request,$titreOffre,$descriptionOffre,$photoOffre,Etablissement $idEtablissement,\dateTime $date,\dateTime $date1){
+        $em=$this->getDoctrine()->getManager();
+        $offre= new Offre();
+        $Etablissement = $em->getRepository("BonPlanBundle:Etablissement")->find($idEtablissement);
+        $offre->setIdEtablissement($Etablissement) ;
+        $offre->setTitreOffre($titreOffre) ;
+        $offre->setDescriptionOffre($descriptionOffre) ;
+        $offre->setPhotoOffre($photoOffre) ;
+        $offre->setDatedebut($date);
+        $offre->setDateFin($date1);
+
+
+        $encoder = new JsonResponse();
+        $nor = new ObjectNormalizer();
+        $nor->setCircularReferenceHandler(function ($obj){return $obj->getId() ;});
+        $em->persist($offre);
+        $em->flush();
+
+        $serializer = new Serializer(array($nor,$encoder));
+        $formatted = $serializer->normalize($offre);
+        return new JsonResponse($formatted);
+
+
+    }
+    /*public function ajoutAction(Request $request, \DateTime $dateDebut, \DateTime $dateFin){
+
+        $em=$this->getDoctrine()->getManager();
+        $offre= new Offre();
+        $offre->setTitreOffre($request->get('titre_offre'));
+        $offre->setDescriptionOffre($request->get('description_offre'));
+        $offre->setDateDebut($request->get($dateDebut));
+        $offre->setDateFin($request->get($dateFin));
+        $offre->setPhotoOffre($request->get('photo_offre'));
+        $offre->setIdEtablissement($request->get('id_etablissement'));
+        $em->persist($offre);
+        $em->flush();
+
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(2);
+        // Add Circular reference handler
+        $normalizer->setCircularReferenceHandler(function ($object) {
+            return $object->getId();
+        });
+        $normalizers = array($normalizer);
+
+        $serializer= new Serializer($normalizers);
+        $formatted = $serializer->normalize($offre);
+        return new JsonResponse($formatted);
+
+    }*/
+
+    public function deleteoffreAction(Request $request, Offre $offre)
+    {
+        $form = $this->createDeleteForm($offre);
+        $form->handleRequest($request);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($offre);
+        $em->flush();
+
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($offre);
+        return new JsonResponse($formatted);
     }
 }
