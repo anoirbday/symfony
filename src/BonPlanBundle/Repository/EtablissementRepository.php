@@ -19,6 +19,14 @@ WHERE  et.id = :'id'")
             ->setParameter('id', $id->getId());
         return $query->getResult();
     }
+    public function findetab($nom)
+    {
+        $query=$this->getEntityManager()
+            ->createQuery("select ev from  BonPlanBundle:Etablissement ev
+WHERE  ev.id = :nom")
+            ->setParameter('nom', $nom);
+        return $query->getResult();
+    }
     public function latitude($id){
         $query=$this->getEntityManager()
             ->createQuery("select et.latitude from BonPlanBundle:Etablissement et, BonPlanBundle:Evenement ev
