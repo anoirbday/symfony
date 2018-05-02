@@ -228,4 +228,5 @@ class DefaultController extends Controller
         $formatted = $serializer->normalize($user);
         return new JsonResponse($formatted);
     }
+
 }

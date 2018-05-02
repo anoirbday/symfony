@@ -145,3 +145,57 @@ afficheJsonsprop:
     path:  /even/{id}
     defaults: { _controller: BonPlanBundle:Evenement:acc }
 
+
+
+
+affichage_produits_ws:
+    path:     /produits
+    defaults: { _controller: yassineBundle:produit:affichage }
+
+affichage_etabproduits_ws:
+    path:     /etabproduits
+    defaults: { _controller: yassineBundle:produit:affichageetab }
+
+find_produit_by_name:
+    path:     /findproduitname/{nomProduit}
+    defaults: { _controller: yassineBundle:produit:findname }
+
+find_produit_by_id:
+    path:     /findproduitid/{idProduit}
+    defaults: { _controller: yassineBundle:produit:findid }
+
+find_produit_by_idetab:
+    path:     /findproduitidetab/{idEtablissement}
+    defaults: { _controller: yassineBundle:produit:findidetab }
+
+
+create_produit:
+    path:     /createproduit/{nomProduit}/{photoProduit}/{prixProduit}/{idEtablissement}/
+    defaults: { _controller: yassineBundle:produit:ajout }
+
+produit_delete:
+    path:     /deleteprod/{idProduit}
+    defaults: { _controller: yassineBundle:produit:deleteproduit }
+
+
+
+affichage_offres_ws:
+    path:     /offres
+    defaults: { _controller: yassineBundle:offre:affichage }
+
+find_offre_by_name:
+    path:     /findoffrename/{titreOffre}
+    defaults: { _controller: yassineBundle:offre:findname }
+
+find_offre_by_id:
+    path:     /findoffreid/{idOffre}
+    defaults: { _controller: yassineBundle:offre:findid }
+
+create_offre:
+     path:     /createoffre/{titreOffre}/{photoOffre}/{descriptionOffre}/{date}/{date1}/{idEtablissement}/
+     defaults: { _controller: yassineBundle:offre:ajout }
+
+offre_delete:
+    path:     /deleteoffre/{idOffre}
+    defaults: { _controller: yassineBundle:offre:deleteoffre }
+
