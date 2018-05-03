@@ -120,22 +120,19 @@ GetUserbyId:
     path:  /GetUser/{id}/
     defaults: { _controller: BonPlanBundle:Default:GetUserbyId }
 GetEtab:
-    path:  /etabM
+    path:  /etabM/{id}
     defaults: { _controller: BonPlanBundle:Evenement:GetEtab }
 afficheJson2:
     path:  /Publicite1
     defaults: { _controller: PubliciteBundle:Default:Mobile1 }
-
-
 afficheJsonclient:
     path:  /evenClient
     defaults: { _controller: BonPlanBundle:Evenement:abc }
-
 ajout:
-    path:  /new/{nom}/{description}/{date}/{id}
+    path:  /new/{nom}/{description}/{date}/{id}/{image}
     defaults: { _controller: BonPlanBundle:Evenement:newFormation }
 isinteresserJson:
-    path: /isinteresserJson/{id}/{user}
+    path: /isinteresserJson/{user}/{id}
     defaults: { _controller:  BonPlanBundle:Interesser:isinteresserjSON }
 UpdateJsonEven:
     path: /updateJson/{nom}/{description}/{date}/{id}/{idEven}
@@ -144,8 +141,16 @@ UpdateJsonEven:
 afficheJsonsprop:
     path:  /even/{id}
     defaults: { _controller: BonPlanBundle:Evenement:acc }
+Delete_event_JSON:
+    path:  /deleteIN
+    defaults: { _controller: BonPlanBundle:Interesser:desabo }
 
-
+Add_event_JSON:
+    path:  /addAbo
+    defaults: { _controller: BonPlanBundle:Interesser:addAbo }
+check_abo_JSON:
+    path:  /isAbo
+    defaults: { _controller: BonPlanBundle:Interesser:isAbo }
 
 
 affichage_produits_ws:
@@ -198,4 +203,17 @@ create_offre:
 offre_delete:
     path:     /deleteoffre/{idOffre}
     defaults: { _controller: yassineBundle:offre:deleteoffre }
+bon_plan_allMobCat:
+    path:     /categories/allCat
+    defaults: { _controller: BonPlanBundle:Default:allCat }
+bon_plan_allEtabCat:
+    path:     /etabs/allEtabCat/{nomCat}
+    defaults: { _controller: BonPlanBundle:Default:allEtabCat }
+bon_plan_oneEtab:
+    path:     /etabs/oneEtabNom/{nomEtab}
+    defaults: { _controller: BonPlanBundle:Default:oneEtabNom }
+bon_plan_allCritCat:
+    path:     /crits/allCritCat/{nomCat}
+    defaults: { _controller: BonPlanBundle:Default:allCritCat }
+
 

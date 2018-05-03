@@ -353,9 +353,10 @@ public function UpdateAction(Request $request,$id)
         return new Response('Error!', 400);
     }
 
-    public function GetEtabAction(){
+
+    public function GetEtabAction($id){
         $em = $this->getDoctrine()->getManager();
-        $events = $em->getRepository("BonPlanBundle:Etablissement")->findAll();
+        $events = $em->getRepository("BonPlanBundle:Etablissement")->findetab($id);
         $normalizer = new ObjectNormalizer();
         $encoder = new JsonResponse();
         $normalizer->setCircularReferenceHandler(function ($object){
@@ -370,14 +371,14 @@ public function UpdateAction(Request $request,$id)
 
 
 
-        public function newFormationAction(Request $request,$description, Etablissement $id,$nom,\DateTime $date)
+        public function newFormationAction(Request $request,$description, Etablissement $id,$nom,\DateTime $date,$image)
         { $em = $this->getDoctrine()->getManager();
  $Evenement = new Evenement();
             $Evenement->setIdEtablissement($id);
             $Evenement->setDescriptionEvenement($description);
             $Evenement->setDateEvenement($date);
             $Evenement->setNomEvenement($nom);
-
+            $Evenement->setPhotoEvenement($image);
 
             $em->persist($Evenement);
             $em->flush();

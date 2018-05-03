@@ -12,6 +12,7 @@ use BonPlanBundle\BonPlanBundle;
 use BonPlanBundle\Entity\Etablissement;
 use BonPlanBundle\Entity\Evenement;
 use BonPlanBundle\Entity\Interesser;
+use BonPlanBundle\Entity\User;
 use BonPlanBundle\Form\evenementForm;
 use BonPlanBundle\Form\rechercheEvenementForm;
 use BonPlanBundle\Repository\EtablissementRepository;
@@ -55,9 +56,65 @@ class InteresserController extends Controller
         return $this->redirectToRoute('List_Client');
     }
 
+    public function isAboAction(Request $request){
+        $user = $this->getDoctrine()->getRepository(User::class)->find($request->get('idUser'));
+        $str1 = $request->get('idEvent');
+        $event = $this->getDoctrine()->getRepository(Evenement::class)->find($str1);
+
+        $abonnement = $this->getDoctrine()->getRepository(Interesser::class)->findAll();
+        foreach ($abonnement as $abo) {
+            $a = ($abo->getId() == $user) && ($abo->getIdEvenement() == $event);
+            if ($a) {
+                $serializer = new Serializer([new ObjectNormalizer()]);
+                $formatted = $serializer->normalize($a);
+                return new JsonResponse($a);
+            }
+        }
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($a);
+        return new JsonResponse($a);
+    }
+
+    public function desaboAction(Request $request)
+    {
+
+        $user = $this->getDoctrine()->getRepository(User::class)->find($request->get('idUser'));
+        $str1 = $request->get('idEvent');
+        $event = $this->getDoctrine()->getRepository(Evenement::class)->find($str1);
+
+        $abonnement = $this->getDoctrine()->getRepository(Interesser::class)->findAll();
+        foreach ($abonnement as $abo) {
+            if (($abo->getId() == $user) && ($abo->getIdEvenement() == $event)) {
+                $a = new Interesser();
+                $em = $this->getDoctrine()->getManager();
+                $a = $em->getRepository(Interesser::class)->find($abo->getIdInteresser());
+                // var_dump($a);
+                $em->remove($a);
+                $em->flush();
+            }
+        }
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($abonnement);
+        return new JsonResponse($formatted);
+    }
 
 
 
+    public function addAboAction(Request $request){
+        $str = $request->get('idEvent');
+        $abon = new Interesser();
+        $user1 = $this->getDoctrine()->getRepository(Evenement::class)->find($str);
+        $abon->setIdEvenement($user1);
+        $str1=$request->get('idUser');
+        $user2 = $this->getDoctrine()->getRepository(User::class)->find($str1);
+        $abon->setId($user2);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($abon);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($abon);
+        return new JsonResponse($formatted);
+    }
 
 
 
@@ -176,6 +233,8 @@ $s="vous ete deja interesser";
 
 
     }
+
+
     public function buttonAction($id){
         $em = $this->getDoctrine()->getManager();
 

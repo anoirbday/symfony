@@ -46,3 +46,33 @@ bon_plan_topEtab:
 bon_plan_expJson:
     path:     /rechercheExp/{nomEtablissement}
     defaults: { _controller: ExpEvalBundle:Experience:rechercheAjax }
+bon_plan_allMob:
+    path:     /experiences/all
+    defaults: { _controller: ExpEvalBundle:Experience:all }
+bon_plan_AffichExpMob:
+    path:     /experiences/AffichExp/{id}
+    defaults: { _controller: ExpEvalBundle:Experience:AffichExp }
+bon_plan_AjoutExpMob:
+    path:     /experiences/AjoutExp/{idU}/{idE}
+    defaults: { _controller: ExpEvalBundle:Experience:AjoutExp }
+bon_plan_upimg:
+    path:     /upimg
+    defaults: { _controller: ExpEvalBundle:Experience:upimg }
+bon_plan_ajoutEvalMob:
+    path:     /evals/ajoutEval/{idExp}/{idCrit}
+    defaults: { _controller: ExpEvalBundle:Evaluation:AjoutEval }
+bon_plan_modifExpMob:
+    path:     /experiences/modifExp/{idExp}
+    defaults: { _controller: ExpEvalBundle:Experience:ModifExp }
+bon_plan_suppExpMob:
+    path:     /experiences/suppExp/{idExp}
+    defaults: { _controller: ExpEvalBundle:Experience:SuppExp }
+bon_plan_modifNoteExpMob:
+    path:     /experiences/modifNoteExp/{idExp}
+    defaults: { _controller: ExpEvalBundle:Experience:ModifNoteExp }
+bon_plan_affichEvalExpMob:
+    path:     /evaluations/affichEval/{idExp}
+    defaults: { _controller: ExpEvalBundle:Evaluation:oneEvalidExp }
+bon_plan_moyExp:
+    path:     /experiences/moyExp/{id}
+    defaults: { _controller: ExpEvalBundle:Experience:MoyExp }

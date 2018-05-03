@@ -7,7 +7,7 @@ use BonPlanBundle;
  * CritereEvaluation
  *
  * @ORM\Table(name="critere_evaluation", indexes={@ORM\Index(name="id_categorie", columns={"id_categorie"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BonPlanBundle\EtablissementBundle\Repository\CritereEvaluationRepository")
  */
 class CritereEvaluation
 {
