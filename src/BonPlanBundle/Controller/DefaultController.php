@@ -229,4 +229,36 @@ class DefaultController extends Controller
         return new JsonResponse($formatted);
     }
 
+    public function allCatAction ()
+    {
+        $categories = $this->getDoctrine()->getManager()->getRepository("BonPlanBundle:Categorie")->findAll();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($categories);
+        return new JsonResponse($formatted);
+    }
+
+    public function allEtabCatAction ($nomCat)
+    {
+        $etabs = $this->getDoctrine()->getManager()->getRepository("BonPlanBundle:Etablissement")->findEtabByCat($nomCat);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($etabs);
+        return new JsonResponse($formatted);
+    }
+
+    public function oneEtabNomAction ($nomEtab)
+    {
+        $etabs = $this->getDoctrine()->getManager()->getRepository("BonPlanBundle:Etablissement")->findEtabByNom($nomEtab);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($etabs);
+        return new JsonResponse($formatted);
+    }
+
+    public function allCritCatAction ($nomCat)
+    {
+        $etabs = $this->getDoctrine()->getManager()->getRepository("BonPlanBundle:CritereEvaluation")->findCritByCat($nomCat);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($etabs);
+        return new JsonResponse($formatted);
+    }
+
 }

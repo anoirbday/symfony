@@ -11,6 +11,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\BrowserKit\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Evaluation controller.
@@ -163,5 +165,36 @@ class EvaluationController extends Controller
             ->setAction($this->generateUrl('evaluation_delete', array('idEval' => $evaluation->getIdeval())))
             ->setMethod('DELETE')
             ->getForm();
+    }
+
+
+    public function AjoutEvalAction(Request $request, $idExp, $idCrit)
+    {
+
+        $em= $this->getDoctrine()->getManager();
+
+        $exp = $this->getDoctrine()->getManager()->getRepository("ExpEvalBundle:Experience")->find($idExp);
+        $crit = $this->getDoctrine()->getManager()->getRepository("BonPlanBundle:CritereEvaluation")->find($idCrit);
+
+
+        $evaluation = new Evaluation();
+        $evaluation->setIdExp($exp);
+        $evaluation->setIdCritere($crit);
+        $evaluation->setNote($request->get('note'));
+
+        $em->persist($evaluation);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($evaluation);
+        return new JsonResponse($formatted);
+
+    }
+
+    public function oneEvalidExpAction ($idExp)
+    {
+        $evals = $this->getDoctrine()->getManager()->getRepository("ExpEvalBundle:Evaluation")->findEvalByIdExp($idExp);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($evals);
+        return new JsonResponse($formatted);
     }
 }

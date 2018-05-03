@@ -1,4 +1,4 @@
-?php
+<?php
 
 namespace ExpEvalBundle\Entity;
 
@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Evaluation
- * @ORM\Entity(repositoryClass="BonPlanBundle\Repository\EvaluationRepository")
+ * @ORM\Entity(repositoryClass="ExpEvalBundle\Repository\EvaluationRepository")
  * @ORM\Table(name="evaluation",indexes={@ORM\Index(name="id_exp", columns={"id_exp"}), @ORM\Index(name="id_critere", columns={"id_critere"})})
  */
 class Evaluation
@@ -105,22 +105,6 @@ class Evaluation
     public function getNote()
     {
         return $this->note;
-    }
-
-    /**
-     * @return int
-     */
-    public function getIdEval()
-    {
-        return $this->idEval;
-    }
-
-    /**
-     * @param int $idEval
-     */
-    public function setIdEval($idEval)
-    {
-        $this->idEval = $idEval;
     }
 
 

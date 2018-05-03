@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Experience controller.
@@ -353,6 +355,104 @@ class ExperienceController extends Controller
             return new JsonResponse($temp);
         }
         return new Response('Error!', 400);
+    }
+    public function allAction ()
+    {
+        $experiences = $this->getDoctrine()->getManager()->getRepository("ExpEvalBundle:Experience")->findAllExpOrdDate();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($experiences);
+        return new JsonResponse($formatted);
+    }
+
+    public function AffichExpAction($id)
+    {
+        $experiences = $this->getDoctrine()->getManager()->getRepository("ExpEvalBundle:Experience")->find($id);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($experiences);
+        return new JsonResponse($formatted);
+    }
+
+    public function AjoutExpAction(Request $request, $idU, $idE)
+    {
+
+        $em= $this->getDoctrine()->getManager();
+
+        $user = $this->getDoctrine()->getManager()->getRepository("BonPlanBundle:User")->find($idU);
+        $etab = $this->getDoctrine()->getManager()->getRepository("BonPlanBundle:Etablissement")->find($idE);
+
+
+        $experience = new Experience();
+        $experience->setPreuve($request->get('preuve'));
+        $experience->setEnabled(0);
+        $experience->setDateExp(new \DateTime($request->get('dateExp')));
+        $experience->setDescriptionExperience($request->get('descriptionExperience'));
+        $experience->setNoteExp($request->get('noteExp'));
+        $experience->setIdEtablissement($etab);
+        $experience->setId($user);
+        $em->persist($experience);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($experience);
+        return new JsonResponse($formatted);
+
+    }
+
+    public function ModifExpAction(Request $request,$idExp)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $experience = $em->getRepository("ExpEvalBundle:Experience")->find($idExp);
+        $experience->setDescriptionExperience($request->get('descriptionExperience'));
+        $experience->setPreuve($request->get('preuve'));
+        $em->persist($experience);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($experience);
+        return new JsonResponse($formatted);
+
+    }
+
+    public function ModifNoteExpAction(Request $request,$idExp)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $experience = $em->getRepository("ExpEvalBundle:Experience")->find($idExp);
+        $experience->setNoteExp($request->get('noteExp'));
+        $em->persist($experience);
+        $em->flush();
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($experience);
+        return new JsonResponse($formatted);
+
+    }
+
+
+    public function MoyExpAction($id)
+    {
+        $experiences = $this->getDoctrine()->getManager()->getRepository("ExpEvalBundle:Experience")->moyExp($id);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($experiences);
+        return new JsonResponse($formatted);
+    }
+
+    public function upimgAction(){
+        return new JsonResponse(uniqid().".jpg");
+    }
+
+    public function SuppExpAction($idExp)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $evals = $em->getRepository("ExpEvalBundle:Evaluation")->findBy(array('idExp' => $idExp));
+        if ($evals) {
+            foreach ($evals as $c) {
+                $em->remove($c);
+                $em->flush();
+            }
+        }
+
+        $experience = $em->getRepository("ExpEvalBundle:Experience")->find($idExp);
+        $em->remove($experience);
+        $em->flush();
+        return new JsonResponse("Experience supprimée");
     }
 
 }
