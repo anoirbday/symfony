@@ -429,6 +429,133 @@ class EtablissementController extends Controller
             'piechart1' => $pieChart1));
 
     }
+    public function deleteMobileAction($id) {
+        $em=$this->getDoctrine()->getManager();
+        $etablissement=$em->getRepository("BonPlanBundle:Etablissement")->find($id);
+        $em->remove($etablissement);
+        $em->flush();
+
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($etablissement);
+        return new JsonResponse($formatted);
+    }
+    public function nbEtabMobileAction($id){
+        $em = $this->getDoctrine()->getManager();
+        $work = $em->getRepository("BonPlanBundle:Etablissement")->CountNbEtabParCategorie($id);
+        if($work){
+            $zz=new Serializer(array(new ObjectNormalizer()));
+            $a=$zz->normalize($work,'json');
+            $response=new JsonResponse($a);}
+        return $response;
+    }
+    public function unEtabClientMobileAction(Etablissement $etablissement)
+    {   $em=$this->getDoctrine()->getManager();
+        $critereEvaluations = $em->getRepository('BonPlanBundle:CritereEvaluation')->findBy(array('idCategorie' => $etablissement->getIdCategorie()));
+        $idetab=$etablissement->getIdEtablissement();
+        $evaluations =$em->getRepository("BonPlanBundle:Etablissement")->CalculRating($idetab);
+
+//      foreach ( $critereEvaluations as $cr)
+//      {
+//          $id =$em->getRepository("BonPlanBundle:Etablissement")->CalculRating($idetab);
+//            $z = $id;
+//          //$id = $em->getRepository("BonPlanBundle:Evaluation")->findOneBy(array('idCritere' => $criterEval->getIdCritere()));
+//          $evaluations = $evaluations + $z;
+//      }
+        $n = $em->getRepository("BonPlanBundle:Etablissement")->CountNbFavoris($idetab);
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($critereEvaluations);
+        $formatted1=$serializer->normalize($evaluations);
+        $formatted2=$serializer->normalize($n);
+        //return new JsonResponse($formattedd);
+        return new JsonResponse(array($formatted,$formatted1,$formatted2));
+    }
+    public function ajouterEtabMobileAction(Request $request,$id,$idCat)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $etablissement = new Etablissement();
+        $etablissement->setNomEtablissement($request->get('nomEtablissement'));
+        $etablissement->setAdresseEtablissement($request->get('adresseEtablissement'));
+        $etablissement->setDescriptionEtablissement($request->get('descriptionEtablissement'));
+        $etablissement->setCodePostal($request->get('codePostal'));
+        $etablissement->setBudget($request->get('budget'));
+        $etablissement->setPhotoEtablissement($request->get('photoEtablissement'));
+        $etablissement->setPhotoPatente($request->get('photoPatente'));
+        $etablissement->setSiteWeb($request->get('siteWeb'));
+        $etablissement->setLatitude($request->get('latitude'));
+        $etablissement->setLongitude($request->get('longitude'));
+        $etablissement->setTelephoneEtablissement($request->get('telephoneEtablissement'));
+        $etablissement->setFermeture(new \DateTime($request->get('fermeture')));
+        $etablissement->setOuverture(new \DateTime($request->get('ouverture')));
+        $user = $em->getRepository('BonPlanBundle:User')->find($id);
+        $etablissement->setId($user);
+        $categorie=$em->getRepository('BonPlanBundle:Categorie')->find($idCat);
+        $etablissement->setIdCategorie($categorie);
+        $etablissement->setEnabled(1);
+        $em->persist($etablissement);
+        $em->flush();
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($etablissement);
+        return new JsonResponse($formatted);
+    }
+    public function UpdateEtabMobileAction(Request $request,$idEtab,$id,$idCat,$adr,$lat,$long,$photopat)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $etablissement = $em->getRepository("BonPlanBundle:Etablissement")->find($idEtab);
+        $etablissement->setNomEtablissement($request->get('nomEtablissement'));
+        $etablissement->setAdresseEtablissement($adr);
+        $etablissement->setDescriptionEtablissement($request->get('descriptionEtablissement'));
+        $etablissement->setCodePostal($request->get('codePostal'));
+        $etablissement->setBudget($request->get('budget'));
+        // $etablissement->setPhotoEtablissement($request->get('photoEtablissement'));
+        $etablissement->setPhotoPatente($photopat);
+        $etablissement->setSiteWeb($request->get('siteWeb'));
+        $etablissement->setLatitude($lat);
+        $etablissement->setLongitude($long);
+        $etablissement->setTelephoneEtablissement($request->get('telephoneEtablissement'));
+        $etablissement->setFermeture(new \DateTime($request->get('fermeture')));
+        $etablissement->setOuverture(new \DateTime($request->get('ouverture')));
+        $user = $em->getRepository('BonPlanBundle:User')->find($id);
+        $etablissement->setId($user);
+        $categorie=$em->getRepository('BonPlanBundle:Categorie')->find($idCat);
+        $etablissement->setIdCategorie($categorie);
+        $etablissement->setEnabled(1);
+        $em->persist($etablissement);
+        $em->flush();
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($etablissement);
+        return new JsonResponse($formatted);
+    }
+    public function MonEtabsMobileAction($id)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $etablissements = $em->getRepository('BonPlanBundle:Etablissement')->findBy(array('id' =>$id ));
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($etablissements);
+        return new JsonResponse($formatted);
+
+    }
+    public function RechercheEtabParNomMobileAction($nom)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $etablissements = $em->getRepository('BonPlanBundle:Etablissement')->findBy(array('nomEtablissement' =>$nom ));
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($etablissements);
+        return new JsonResponse($formatted);
+
+    }
+    public function ListeDesEtabClientMobileAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $etablissements = $em->getRepository('BonPlanBundle:Etablissement')->findAll();
+
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($etablissements);
+        return new JsonResponse($formatted);
+
+    }
 
 
 

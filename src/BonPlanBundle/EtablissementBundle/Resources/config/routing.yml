@@ -73,3 +73,37 @@ bon_plan_etablissement11:
 Google_Maps:
     path:     /Map/{type}
     defaults: { _controller: EtablissementBundle:Etablissement:GM }
+bon_plan_etablissement12:
+    path:     /BonPlan/listedesetablissementsClients
+    defaults: { _controller: EtablissementBundle:Etablissement:ListeDesEtabClientMobile }
+bon_plan_etablissement13:
+    path:     /BonPlan/UnEtablissement/{id}
+    defaults: { _controller: EtablissementBundle:Etablissement:unEtabClientMobile }
+bon_plan_etablissement14:
+    path:     /BonPlan/AjouterEtablissementMobile/{id}/{idCat}
+    defaults: { _controller: EtablissementBundle:Etablissement:ajouterEtabMobile }
+bon_plan_categorie10:
+    path:     /BonPlan/ListeDesCategoriesMobiles
+    defaults: { _controller: EtablissementBundle:Categorie:ListeDesCatMobile }
+bon_plan_categorie11:
+    path:     /BonPlan/categparnom/{nom}
+    defaults: { _controller: EtablissementBundle:Categorie:categNom }
+bon_plan_etablissement15:
+    path:     /BonPlan/MesEtabsMobile/{id}
+    defaults: { _controller: EtablissementBundle:Etablissement:MonEtabsMobile }
+bon_plan_etablissement16:
+    path:     /BonPlan/EtabParNom/{nom}
+    defaults: { _controller: EtablissementBundle:Etablissement:RechercheEtabParNomMobile }
+bon_plan_etablissement17:
+    path:     /BonPlan/SupprimerEtablissement/{id}
+    defaults: { _controller: EtablissementBundle:Etablissement:deleteMobile }
+bon_plan_etablissement18:
+    path:     /BonPlan/UpdateEtablissementMobile/{idEtab}/{id}/{idCat}/{adr}/{lat}/{long}/{photopat}
+    defaults: { _controller: EtablissementBundle:Etablissement:UpdateEtabMobile }
+bon_plan_etablissement19:
+    path:     /BonPlan/StatistiqueMobile/{id}
+    defaults: { _controller: EtablissementBundle:Etablissement:nbEtabMobile }
+bon_plan_critereevaluation2:
+    path:     /BonPlan/CriteresParCateg/{id}
+    defaults: { _controller: EtablissementBundle:CritereEvaluation:CriterParCateg }
+

@@ -7,7 +7,10 @@ use BonPlanBundle\Entity\CritereEvaluation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Categorie controller.
@@ -253,5 +256,21 @@ class CategorieController extends Controller
             ->setMethod('DELETE')
             ->getForm()
         ;
+    }
+    public function categNomAction($nom){
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('BonPlanBundle:Categorie')->findBy(array('nomCategorie'=>$nom));
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($categories);
+        return new JsonResponse($formatted);
+    }
+    public function ListeDesCatMobileAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $categories = $em->getRepository('BonPlanBundle:Categorie')->findAll();
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($categories);
+        return new JsonResponse($formatted);
+
     }
 }

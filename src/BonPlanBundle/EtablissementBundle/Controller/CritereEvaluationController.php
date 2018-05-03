@@ -7,7 +7,10 @@ use BonPlanBundle\Entity\CritereEvaluation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
 
 /**
  * Critereevaluation controller.
@@ -136,4 +139,16 @@ class CritereEvaluationController extends Controller
             ->getForm()
         ;
     }
+    public function CriterParCategAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $critereEvaluations = $em->getRepository('BonPlanBundle:CritereEvaluation')->findBy(array('idCategorie'=>$id));
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($critereEvaluations);
+        return new JsonResponse($formatted);
+    }
+
+
+
 }
