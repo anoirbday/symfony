@@ -74,5 +74,23 @@ WHERE ev.idEtablissement = et.idEtablissement AND   ev.idEvenement = :id ")
         return $query->getResult();
     }
 
+    public function findEtabByCat ($nomCat)
+    {
+        $em=$this->getEntityManager();
+        $query=$em->createQuery
+        ("select etab from BonPlanBundle:Etablissement etab, BonPlanBundle:Categorie cat WHERE etab.idCategorie=cat.idCategorie and cat.nomCategorie LIKE :tit")
+            ->setParameter('tit','%'.$nomCat.'%');
+        return $query->getResult();
+    }
+
+    public function findEtabByNom ($nomEtab)
+    {
+        $em=$this->getEntityManager();
+        $query=$em->createQuery
+        ("select etab from BonPlanBundle:Etablissement etab WHERE etab.nomEtablissement LIKE :tit")
+            ->setParameter('tit','%'.$nomEtab.'%');
+        return $query->getResult();
+    }
+
 
 }
