@@ -55,7 +55,13 @@ class InteresserController extends Controller
         $em->flush();
         return $this->redirectToRoute('List_Client');
     }
-
+    public function ListinteresserJsonAction($id)
+    {$tasks = $this->getDoctrine()->getManager()
+        ->getRepository("BonPlanBundle:Interesser")->listinteresser($id);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
     public function isAboAction(Request $request){
         $user = $this->getDoctrine()->getRepository(User::class)->find($request->get('idUser'));
         $str1 = $request->get('idEvent');
@@ -66,13 +72,13 @@ class InteresserController extends Controller
             $a = ($abo->getId() == $user) && ($abo->getIdEvenement() == $event);
             if ($a) {
                 $serializer = new Serializer([new ObjectNormalizer()]);
-                $formatted = $serializer->normalize($a);
-                return new JsonResponse($a);
+                $formatted = $serializer->normalize(array("statu"=>$a));
+                return new JsonResponse($formatted);
             }
         }
         $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($a);
-        return new JsonResponse($a);
+        $formatted = $serializer->normalize(array("statu"=>$a));
+        return new JsonResponse($formatted);
     }
 
     public function desaboAction(Request $request)

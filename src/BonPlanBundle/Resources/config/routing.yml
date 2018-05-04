@@ -151,7 +151,9 @@ Add_event_JSON:
 check_abo_JSON:
     path:  /isAbo
     defaults: { _controller: BonPlanBundle:Interesser:isAbo }
-
+list_interesser_json:
+    path:  /listinteresser/{id}
+    defaults: { _controller: BonPlanBundle:Interesser:ListinteresserJson }
 
 affichage_produits_ws:
     path:     /produits
@@ -215,5 +217,3 @@ bon_plan_oneEtab:
 bon_plan_allCritCat:
     path:     /crits/allCritCat/{nomCat}
     defaults: { _controller: BonPlanBundle:Default:allCritCat }
-
-

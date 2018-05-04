@@ -58,6 +58,9 @@ class EvenementController extends Controller
         $formatted = $serializer->normalize($tasks);
         return new JsonResponse($formatted);
     }
+
+
+
     public function abcAction()
     {$tasks = $this->getDoctrine()->getManager()
         ->getRepository('BonPlanBundle:Evenement')

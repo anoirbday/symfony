@@ -84,7 +84,7 @@ VALUES (:even,:nom) ")
         $query=$this->getEntityManager()
             ->createQuery("select us from BonPlanBundle:Interesser et, BonPlanBundle:User us
 WHERE et.id = us.id AND   et.idEvenement = :id ")
-            ->setParameter('id', $id->getIdEvenement());
+            ->setParameter('id', $id);
         return $query->getResult();
     }
 
