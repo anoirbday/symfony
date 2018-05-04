@@ -2,11 +2,14 @@
 
 namespace BonPlanBundle\Controller;
 
+use BonPlanBundle\Entity\Commentraire;
+use BonPlanBundle\Entity\Favoris;
 use BonPlanBundle\Entity\Reservation;
 use BonPlanBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 
@@ -258,6 +261,191 @@ class DefaultController extends Controller
         $etabs = $this->getDoctrine()->getManager()->getRepository("BonPlanBundle:CritereEvaluation")->findCritByCat($nomCat);
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($etabs);
+        return new JsonResponse($formatted);
+    }
+    public function register1Action(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $user = new User();
+        $user->setNom($request->get('nom'));
+        $user->setUsername($request->get('username'));
+        $user->setPrenom($request->get('prenom'));
+        $user->setEmail($request->get('email'));
+        $hash = password_hash($request->get('password'), PASSWORD_BCRYPT);
+        $user->setPassword($hash);
+        $role=$request->get('role');
+
+        if ($role=="client"){$user->addRole("ROLE_CLIENT");}
+        else if ($role=="proprietaire"){
+            $user->addRole("ROLE_PROPRIETAIRE");}
+
+
+
+
+        $em->persist($user);
+        $em->flush();
+        $encoders = array( new JsonEncoder());
+
+        $normalizer = new ObjectNormalizer();
+        $normalizer->setCircularReferenceLimit(2);
+        $normalizer->setCircularReferenceHandler(function ($object) { return $object->getId(); });
+        $normalizers = array($normalizer);
+        $serializer = new Serializer($normalizers, $encoders);
+        $jsonContent = $serializer->serialize($user, 'json');
+        $json=json_decode($jsonContent);
+
+
+
+        return new JsonResponse($json);
+    }
+    public function allAction(){
+        $tasks= $this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Favoris')
+            ->findAll();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
+
+    public function byidAction($id){
+        $tasks= $this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Favoris')
+            ->findequi($id);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
+
+    public function newAction(Request $request){
+
+
+        $em= $this->getDoctrine()->getManager();
+        $favoris = new Favoris();
+
+        $user=$em->getRepository('BonPlanBundle:User')->find($request->get('id'));
+        $plan=$em->getRepository('BonPlanBundle:Etablissement')->find($request->get('idEtablissement'));
+
+
+        $signal = $em->getRepository('BonPlanBundle:Favoris')->findBy(array('id' =>$user,'idEtablissement' =>$plan));
+
+        var_dump($signal);
+        if($signal==null ){
+
+            $favoris->setIdEtablissement($plan);
+            $favoris->setId($user);
+
+            $em->persist($favoris);
+            $em->flush();
+            $serializer = new Serializer([ new ObjectNormalizer()]);
+            $formatted = $serializer-> normalize($favoris);
+
+        }
+
+        else if($signal!=null){
+
+            $favoris=$em->getRepository('BonPlanBundle:Favoris')->findOneBy(array('id' =>$user,'idEtablissement' =>$plan));
+
+            $em->remove($favoris);
+            $em->flush();
+        }
+        return new JsonResponse($formatted);
+
+
+    }
+
+    public function deleteAction(Favoris $favoris){
+        $em=$this->getDoctrine()->getManager();
+        //   $commentaire=$em->getRepository(Article::class)->find($id);
+
+        $em->remove($favoris);
+        $em->flush();
+
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($favoris);
+        return new JsonResponse($formatted);
+    }
+
+    public function all2Action(){
+        $tasks= $this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Commentraire')
+            ->findAll();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
+
+    public function byid2Action($idExp){
+        $tasks= $this->getDoctrine()->getManager();
+        //$com=$tasks->getRepository('BonPlanBundle:Experience')->find($request->get('idExp'));
+        $comm=$tasks->getRepository('BonPlanBundle:Commentraire')->findBy(array('idExp'=>$idExp)
+        );
+        // var_dump($comm);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($comm);
+        return new JsonResponse($formatted);
+    }
+
+    public function new2Action(Request $request){
+        $em= $this->getDoctrine()->getManager();
+        $task= new Commentraire();
+        $task->setCommentaire($request->get('commentaire'));
+        $user=$em->getRepository('BonPlanBundle:User')->find($request->get('id'));
+        $comm=$em->getRepository('BonPlanBundle:Experience')->find($request->get('idExp'));
+        $task->setIdUcomm($user);
+        //$task->setIdUcomm($request->get('idUcomm'));
+        $task->setIdExp($comm);
+
+        $em->persist($task);
+        $em->flush();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($task);
+        return new JsonResponse($formatted);
+    }
+
+    public function modifAction(Request $request, Commentraire $task){
+        $em= $this->getDoctrine()->getManager();
+        $task->setCommentaire($request->get('commentaire'));
+        $user=$em->getRepository('BonPlanBundle:User')->find($request->get('iducomm'));
+        $comm=$em->getRepository('BonPlanBundle:Experience')->find($request->get('idExp'));
+        $task->setIdUcomm($user);
+        //$task->setIdUcomm($request->get('idUcomm'));
+        $task->setIdExp($comm);
+
+        $em->persist($task);
+        $em->flush();
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($task);
+        return new JsonResponse($formatted);
+    }
+
+    public function delete2Action(Commentraire $commentraire){
+        $em=$this->getDoctrine()->getManager();
+        //   $commentaire=$em->getRepository(Article::class)->find($id);
+
+        $em->remove($commentraire);
+        $em->flush();
+
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($commentraire);
+        return new JsonResponse($formatted);
+    }
+
+    public function byidEtabAction($id){
+        $tasks= $this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Etablissement')
+            ->find($id);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
+
+    public function byidcommentaireAction($id){
+        $tasks= $this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Commentraire')
+            ->findequi($id);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted= $serializer->normalize($tasks);
         return new JsonResponse($formatted);
     }
 

@@ -217,3 +217,53 @@ bon_plan_oneEtab:
 bon_plan_allCritCat:
     path:     /crits/allCritCat/{nomCat}
     defaults: { _controller: BonPlanBundle:Default:allCritCat }
+
+register:
+    path:     /registration
+    defaults: { _controller: BonPlanBundle:Default:register1}
+favoris_json:
+    path:     /favjson
+    defaults: { _controller: BonPlanBundle:Default:all }
+
+favoris_jsonbyid:
+    path:     /favjsonid/{id}
+    defaults: { _controller: BonPlanBundle:Default:byid }
+
+favoris_jsonnew:
+    path:     /favjsonnew
+    defaults: { _controller: BonPlanBundle:Default:new }
+
+favoris_jsondelete:
+    path:     /favjsondelete/{id}
+    defaults: { _controller: BonPlanBundle:Default:delete }
+
+etablissement_jsonbyid:
+    path:     /etabjsonid/{id}
+    defaults: { _controller: BonPlanBundle:Default:byidEtab }
+
+commentaire_json:
+    path:     /comjson
+    defaults: { _controller: BonPlanBundle:Default:all2 }
+
+commentaire_jsonid:
+    path:     /comjsonid/{idExp}
+    defaults: { _controller: BonPlanBundle:Default:byid2 }
+
+commentaire_jsonnew:
+    path:     /comjsonnew2
+    defaults: { _controller: BonPlanBundle:Default:new2 }
+
+commentaire_jsondelete:
+    path:     /comjsondelete/{id}
+    defaults: { _controller: BonPlanBundle:Default:delete2 }
+
+commentaire_jsond:
+    path:     /comjsonedit/{id}
+    defaults: { _controller: BonPlanBundle:Default:modif }
+
+commentaireuser_jsond:
+    path:     /comjsonuser/{id}
+    defaults: { _controller: BonPlanBundle:Default:byidcommentaire }
+
+
+
