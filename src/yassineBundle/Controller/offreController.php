@@ -267,6 +267,24 @@ class offreController extends Controller
 
     }
 
+    public function affichpropAction($id)
+    {$tasks = $this->getDoctrine()->getManager()
+        ->getRepository('BonPlanBundle:Offre')
+        ->findoffprops($id);
+        $serializer = new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($tasks);
+        return new JsonResponse($formatted);
+    }
+
+    public function findidetabAction($idEtablissement){
+
+        $produit=$this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Offre')
+            ->findidoffetabs($idEtablissement);
+        $serializer= new Serializer([new ObjectNormalizer()]);
+        $formatted = $serializer->normalize($produit);
+        return new JsonResponse($formatted);
+    }
 
     public function findnameAction($titreOffre){
 

@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Offre
  *
  * @ORM\Table(name="offre", indexes={@ORM\Index(name="id_etablissement", columns={"id_etablissement"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="yassineBundle\Repository\OffreRepository")
  */
 class Offre
 {

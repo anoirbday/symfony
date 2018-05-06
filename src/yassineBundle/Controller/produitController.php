@@ -214,8 +214,8 @@ public function exportAction(){
         $serializer= new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($produit);
         return new JsonResponse($formatted);
-
     }
+
     public function affichageetabAction(){
 
         $produit=$this->getDoctrine()->getManager()
@@ -254,56 +254,49 @@ public function exportAction(){
 
         $produit=$this->getDoctrine()->getManager()
             ->getRepository('BonPlanBundle:Produit')
-            ->find($idEtablissement);
+            ->findidetabs($idEtablissement);
         $serializer= new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($produit);
         return new JsonResponse($formatted);
     }
-    public function ajoutAction(Request $request,$nomProduit,$photoProduit,$prixProduit,Etablissement $idEtablissement){
-        $em=$this->getDoctrine()->getManager();
-        $produit= new Produit();
-        $Etablissement = $em->getRepository("BonPlanBundle:Etablissement")->find($idEtablissement);
-        $produit->setIdEtablissement($Etablissement) ;
-        $produit->setNomProduit($nomProduit) ;
-        $produit->setPhotoProduit($photoProduit) ;
-        $produit->setPrixProduit($prixProduit) ;
 
+    public function ajoutAction(Request $request,$nomProduit,$photoProduit,$prixProduit,Etablissement $idEtablissement)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $produit = new Produit();
+        $Etablissement = $em->getRepository("BonPlanBundle:Etablissement")->find($idEtablissement);
+        $produit->setIdEtablissement($Etablissement);
+        $produit->setNomProduit($nomProduit);
+        $produit->setPhotoProduit($photoProduit);
+        $produit->setPrixProduit($prixProduit);
 
 
         $encoder = new JsonResponse();
         $nor = new ObjectNormalizer();
-        $nor->setCircularReferenceHandler(function ($obj){return $obj->getId() ;});
+        $nor->setCircularReferenceHandler(function ($obj) {
+            return $obj->getId();
+        });
         $em->persist($produit);
         $em->flush();
 
-        $serializer = new Serializer(array($nor,$encoder));
+        $serializer = new Serializer(array($nor, $encoder));
         $formatted = $serializer->normalize($produit);
         return new JsonResponse($formatted);
 
 
     }
 
-   /* public function ajoutAction(Request $request){
+        public function affichpropAction($id)
+        {$tasks = $this->getDoctrine()->getManager()
+            ->getRepository('BonPlanBundle:Produit')
+            ->findprodprops($id);
+            $serializer = new Serializer([new ObjectNormalizer()]);
+            $formatted = $serializer->normalize($tasks);
+            return new JsonResponse($formatted);
+        }
 
-        $em=$this->getDoctrine()->getManager();
-        $produit= new Produit();
 
 
-        $produit->setNomProduit($request->get('nom_produit'));
-        $produit->setPrixProduit($request->get('prix_produit'));
-        $etabliss= new Etablissement();
-        $etabliss->setIdEtablissement(1);
-
-        $produit->setPhotoProduit($request->get('photo_produit'));
-        $produit->setIdEtablissement("".$request->get('id_etablissement'));
-        // $produit->setIdEtablissement($etabliss->getIdEtablissement());
-        $em->persist($produit);
-        $em->flush();
-        $serializer= new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($produit);
-        return new JsonResponse($formatted);
-
-    }*/
 
 
 

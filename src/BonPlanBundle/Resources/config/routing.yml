@@ -164,6 +164,9 @@ list_interesser_json:
 recherche_evenJson:
     path: /rechercheEven/{nom}
     defaults: { _controller: BonPlanBundle:Evenement:RechercheEvenParNom }
+bon_plan_rechercheajaxJson:
+    path:     /rechJson/{nomEvenement}
+    defaults: { _controller: BonPlanBundle:Evenement:stockageJson }
 
 affichage_produits_ws:
     path:     /produits
@@ -195,10 +198,22 @@ produit_delete:
     defaults: { _controller: yassineBundle:produit:deleteproduit }
 
 
+produit_aff_prop:
+    path:     /affichageprodprop/{id}
+    defaults: { _controller: yassineBundle:produit:affichprop }
+
+
+
+
 
 affichage_offres_ws:
     path:     /offres
     defaults: { _controller: yassineBundle:offre:affichage }
+
+offre_aff_prop:
+    path:     /affichageoffprop/{id}
+    defaults: { _controller: yassineBundle:offre:affichprop }
+
 
 find_offre_by_name:
     path:     /findoffrename/{titreOffre}
@@ -207,6 +222,11 @@ find_offre_by_name:
 find_offre_by_id:
     path:     /findoffreid/{idOffre}
     defaults: { _controller: yassineBundle:offre:findid }
+
+find_offre_by_idetab:
+    path:     /findoffreidetab/{idEtablissement}
+    defaults: { _controller: yassineBundle:offre:findidetab }
+
 
 create_offre:
      path:     /createoffre/{titreOffre}/{photoOffre}/{descriptionOffre}/{date}/{date1}/{idEtablissement}/

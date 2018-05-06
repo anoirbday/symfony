@@ -14,24 +14,21 @@ use Doctrine\ORM\EntityRepository;
 class ProduitRepository extends EntityRepository
 {
 
-    public function findPaysQB(){
-
-        $query=$this->createQueryBuilder('p');
-        $query->where("s.nomProduit=:nomProduits")
-            ->setParameter('nomProduits','Produit 1');
-        return $query->getQuery()->getResult();
-
+    public function findprodprops($nom)
+    {
+        $query=$this->getEntityManager()
+            ->createQuery("select pr from BonPlanBundle:Produit pr, BonPlanBundle:Etablissement et
+WHERE pr.idEtablissement = et.idEtablissement AND et.id = :nom")
+            ->setParameter('nom', $nom);
+        return $query->getResult();
     }
 
-    public function findPaysDQL(){
-
+    public function findidetabs($etab)
+    {
         $query=$this->getEntityManager()
-            ->createQuery("
-            select p from yassineBundle:Produit p WHERE p.nom_produit='Allemagne'
-            ");
-
+            ->createQuery("select pr from BonPlanBundle:Produit pr, BonPlanBundle:Etablissement et
+WHERE pr.idEtablissement = $etab");
         return $query->getResult();
-
     }
 
 }

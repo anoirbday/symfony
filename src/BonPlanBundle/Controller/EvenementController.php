@@ -354,6 +354,18 @@ public function UpdateAction(Request $request,$id)
             "Evenements" => $events,
         ));
     }
+    public function stockageJsonAction($nomEvenement){
+        $em = $this->getDoctrine()->getManager();
+        $events = $em->getRepository("BonPlanBundle:Evenement")->FindByLetters($nomEvenement);
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($events);
+        return new JsonResponse($formatted);
+
+
+    }
+
+
+
     public function rechercheAjaxAction(Request $request, $nomEvenement){
         if($request->isXmlHttpRequest()){
             $temp = $this->forward('BonPlanBundle:Evenement:stockage',array(
