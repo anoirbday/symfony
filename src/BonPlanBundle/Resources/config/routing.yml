@@ -52,6 +52,11 @@ ajouter_evenement:
 delete_evenement:
     path:     /deletes/{id}
     defaults: { _controller: BonPlanBundle:Evenement:Delete }
+delete_evenements:
+    path:     /deletesJson/{id}
+    defaults: { _controller: BonPlanBundle:Evenement:DeleteJson }
+
+
 bon_plan_blog2:
     path:     /blog2/{id}
     defaults: { _controller: BonPlanBundle:Interesser:interesser}
@@ -113,6 +118,8 @@ afficheJson1:
 addpublicite:
     path:     /add/publicite/{titre}/{descriptionPublicite}/{photoPublicite}/{idEtablissement}/{date}/
     defaults: { _controller: PubliciteBundle:Default:AddPublicite }
+
+
 login1:
     path:  /login1/{username}/{password}/
     defaults: { _controller: BonPlanBundle:Default:login1 }
@@ -154,6 +161,9 @@ check_abo_JSON:
 list_interesser_json:
     path:  /listinteresser/{id}
     defaults: { _controller: BonPlanBundle:Interesser:ListinteresserJson }
+recherche_evenJson:
+    path: /rechercheEven/{nom}
+    defaults: { _controller: BonPlanBundle:Evenement:RechercheEvenParNom }
 
 affichage_produits_ws:
     path:     /produits

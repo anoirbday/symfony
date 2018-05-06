@@ -182,6 +182,14 @@ class EvenementController extends Controller
         $em->flush();
         return $this->redirectToRoute('bon_plan_blog');
     }
+    public function DeleteJsonAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $Evenement = $em->getRepository("BonPlanBundle:Evenement")->find($id);
+        $em->remove($Evenement);
+        $em->flush();
+        return new JsonResponse(array("statu"=>"ok"));
+    }
 public function blog2Action ($id,Request $request){
     $em = $this->getDoctrine()->getManager();
     $Evenement = $em->getRepository("BonPlanBundle:Evenement")->find($id);
@@ -417,5 +425,17 @@ public function UpdateAction(Request $request,$id)
         return new JsonResponse($formatted);
 
     }
+    public function RechercheEvenParNomAction($nom)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $evenement = $em->getRepository('BonPlanBundle:Evenement')->findBy(array('nomEvenement' =>$nom ));
+        $serializer=new Serializer([new ObjectNormalizer()]);
+        $formatted=$serializer->normalize($evenement);
+        return new JsonResponse($formatted);
+
+    }
+
+
 
 }

@@ -88,20 +88,15 @@ class InteresserController extends Controller
         $str1 = $request->get('idEvent');
         $event = $this->getDoctrine()->getRepository(Evenement::class)->find($str1);
 
-        $abonnement = $this->getDoctrine()->getRepository(Interesser::class)->findAll();
-        foreach ($abonnement as $abo) {
-            if (($abo->getId() == $user) && ($abo->getIdEvenement() == $event)) {
-                $a = new Interesser();
-                $em = $this->getDoctrine()->getManager();
-                $a = $em->getRepository(Interesser::class)->find($abo->getIdInteresser());
-                // var_dump($a);
-                $em->remove($a);
-                $em->flush();
-            }
+        $abonnement = $this->getDoctrine()->getRepository(Interesser::class)
+            ->findOneBy(array("id"=>$user,"idEvenement"=>$event));
+        if($abonnement != null){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($abonnement);
+            $em->flush();
+            return new JsonResponse(array("statu"=>"ok"));
         }
-        $serializer = new Serializer([new ObjectNormalizer()]);
-        $formatted = $serializer->normalize($abonnement);
-        return new JsonResponse($formatted);
+        return new JsonResponse(array("statu"=>"Notok"));
     }
 
 

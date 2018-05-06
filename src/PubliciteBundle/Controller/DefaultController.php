@@ -132,6 +132,14 @@ class DefaultController extends Controller
         $em->flush();
         return $this->redirectToRoute('affiche_publicite');
     }
+    public function DeletepubJsonAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $Evenement = $em->getRepository("BonPlanBundle:Publicite")->find($id);
+        $em->remove($Evenement);
+        $em->flush();
+        return new JsonResponse(array("statu"=>"ok"));
+    }
     public function UpdateAction(Request $request,$id)
     { $Publicite = new Publicite();
         $em = $this->getDoctrine()->getManager();
@@ -328,6 +336,8 @@ public function facebookAction()
 
 
 }
+
+
     public function Mobile1Action()
     {$tasks = $this->getDoctrine()->getManager()
         ->getRepository('BonPlanBundle:Publicite')
