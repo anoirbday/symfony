@@ -341,7 +341,7 @@ public function facebookAction()
     public function Mobile1Action()
     {$tasks = $this->getDoctrine()->getManager()
         ->getRepository('BonPlanBundle:Publicite')
-        ->findAll();
+        ->finddate();
         $serializer = new Serializer([new ObjectNormalizer()]);
         $formatted = $serializer->normalize($tasks);
         return new JsonResponse($formatted);
