@@ -274,6 +274,7 @@ class DefaultController extends Controller
         $user->setEmail($request->get('email'));
         $hash = password_hash($request->get('password'), PASSWORD_BCRYPT);
         $user->setPassword($hash);
+        $user->setPhotoUser($request->get('photoUser'));
         $role=$request->get('role');
 
         if ($role=="client"){$user->addRole("ROLE_CLIENT");}
